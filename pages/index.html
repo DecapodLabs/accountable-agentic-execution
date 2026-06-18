@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Intent, Custody, and Proof: Toward Accountable Execution in Agentic Software Engineering. Research paper, empirical metrics, and reproducible artifact.">
+    <title>Intent, Custody, and Proof — Accountable Agentic Execution</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(22, 28, 45, 0.4);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.35);
+            --secondary: #06b6d4;
+            --secondary-glow: rgba(6, 182, 212, 0.35);
+            --text-color: #f3f4f6;
+            --text-muted: #9ca3af;
+            --success: #10b981;
+            --danger: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Header / Hero */
+        header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px 40px;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--secondary);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            background: rgba(6, 182, 212, 0.05);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #ffffff 30%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .author {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 4px;
+        }
+
+        .affiliation {
+            font-size: 1rem;
+            color: var(--secondary);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 40px;
+        }
+
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #ffffff;
+            border: 1px solid var(--primary);
+            box-shadow: 0 8px 30px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(139, 92, 246, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Container */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 9999px;
+        }
+
+        /* Abstract Box */
+        .abstract-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .abstract-text {
+            font-size: 1.15rem;
+            color: #d1d5db;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        /* Primitives Grid */
+        .primitives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .primitive-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+        }
+
+        .primitive-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.15);
+        }
+
+        .primitive-icon {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 16px;
+        }
+
+        .primitive-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .primitive-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Metrics Table Section */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Outfit', sans-serif;
+            text-align: left;
+        }
+
+        th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            font-size: 1.05rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .treatment-col {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .metric-highlight {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+
+        .highlight-success {
+            color: var(--success);
+        }
+
+        .highlight-danger {
+            color: var(--danger);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive changes */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            .abstract-card {
+                padding: 24px;
+            }
+            td, th {
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div id="repo-tag" class="tag">Research Artifact</div>
+        <h1 id="main-title">Intent, Custody, and Proof:<br>Toward Accountable Execution in Agentic Software Engineering</h1>
+        <div class="author" id="author-name">Alex H. Raber</div>
+        <div class="affiliation" id="author-affiliation">Decapod Labs</div>
+        
+        <div class="cta-container">
+            <a href="./main.pdf" class="btn btn-primary" id="btn-download" download>Download Paper PDF</a>
+            <a href="https://github.com/DecapodLabs/accountable-agentic-execution" class="btn btn-secondary" id="btn-github">View GitHub Repository</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- Abstract -->
+        <section id="sec-abstract">
+            <h2 class="section-title">Abstract</h2>
+            <div class="abstract-card">
+                <p class="abstract-text">
+                    Large language model (LLM) agents are transitioning from conversational programming assistants to autonomous executors capable of editing codebases, running build tools, executing tests, and managing multi-file software deployments. Despite this shift, current agent workflows still rely on standard prompt transcripts and code diffs as the primary logs of execution. As agent runs become concurrent, long-running, and tool-intensive, this transcript-only paradigm exposes repositories to significant failure modes: lost intent, authority leakage, concurrent state corruption, and unverifiable completion claims.
+                </p>
+                <br>
+                <p class="abstract-text">
+                    This paper frames agentic software engineering as a distributed execution problem. We introduce the ICP framework, which formalizes three primitives to achieve accountable execution: <strong>Intent</strong> (durable target objectives), <strong>Custody</strong> (isolated environment bounds and tool permissions), and <strong>Proof</strong> (cryptographically anchored, machine-checkable evidence of completion). We present Decapod, a local-first governance kernel, as a reference implementation of this framework. We evaluate the ICP framework across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. Our findings show that explicit custody and verification gates significantly reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
+                </p>
+            </div>
+        </section>
+
+        <!-- Primitives -->
+        <section id="sec-primitives">
+            <h2 class="section-title">The ICP Primitives</h2>
+            <div class="primitives-grid">
+                
+                <div class="primitive-card" id="card-intent">
+                    <div class="primitive-icon">I</div>
+                    <h3 class="primitive-name">Intent</h3>
+                    <p class="primitive-desc">A durable, structured task manifest tracked outside the agent's context window. Ensures instructions and success criteria survive process interruptions, rate limits, and context drift.</p>
+                </div>
+                
+                <div class="primitive-card" id="card-custody">
+                    <div class="primitive-icon">C</div>
+                    <h3 class="primitive-name">Custody</h3>
+                    <p class="primitive-desc">Isolated execution workspaces (git worktrees) and restricted tool command scopes. Prevents authority leakage, unauthorized credential usage, and concurrent file collisions.</p>
+                </div>
+                
+                <div class="primitive-card" id="card-proof">
+                    <div class="primitive-icon">P</div>
+                    <h3 class="primitive-name">Proof</h3>
+                    <p class="primitive-desc">Cryptographically signed, machine-checkable evidence containing successful test runs, compiler output logs, and workspace tree hashes. Shifts completion verification from conversational assertions to checkable claims.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Empirical Results Dashboard -->
+        <section id="sec-results">
+            <h2 class="section-title">Empirical Metrics Summary</h2>
+            <div class="table-container">
+                <table id="metrics-table">
+                    <thead>
+                        <tr>
+                            <th>Performance Metric</th>
+                            <th>Baseline A (Prompt-Only)</th>
+                            <th>Baseline B (Checklist)</th>
+                            <th class="treatment-col">Treatment (Decapod governed)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Task Completion Rate (%)</td>
+                            <td class="metric-highlight">54.3%</td>
+                            <td class="metric-highlight">61.1%</td>
+                            <td class="metric-highlight treatment-col highlight-success">77.8%</td>
+                        </tr>
+                        <tr>
+                            <td>Invalid Success Claims (%)</td>
+                            <td class="metric-highlight highlight-danger">34.2%</td>
+                            <td class="metric-highlight">22.8%</td>
+                            <td class="metric-highlight treatment-col highlight-success">2.1%</td>
+                        </tr>
+                        <tr>
+                            <td>Validation Accuracy (%)</td>
+                            <td class="metric-highlight">65.8%</td>
+                            <td class="metric-highlight">77.2%</td>
+                            <td class="metric-highlight treatment-col highlight-success">97.9%</td>
+                        </tr>
+                        <tr>
+                            <td>Interruption Recovery (%)</td>
+                            <td class="metric-highlight">18.5%</td>
+                            <td class="metric-highlight">28.6%</td>
+                            <td class="metric-highlight treatment-col highlight-success">72.3%</td>
+                        </tr>
+                        <tr>
+                            <td>Concurrent Conflicts (Count)</td>
+                            <td class="metric-highlight highlight-danger">18</td>
+                            <td class="metric-highlight">15</td>
+                            <td class="metric-highlight treatment-col highlight-success">0</td>
+                        </tr>
+                        <tr>
+                            <td>Average Human Review Time</td>
+                            <td class="metric-highlight">245s</td>
+                            <td class="metric-highlight">185s</td>
+                            <td class="metric-highlight treatment-col highlight-success">88s</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2026 <a href="https://github.com/DecapodLabs">Decapod Labs</a>. All rights reserved.</p>
+        <p>Research paper generated using comps-style IEEE LaTeX templates.</p>
+    </footer>
+
+</body>
+</html>
