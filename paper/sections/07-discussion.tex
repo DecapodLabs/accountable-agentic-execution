@@ -1,7 +1,7 @@
 \section{Discussion}
 \label{sec:discussion}
 
-The results of our evaluation support the core thesis that agentic software engineering is more than a language-modeling task; it is a distributed systems problem that requires formal control planes.
+The proposed evaluation is designed to test the core thesis that agentic software engineering is more than a language-modeling task; it is a distributed systems problem that requires formal control planes.
 
 \subsection{Systems Framing vs. Prompt Engineering}
 Historically, the primary method for improving coding agent performance has been prompt engineering—tuning system instructions, adding few-shot examples, or structuring chat outputs. While these methods improve the probability of a model generating correct syntax, they do not change the fundamental execution model. A model executing directly on a production workspace remains unbounded and unverified.
@@ -14,6 +14,6 @@ In traditional software engineering, human developers follow processes: they che
 Decapod acts as the local control plane designed specifically for this machine-scale execution. By wrapping agent loops in repository-native custody, we bring the discipline of modern software delivery pipelines down to the individual tool command level. This provides safety at high execution speeds and guarantees that the repository state remains correct at every step.
 
 \subsection{Trust, Auditing, and the Limitations of Proof}
-A key finding of our study is that structured proof files and trajectories reduce human review times. In a transcript-only workflow, human reviews are cognitively demanding: the developer must read long chat threads, try to understand why the agent chose a specific path, and then manually check if the code works. A Decapod run, however, separates the conversational noise from the systems evidence.
+A central hypothesis of this study is that structured proof files and trajectories will reduce human review time. In a transcript-only workflow, human reviews are cognitively demanding: the developer must read long chat threads, try to understand why the agent chose a specific path, and then manually check if the code works. A Decapod run, however, separates the conversational noise from the systems evidence.
 
 However, we must note the limitations of programmatic proof. A signed proof file guarantees that the validation commands (e.g., test suites) compile and pass. It cannot verify soft requirements such as code elegance, adherence to styling conventions, or architectural maintainability. Therefore, the goal of this approach is not to replace human reviews entirely. Rather, it is to automate the objective checks (e.g., "does it build and pass tests?") so that human developers can focus their review time on soft requirements and architectural alignment.

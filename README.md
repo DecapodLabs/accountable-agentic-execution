@@ -23,7 +23,7 @@ We formalize four core primitives to achieve accountable agentic execution:
 * **Trajectory**: An append-only, kernel-logged audit ledger of every observation, action, and validation state during the run.
 * **Proof**: Programmatically checkable, cryptographically signed evidence that the workspace state has passed all validation criteria.
 
-We evaluate these primitives using **Decapod**, a local-first governance kernel that enforces custody limits and compiles proof files around existing coding agents.
+This artifact is designed to evaluate these primitives using **Decapod**, a local-first governance kernel that enforces custody limits and compiles proof files around existing coding agents.
 
 ---
 
