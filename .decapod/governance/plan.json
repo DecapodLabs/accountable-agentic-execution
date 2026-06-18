@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Publish changes for paper and site",
+  "intent": "Soften landing page descriptions, update author email, improve README and site aesthetic",
+  "state": "APPROVED",
+  "todo_ids": [
+    "code_01kvcpem3ymxkhey"
+  ],
+  "proof_hooks": [],
+  "unknowns": [],
+  "human_questions": [],
+  "stop_conditions": [],
+  "unresolved_contradictions": [],
+  "deferred_questions": [],
+  "constraints": {
+    "forbidden_paths": [],
+    "file_touch_budget": null
+  },
+  "updated_at": "1781766401Z"
+}
