@@ -1,0 +1,4 @@
+Condition,Runs,CompletionRate_Mean,CompletionRate_CI_Low,CompletionRate_CI_High,InvalidClaims_Mean,InvalidClaims_CI_Low,InvalidClaims_CI_High,ValAccuracy_Mean,ValAccuracy_CI_Low,ValAccuracy_CI_High,Recovery_Mean,Recovery_CI_Low,Recovery_CI_High,Conflicts_Sum,ReviewTime_Mean,ReviewTime_CI_Low,ReviewTime_CI_High
+A,175,38.3,30.9,45.7,43.5,35.2,52.8,45.1,38.3,52.6,12.0,7.4,17.1,224,125.3,120.7,130.4
+B,175,45.7,38.9,53.7,37.9,28.4,48.4,64.6,57.7,72.0,18.3,12.6,24.6,195,99.3,95.9,103.2
+C,175,82.9,77.1,88.6,0.0,0.0,0.0,99.4,98.3,100.0,64.0,57.1,70.9,0,42.5,40.9,44.2

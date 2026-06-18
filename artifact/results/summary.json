@@ -1,0 +1,119 @@
+{
+  "A": {
+    "runs_count": 175,
+    "task_completion_rate": {
+      "mean": 38.3,
+      "ci": [
+        30.9,
+        45.7
+      ]
+    },
+    "invalid_success_claims": {
+      "mean": 43.5,
+      "ci": [
+        35.2,
+        52.8
+      ]
+    },
+    "validation_accuracy": {
+      "mean": 45.1,
+      "ci": [
+        38.3,
+        52.6
+      ]
+    },
+    "interruption_recovery": {
+      "mean": 12.0,
+      "ci": [
+        7.4,
+        17.1
+      ]
+    },
+    "concurrent_conflicts_sum": 224,
+    "human_review_time": {
+      "mean": 125.3,
+      "ci": [
+        120.7,
+        130.4
+      ]
+    }
+  },
+  "B": {
+    "runs_count": 175,
+    "task_completion_rate": {
+      "mean": 45.7,
+      "ci": [
+        38.9,
+        53.7
+      ]
+    },
+    "invalid_success_claims": {
+      "mean": 37.9,
+      "ci": [
+        28.4,
+        48.4
+      ]
+    },
+    "validation_accuracy": {
+      "mean": 64.6,
+      "ci": [
+        57.7,
+        72.0
+      ]
+    },
+    "interruption_recovery": {
+      "mean": 18.3,
+      "ci": [
+        12.6,
+        24.6
+      ]
+    },
+    "concurrent_conflicts_sum": 195,
+    "human_review_time": {
+      "mean": 99.3,
+      "ci": [
+        95.9,
+        103.2
+      ]
+    }
+  },
+  "C": {
+    "runs_count": 175,
+    "task_completion_rate": {
+      "mean": 82.9,
+      "ci": [
+        77.1,
+        88.6
+      ]
+    },
+    "invalid_success_claims": {
+      "mean": 0.0,
+      "ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "validation_accuracy": {
+      "mean": 99.4,
+      "ci": [
+        98.3,
+        100.0
+      ]
+    },
+    "interruption_recovery": {
+      "mean": 64.0,
+      "ci": [
+        57.1,
+        70.9
+      ]
+    },
+    "concurrent_conflicts_sum": 0,
+    "human_review_time": {
+      "mean": 42.5,
+      "ci": [
+        40.9,
+        44.2
+      ]
+    }
+  }
+}

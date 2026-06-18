@@ -1,0 +1,11 @@
+{
+  "task_id": "task-26",
+  "condition": "B",
+  "seed": 127,
+  "success": false,
+  "invalid_success_claim": true,
+  "validation_accuracy": true,
+  "interruption_recovery_success": false,
+  "concurrent_conflicts": 3,
+  "human_review_time_seconds": 124.84
+}
