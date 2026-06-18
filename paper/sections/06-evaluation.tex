@@ -4,7 +4,7 @@
 We evaluate the proposed primitives by comparing Decapod-governed agent execution against standard workflows. The objective of our evaluation is to test our core claims regarding completion reliability, recoverability, concurrent safety, and human audit speed.
 
 \subsection{Experimental Setup}
-Our evaluation suite consists of 35 multi-step software engineering tasks distributed across 7 categories (defined in Section~\ref{sec:problem}). We run each task 5 times per condition using the same underlying LLM (Claude 3.5 Sonnet, temperature $0.2$) to compile statistical bounds.
+Our evaluation suite consists of 35 multi-step software engineering tasks distributed across 7 categories (defined in Section~\ref{sec:problem}). We plan to run each task 5 times per condition using the same underlying LLM (Claude 3.5 Sonnet, temperature $0.2$) to compile statistical bounds.
 
 We test under three operational conditions:
 \begin{itemize}
@@ -13,36 +13,36 @@ We test under three operational conditions:
     \item \textbf{Treatment (Decapod-Governed)}: The agent runs inside the Decapod kernel, with isolated workspaces, restricted shell paths, and automated validation gates.
 \end{itemize}
 
-\subsection{Main Performance Metrics}
-Table~\ref{tab:performance} summarizes the aggregate performance metrics across the 175 runs for each condition.
+\subsection{Planned Performance Metrics}
+Table~\ref{tab:performance} outlines the planned metrics we will gather across the 175 runs for each condition.
 
 \begin{table}[h]
 \centering
-\caption{Aggregate Performance Across Experimental Conditions}
+\caption{Planned evaluation metrics across experimental conditions. Actual results will be populated after artifact execution.}
 \label{tab:performance}
 \begin{tabular}{lccc}
 \toprule
 \textbf{Metric} & \textbf{Baseline A} & \textbf{Baseline B} & \textbf{Treatment} \\
  & (Prompt-Only) & (Checklist) & (Decapod) \\
 \midrule
-Task Completion Rate (\%) & 54.3\% & 61.1\% & 77.8\% \\
-Invalid Success Claims (\%) & 34.2\% & 22.8\% & 2.1\% \\
-Validation Accuracy (\%) & 65.8\% & 77.2\% & 97.9\% \\
-Interruption Recovery (\%) & 18.5\% & 28.6\% & 72.3\% \\
-Concurrent Conflicts (Count) & 18 & 15 & 0 \\
-Avg. Review Time (seconds) & 245s & 185s & 88s \\
+Task Completion Rate (\%) & [TBD] & [TBD] & [TBD] \\
+Invalid Success Claims (\%) & [TBD] & [TBD] & [TBD] \\
+Validation Accuracy (\%) & [TBD] & [TBD] & [TBD] \\
+Interruption Recovery (\%) & [TBD] & [TBD] & [TBD] \\
+Concurrent Conflicts (Count) & [TBD] & [TBD] & [TBD] \\
+Avg. Review Time (seconds) & [TBD] & [TBD] & [TBD] \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Completion Reliability and False Claims}
-As shown in Table~\ref{tab:performance}, Baseline A suffers from a high rate of invalid success claims (34.2\%), where the agent states it has completed the work, but the external evaluation suite fails. Enforcing a checklist discipline (Baseline B) reduces this rate slightly to 22.8\% because the model is forced to reflect on its goals. However, the Decapod Treatment reduces invalid success claims to 2.1\%. This is because Decapod's validation gates programmatically block completion assertions unless the target tests compile and pass.
+We plan to evaluate whether the validation primitive reduces invalid completion claims. Under Baseline A, we expect the agent to exhibit a high rate of invalid success claims (where the agent verbally asserts completion, but the external evaluation suite fails). Enforcing a checklist discipline (Baseline B) is projected to reduce this rate slightly because the model is forced to reflect on its goals. The Decapod Treatment is expected to minimize invalid success claims to near zero, as validation gates programmatically block completion assertions unless the target tests compile and pass.
 
 \subsection{Interruption and Recoverability}
-To test recoverability, we programmatically kill the agent process mid-run. In Baseline A, when a new agent is started in the mutated workspace, it succeeds in completing the task in only 18.5\% of cases, frequently reverting files or introducing compilation errors. In the Decapod Treatment, the resuming agent parses the immutable \texttt{trajectory.jsonl} to inspect previous commands and state diffs. This enables a 72.3\% recovery rate, verifying the value of the trajectory primitive.
+To test recoverability, our evaluation protocol programmatically interrupts the agent process mid-run and initiates a recovery run. In Baseline A, when a new agent is started in the mutated workspace without historical context, we expect low recovery rates, as the agent often struggles to reconstruct intent. In the Decapod Treatment, the resuming agent is designed to parse the immutable trajectory ledger to reconstruct state, which we hypothesize will significantly improve task completion rates post-interruption.
 
 \subsection{Concurrent Safety}
-When executing two agents simultaneously on overlapping code paths, Baselines A and B suffer from frequent merge conflicts and compile-time failures (18 and 15 occurrences, respectively) due to lack of coordination. Under Decapod custody, concurrent agents run in isolated workspaces (Git worktrees). Decapod prevents shared main branch writes, resulting in zero uncoordinated conflicts.
+In our concurrent execution tests, two agents attempt to make overlapping modifications. We expect Baselines A and B to suffer from frequent merge conflicts and corrupted repository states due to the absence of isolation. Under Decapod custody, concurrent agents run in isolated workspaces (Git worktrees), which we hypothesize will eliminate uncoordinated branch collisions and prevent concurrent write conflicts.
 
 \subsection{Human Audit Effort}
-We conducted a simulated developer audit study. Reviewers were asked to inspect agent contributions and decide whether to approve or reject them. Under Baseline A (chat transcript + diff), the average audit time was 245 seconds. Under the Decapod Treatment (where reviewers read the structured trajectory and program validation logs), audit time dropped to 88 seconds.
+We plan to conduct a user study measuring human developer audit time. Reviewers will be asked to approve or reject agent modifications under the different conditions. We hypothesize that reviewers presented with Decapod's structured trajectory and validation logs will confirm correctness significantly faster than those manually reviewing conversational transcripts and raw diffs under Baseline A.

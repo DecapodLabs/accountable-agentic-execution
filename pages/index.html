@@ -493,7 +493,7 @@
     <header>
         <div id="repo-tag" class="status-badge">
             <span class="status-dot"></span>
-            Build Passing &bull; Active Research
+            Technical Report &bull; Pre-Results
         </div>
         <h1 id="main-title">Intent, Custody, Trajectory, and Proof:<br>Toward Accountable Execution in Agentic Software Engineering</h1>
         <div class="author" id="author-name">Alex H. Raber</div>
@@ -516,7 +516,7 @@
                 </p>
                 <br>
                 <p class="abstract-text">
-                    This paper frames agentic software engineering as a distributed execution problem. We introduce a framework built around four primitives to achieve accountable execution: <strong>Intent</strong> (durable target objectives), <strong>Custody</strong> (isolated environment bounds and tool permissions), <strong>Trajectory</strong> (immutable, kernel-logged audit trails), and <strong>Proof</strong> (cryptographically anchored, machine-checkable evidence of completion). We present Decapod, a local-first governance kernel, as a reference implementation of this model. We evaluate governed execution across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. Our findings show that explicit custody and verification gates significantly reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
+                    This paper frames agentic software engineering as a distributed execution problem. We introduce a framework built around four primitives to achieve accountable execution: <strong>Intent</strong> (durable target objectives), <strong>Custody</strong> (isolated environment bounds and tool permissions), <strong>Trajectory</strong> (immutable, kernel-logged audit trails), and <strong>Proof</strong> (cryptographically anchored, machine-checkable evidence of completion). We present Decapod, a local-first governance kernel, as a reference implementation of this model. We propose an empirical evaluation protocol to measure governed execution across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. We discuss how explicit custody and verification gates are projected to reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
                 </p>
 
                 <!-- Flow Visualizer -->
@@ -599,24 +599,25 @@
                         <!-- Default view populated -->
                         <tr>
                             <td>Task Completion Rate (%)</td>
-                            <td class="metric-highlight">54.3%</td>
-                            <td class="metric-highlight">61.1%</td>
-                            <td class="metric-highlight treatment-col highlight-success">77.8%</td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
                         </tr>
                         <tr>
                             <td>Invalid Success Claims (%)</td>
-                            <td class="metric-highlight highlight-danger">34.2%</td>
-                            <td class="metric-highlight">22.8%</td>
-                            <td class="metric-highlight treatment-col highlight-success">2.1%</td>
+                            <td class="metric-highlight highlight-danger">[TBD]</td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
                         </tr>
                         <tr>
                             <td>Interruption Recovery Rate (%)</td>
-                            <td class="metric-highlight">18.5%</td>
-                            <td class="metric-highlight">28.6%</td>
-                            <td class="metric-highlight treatment-col highlight-success">72.3%</td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
                         </tr>
                     </tbody>
                 </table>
+                <p style="margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; text-align: center;">Note: Evaluation metrics are planned. Actual results will be populated dynamically after executing the benchmark artifact.</p>
             </div>
         </section>
 
@@ -637,42 +638,42 @@
         const primaryData = `
             <tr>
                 <td>Task Completion Rate (%)</td>
-                <td class="metric-highlight">54.3%</td>
-                <td class="metric-highlight">61.1%</td>
-                <td class="metric-highlight treatment-col highlight-success">77.8%</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
             <tr>
                 <td>Invalid Success Claims (%)</td>
-                <td class="metric-highlight highlight-danger">34.2%</td>
-                <td class="metric-highlight">22.8%</td>
-                <td class="metric-highlight treatment-col highlight-success">2.1%</td>
+                <td class="metric-highlight highlight-danger">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
             <tr>
                 <td>Interruption Recovery Rate (%)</td>
-                <td class="metric-highlight">18.5%</td>
-                <td class="metric-highlight">28.6%</td>
-                <td class="metric-highlight treatment-col highlight-success">72.3%</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
         `;
 
         const systemsData = `
             <tr>
                 <td>Validation Accuracy (%)</td>
-                <td class="metric-highlight">65.8%</td>
-                <td class="metric-highlight">77.2%</td>
-                <td class="metric-highlight treatment-col highlight-success">97.9%</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
             <tr>
                 <td>Concurrent Edit Conflicts (Count)</td>
-                <td class="metric-highlight highlight-danger">18</td>
-                <td class="metric-highlight">15</td>
-                <td class="metric-highlight treatment-col highlight-success">0</td>
+                <td class="metric-highlight highlight-danger">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
             <tr>
                 <td>Average Human Review Time</td>
-                <td class="metric-highlight">245s</td>
-                <td class="metric-highlight">185s</td>
-                <td class="metric-highlight treatment-col highlight-success">88s</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
         `;
 

@@ -28,14 +28,14 @@
 \author{Alex~H.~Raber%
 \thanks{Alex H. Raber is with Decapod Labs. Code and evaluation artifacts are located in the repository root.}}
 
-\markboth{Journal of Computer Science and Technology,~Vol.~X, ~No.~Y, ~June~2026}%
+\markboth{Technical Report, Decapod Labs, June 2026}%
 {Alex H. Raber: Intent, Custody, and Proof in Agentic SE}
 
 \IEEEtitleabstractindextext{%
 \begin{abstract}
 Large language model (LLM) agents are transitioning from conversational programming assistants to autonomous executors capable of editing codebases, running build tools, executing tests, and managing multi-file software deployments. Despite this shift, current agent workflows still rely on standard prompt transcripts and code diffs as the primary logs of execution. As agent runs become concurrent, long-running, and tool-intensive, this transcript-only paradigm exposes repositories to significant failure modes: lost intent, authority leakage, concurrent state corruption, and unverifiable completion claims.
 
-This paper frames agentic software engineering as a distributed execution problem. We introduce a framework built around four primitives to achieve accountable execution: \emph{Intent} (durable target objectives), \emph{Custody} (isolated environment bounds and tool permissions), \emph{Trajectory} (immutable, kernel-logged audit trails), and \emph{Proof} (cryptographically anchored, machine-checkable evidence of completion). We present Decapod, a local-first governance kernel, as a reference implementation of this model. We evaluate governed execution across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. Our findings show that explicit custody and verification gates significantly reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
+This paper frames agentic software engineering as a distributed execution problem. We introduce a framework built around four primitives to achieve accountable execution: \emph{Intent} (durable target objectives), \emph{Custody} (isolated environment bounds and tool permissions), \emph{Trajectory} (immutable, kernel-logged audit trails), and \emph{Proof} (cryptographically anchored, machine-checkable evidence of completion). We present Decapod, a local-first governance kernel, as a reference implementation of this model. We propose an empirical evaluation protocol to measure governed execution across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. We outline how explicit custody and verification gates are hypothesized to reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
 \end{abstract}
 
 \begin{IEEEkeywords}
