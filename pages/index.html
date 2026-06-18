@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering. Research paper, empirical metrics, and reproducible artifact.">
+    <meta name="description" content="Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering. Technical report and reproducible artifact.">
     <title>Intent, Custody, Trajectory, and Proof — Accountable Agentic Execution</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Lora for Serif titles, Inter for high-readability sans-serif text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-color: #080b11;
-            --card-bg: rgba(15, 22, 38, 0.45);
-            --card-hover-border: rgba(139, 92, 246, 0.4);
-            --border-color: rgba(255, 255, 255, 0.05);
-            --primary: #8b5cf6;
-            --primary-glow: rgba(139, 92, 246, 0.25);
-            --secondary: #06b6d4;
-            --secondary-glow: rgba(6, 182, 212, 0.25);
-            --text-color: #f3f4f6;
-            --text-muted: #9ca3af;
-            --success: #10b981;
-            --success-glow: rgba(16, 185, 129, 0.2);
-            --danger: #ef4444;
+            --bg-color: #faf9f6; /* Paper Off-white */
+            --text-color: #1c1f26; /* Dark Charcoal */
+            --text-muted: #5c6475; /* Slate Gray */
+            --border-color: #e5e7eb; /* Light Gray Border */
+            --accent-color: #1e1b4b; /* Deep Indigo Slate */
+            --card-bg: #ffffff; /* Pure White Card */
+            --status-bg: #fffbeb; /* Light Yellow Alert */
+            --status-border: #fef08a;
+            --status-text: #854d0e;
+            --success: #0f766e; /* Teal Success */
+            --danger: #991b1b; /* Dark Red */
         }
 
         * {
@@ -35,113 +33,79 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-attachment: fixed;
-            position: relative;
+            line-height: 1.625;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Animated Ambient Background Flares */
-        .ambient-flare {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: -1;
-            filter: blur(120px);
-            opacity: 0.4;
-            animation: pulse 12s infinite alternate ease-in-out;
+        /* Top Warning Status Banner */
+        .status-banner {
+            background-color: var(--status-bg);
+            border-bottom: 1px solid var(--status-border);
+            color: var(--status-text);
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 10px 24px;
+            font-weight: 500;
         }
 
-        .flare-1 {
-            top: -100px;
-            left: -100px;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-        }
-
-        .flare-2 {
-            bottom: 10%;
-            right: -100px;
-            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
-            animation-delay: -6s;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1) translate(0, 0);
-            }
-            100% {
-                transform: scale(1.2) translate(50px, 50px);
-            }
+        .status-banner strong {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            background: rgba(133, 77, 14, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
         }
 
         /* Header / Hero */
         header {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 100px 24px 60px;
+            padding: 80px 24px 60px;
             text-align: center;
-            position: relative;
         }
 
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            color: var(--success);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            padding: 6px 14px;
-            border-radius: 9999px;
-            margin-bottom: 24px;
+        .category-tag {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            box-shadow: 0 0 15px var(--success-glow);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--success);
-            border-radius: 50%;
-            display: inline-block;
-            animation: blink 1.5s infinite ease-in-out;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 0.3; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.2); }
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            display: block;
         }
 
         h1 {
-            font-size: 3.25rem;
-            font-weight: 800;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 40%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--accent-color);
             margin-bottom: 24px;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.01em;
+        }
+
+        .author-block {
+            margin-bottom: 40px;
         }
 
         .author {
-            font-size: 1.35rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--text-color);
-            margin-bottom: 4px;
         }
 
         .affiliation {
-            font-size: 1.05rem;
-            color: var(--secondary);
-            font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 48px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
         }
 
         .cta-container {
@@ -155,88 +119,80 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 500;
             text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 12px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 12px 24px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
             cursor: pointer;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+            background-color: var(--accent-color);
             color: #ffffff;
-            border: 1px solid rgba(139, 92, 246, 0.5);
-            box-shadow: 0 8px 30px var(--primary-glow);
+            border: 1px solid var(--accent-color);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(139, 92, 246, 0.55);
+            background-color: #312e81;
+            border-color: #312e81;
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.03);
+            background-color: #ffffff;
             color: var(--text-color);
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(12px);
+            border: 1px solid #d1d5db;
         }
 
         .btn-secondary:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.15);
+            background-color: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        /* Divider line */
+        .divider {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 0;
+            border-top: 1px solid var(--border-color);
         }
 
         /* Container */
         main {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 24px 120px;
-            position: relative;
+            padding: 60px 24px 100px;
         }
 
         section {
-            margin-bottom: 90px;
+            margin-bottom: 70px;
         }
 
         .section-title {
-            font-size: 1.85rem;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.65rem;
             font-weight: 700;
-            margin-bottom: 32px;
-            position: relative;
-            display: inline-block;
-            letter-spacing: -0.01em;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 48px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            border-radius: 9999px;
+            color: var(--accent-color);
+            margin-bottom: 24px;
         }
 
         /* Abstract Box */
         .abstract-card {
-            background: var(--card-bg);
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 48px;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
 
         .abstract-text {
-            font-size: 1.15rem;
-            color: #d1d5db;
+            font-size: 1.05rem;
+            color: #374151;
             text-align: justify;
             text-justify: inter-word;
             font-weight: 400;
+            line-height: 1.7;
         }
 
         /* Flow Diagram Visualizer */
@@ -244,193 +200,178 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 48px 0;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px dashed rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 32px;
-            gap: 12px;
-            backdrop-filter: blur(12px);
+            margin: 40px 0 10px;
+            background: #fdfdfd;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            gap: 8px;
         }
 
         .flow-node {
             flex: 1;
             text-align: center;
-            background: rgba(10, 15, 30, 0.8);
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            transition: all 0.25s ease;
-        }
-
-        .flow-node:hover {
-            border-color: var(--secondary);
-            transform: scale(1.03);
+            border-radius: 6px;
+            padding: 12px 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
         }
 
         .flow-node-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--secondary);
-            margin-bottom: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 2px;
         }
 
         .flow-node-desc {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
         .flow-arrow {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.15);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-muted);
             font-weight: 300;
             user-select: none;
-            animation: pulse-arrow 2.5s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulse-arrow {
-            0% { opacity: 0.2; transform: translateX(-3px); }
-            100% { opacity: 0.8; transform: translateX(3px); }
         }
 
         /* Primitives Grid */
         .primitives-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
         .primitive-card {
-            background: var(--card-bg);
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 36px 30px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(16px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            padding: 28px 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .primitive-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--card-hover-border);
-            box-shadow: 0 16px 35px rgba(139, 92, 246, 0.18);
+            border-color: #9ca3af;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         }
 
         .primitive-icon {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 12px;
         }
 
         .primitive-name {
-            font-size: 1.45rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            letter-spacing: -0.01em;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--accent-color);
         }
 
         .primitive-desc {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.55;
+            line-height: 1.5;
         }
 
         /* Metrics Table Section */
         .metrics-tabs {
             display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 16px;
         }
 
         .tab-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
+            background: #ffffff;
+            border: 1px solid #d1d5db;
             color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 500;
             padding: 8px 16px;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .tab-btn.active, .tab-btn:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: var(--primary);
-            color: var(--text-color);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background: #f9fafb;
         }
 
         .table-container {
             width: 100%;
             overflow-x: auto;
-            background: var(--card-bg);
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 32px;
-            backdrop-filter: blur(16px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            text-align: left;
         }
 
         th {
-            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
             color: var(--text-muted);
-            border-bottom: 1px solid var(--border-color);
-            padding: 18px 16px;
-            font-weight: 700;
+            border-bottom: 2px solid var(--accent-color); /* booktabs style */
+            padding: 12px 16px;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         td {
-            padding: 18px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            font-size: 1.05rem;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.98rem;
+            color: #374151;
         }
 
         tr:last-child td {
-            border-bottom: none;
+            border-bottom: 2px solid var(--accent-color); /* booktabs style */
         }
 
         tr {
-            transition: background-color 0.2s ease;
+            transition: background-color 0.15s ease;
         }
 
         tr:hover td {
-            background-color: rgba(255, 255, 255, 0.015);
+            background-color: #fafbfc;
         }
 
         .treatment-col {
-            color: var(--secondary);
             font-weight: 600;
         }
 
         .metric-highlight {
             font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
+            font-size: 0.9rem;
         }
 
         .highlight-success {
             color: var(--success);
-            text-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
         }
 
         .highlight-danger {
             color: var(--danger);
+        }
+
+        .table-note {
+            margin-top: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
         }
 
         /* Footer */
@@ -438,77 +379,67 @@
             border-top: 1px solid var(--border-color);
             padding: 60px 24px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(0, 0, 0, 0.2);
+            background: #ffffff;
         }
 
         footer a {
-            color: var(--secondary);
+            color: var(--accent-color);
             text-decoration: none;
-            transition: color 0.2s ease;
+            font-weight: 500;
         }
 
         footer a:hover {
-            color: var(--primary);
             text-decoration: underline;
         }
 
         /* Responsive changes */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.3rem;
+                font-size: 2.1rem;
             }
             .abstract-card {
-                padding: 30px;
+                padding: 24px;
             }
             .flow-container {
                 flex-direction: column;
-                gap: 20px;
-                padding: 24px;
+                gap: 16px;
+                padding: 16px;
             }
             .flow-arrow {
                 transform: rotate(90deg);
-                animation: pulse-arrow-vertical 2.5s infinite alternate ease-in-out;
             }
             td, th {
-                padding: 12px;
-                font-size: 0.95rem;
+                padding: 10px 12px;
+                font-size: 0.9rem;
             }
-        }
-
-        @keyframes pulse-arrow-vertical {
-            0% { opacity: 0.2; transform: rotate(90deg) translateX(-3px); }
-            100% { opacity: 0.8; transform: rotate(90deg) translateX(3px); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Background Ambient Gradients -->
-    <div class="ambient-flare flare-1"></div>
-    <div class="ambient-flare flare-2"></div>
+    <!-- Top Status Warning -->
+    <div class="status-banner" id="banner-warning">
+        <strong>Status</strong> Pre-results technical report. The model, terminology, paper scaffold, and reproducibility harness are public. All metrics remain TBD.
+    </div>
 
     <header>
-        <div id="repo-tag" class="status-badge">
-            <span class="status-dot"></span>
-            Technical Report &bull; Pre-Results
-        </div>
+        <span class="category-tag">Decapod Labs Technical Report</span>
         <h1 id="main-title">Intent, Custody, Trajectory, and Proof:<br>Toward Accountable Execution in Agentic Software Engineering</h1>
-        <div class="author" id="author-name">Alex H. Raber</div>
-        <div class="affiliation" id="author-affiliation">Decapod Labs</div>
+        
+        <div class="author-block">
+            <div class="author" id="author-name">Alex H. Raber</div>
+            <div class="affiliation" id="author-affiliation">Decapod Labs</div>
+        </div>
         
         <div class="cta-container">
             <a href="./main.pdf" class="btn btn-primary" id="btn-download" download>Download Paper PDF</a>
-            <a href="https://github.com/DecapodLabs/accountable-agentic-execution" class="btn btn-secondary" id="btn-github">View GitHub Repository</a>
-        </div>
-        
-        <!-- Status Banner -->
-        <div class="status-banner" style="max-width: 800px; margin: 40px auto 0; background: rgba(234, 179, 8, 0.05); border: 1px solid rgba(234, 179, 8, 0.15); border-radius: 12px; padding: 20px; text-align: left; font-size: 0.95rem; line-height: 1.5; color: #fef08a; backdrop-filter: blur(12px);">
-            <strong style="color: #facc15;">Status:</strong> Pre-results technical report. The model, terminology, paper scaffold, and reproducibility harness are public. The empirical benchmark has not yet been executed; all metric values remain TBD until artifact runs are completed and reviewed.
+            <a href="https://github.com/DecapodLabs/accountable-agentic-execution" class="btn btn-secondary" id="btn-github">View Repository</a>
         </div>
     </header>
+
+    <hr class="divider">
 
     <main>
         
@@ -583,7 +514,7 @@
 
         <!-- Empirical Results Dashboard -->
         <section id="sec-results">
-            <h2 class="section-title">Evaluation Metrics</h2>
+            <h2 class="section-title">Evaluation Plan</h2>
             
             <div class="metrics-tabs">
                 <button class="tab-btn active" id="tab-primary">Core Metrics</button>
@@ -622,7 +553,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <p style="margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; text-align: center;">Note: Evaluation metrics are planned. Actual results will be populated dynamically after executing the benchmark artifact.</p>
+                <div class="table-note">Note: Metrics will be populated dynamically after executing the benchmark artifact runs.</div>
             </div>
         </section>
 
@@ -630,7 +561,7 @@
 
     <footer>
         <p>Copyright &copy; 2026 <a href="https://github.com/DecapodLabs">Decapod Labs</a>. All rights reserved.</p>
-        <p>Research paper generated using comps-style IEEE LaTeX templates.</p>
+        <p>Preprint technical report template designed for open science dissemination.</p>
     </footer>
 
     <!-- Basic script for metrics tabs toggling -->
