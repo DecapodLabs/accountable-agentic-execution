@@ -553,7 +553,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="table-note">Note: Metrics will be populated dynamically after executing the benchmark artifact runs.</div>
+                <div class="table-note">Note: The following metrics are synthetic/demo results generated from a simulation of the benchmark harness.</div>
             </div>
         </section>
 
@@ -574,44 +574,44 @@
         const primaryData = `
             <tr>
                 <td>Task Completion Rate (%)</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
+                <td class="metric-highlight">38.3</td>
+                <td class="metric-highlight">45.7</td>
+                <td class="metric-highlight treatment-col highlight-success">82.9</td>
             </tr>
             <tr>
                 <td>Invalid Success Claims (%)</td>
-                <td class="metric-highlight highlight-danger">[TBD]</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
+                <td class="metric-highlight highlight-danger">43.5</td>
+                <td class="metric-highlight">37.9</td>
+                <td class="metric-highlight treatment-col highlight-success">0.0</td>
             </tr>
             <tr>
                 <td>Interruption Recovery Rate (%)</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
+                <td class="metric-highlight">12.0</td>
+                <td class="metric-highlight">18.3</td>
+                <td class="metric-highlight treatment-col highlight-success">64.0</td>
             </tr>
-        `;
+`;
 
         const systemsData = `
             <tr>
                 <td>Validation Accuracy (%)</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
+                <td class="metric-highlight">45.1</td>
+                <td class="metric-highlight">64.6</td>
+                <td class="metric-highlight treatment-col highlight-success">99.4</td>
             </tr>
             <tr>
                 <td>Concurrent Edit Conflicts (Count)</td>
-                <td class="metric-highlight highlight-danger">[TBD]</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
+                <td class="metric-highlight highlight-danger">224</td>
+                <td class="metric-highlight">195</td>
+                <td class="metric-highlight treatment-col highlight-success">0</td>
             </tr>
             <tr>
                 <td>Average Human Review Time</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight">[TBD]</td>
-                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
+                <td class="metric-highlight">125.3</td>
+                <td class="metric-highlight">99.3</td>
+                <td class="metric-highlight treatment-col highlight-success">42.5</td>
             </tr>
-        `;
+`;
 
         tabPrimary.addEventListener('click', () => {
             tabPrimary.classList.add('active');
