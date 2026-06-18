@@ -15,7 +15,7 @@ When viewed through a systems-oriented lens, agentic software engineering shares
     \item \textbf{Auditability}: How can a human developer efficiently verify that an agent's changes are correct without manually reviewing thousands of lines of conversational LLM reasoning?
 \end{itemize}
 
-To address these challenges, this paper formalizes the **ICP Framework** around four core primitives:
+To address these challenges, this paper formalizes four core primitives for accountable execution:
 \begin{enumerate}
     \item \textbf{Intent}: A durable, structured manifest that defines the task objective and success criteria outside the model's transient context window.
     \item \textbf{Custody}: The isolated workspace boundaries (branches, file scopes, permitted commands) within which the agent is allowed to execute.
@@ -23,4 +23,4 @@ To address these challenges, this paper formalizes the **ICP Framework** around 
     \item \textbf{Proof}: Programmatically checkable, cryptographically signed evidence that the workspace state has passed all validation criteria.
 \end{enumerate}
 
-We present \textbf{Decapod}, a local-first governance kernel that implements these primitives, wrapping existing coding agents to enforce custody boundaries and compile proof artifacts. We evaluate our framework using a custom benchmark of 35 multi-step software tasks under three conditions: prompt-only baseline, checklist-disciplined baseline, and Decapod-governed treatment. Our results show that the ICP framework significantly reduces false completion claims and concurrent edit conflicts while reducing human auditing times.
+We present \textbf{Decapod}, a local-first governance kernel that implements these primitives, wrapping existing coding agents to enforce custody boundaries and compile proof artifacts. We evaluate our framework using a custom benchmark of 35 multi-step software tasks under three conditions: prompt-only baseline, checklist-disciplined baseline, and Decapod-governed treatment. Our results show that these primitives significantly reduce false completion claims and concurrent edit conflicts while reducing human auditing times.

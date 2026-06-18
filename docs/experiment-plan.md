@@ -1,6 +1,6 @@
 # Empirical Evaluation Plan
 
-This document outlines the experimental design, conditions, metrics, and methodology to evaluate the effectiveness of the Intent, Custody, Trajectory, and Proof (ICP) framework. The experiments compare governed agent execution against standard un-governed agent runs.
+This document outlines the experimental design, conditions, metrics, and methodology to evaluate the effectiveness of governed agent execution using Intent, Custody, Trajectory, and Proof primitives. The experiments compare governed agent execution against standard un-governed agent runs.
 
 ---
 

@@ -1,7 +1,7 @@
 \section{Decapod: A Reference Governance Kernel}
 \label{sec:system}
 
-To validate the ICP model, we implement \textbf{Decapod}, a local-first, repo-native governance kernel. Decapod does not serve as an agent wrapper or model proxy; rather, it sits as a control plane between the agent's runtime process and the target repository.
+To validate this model, we implement \textbf{Decapod}, a local-first, repo-native governance kernel. Decapod does not serve as an agent wrapper or model proxy; rather, it sits as a control plane between the agent's runtime process and the target repository.
 
 \subsection{System Architecture}
 Decapod operates entirely on the local file system within the target repository under a hidden configuration directory, \texttt{.decapod/}. This local-first structure ensures that all logs, trajectories, and parameters remain developer-controlled, avoiding dependency on remote orchestration platforms.

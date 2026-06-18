@@ -12,7 +12,7 @@ Agentic software engineering is increasingly a distributed execution problem. Wh
 
 ## 2. Main Claim
 
-Implementing explicit, repo-native mechanisms for **Intent**, **Custody**, **Trajectory**, and **Proof** (the "ICP Framework") in agentic coding workflows:
+Implementing explicit, repo-native mechanisms for **Intent**, **Custody**, **Trajectory**, and **Proof** as first-class primitives in agentic coding workflows:
 1. **Reduces the rate of invalid completion claims** (where an agent falsely asserts it has completed a task when the requirements are not met or verification fails).
 2. **Improves recoverability** (the ability of a human or subsequent agent to resume work from an interrupted, aborted, or partially failed agent run).
 3. **Prevents authority leakage and cross-task state corruption** in environments where multiple agents operate concurrently.

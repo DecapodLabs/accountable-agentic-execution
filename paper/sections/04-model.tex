@@ -1,7 +1,7 @@
-\section{The ICP Framework Model}
+\section{Formal Execution Model}
 \label{sec:model}
 
-To resolve the five failure modes identified in Section~\ref{sec:problem}, we formalize the Intent, Custody, Trajectory, and Proof (ICP) framework. This model abstracts agentic software engineering as a state transition system operating over a repository space.
+To resolve the five failure modes identified in Section~\ref{sec:problem}, we formalize an execution model built around Intent, Custody, Trajectory, and Proof. This model abstracts agentic software engineering as a state transition system operating over a repository space.
 
 Let $R$ represent the state of the repository, including the files, directory structure, git history, and runtime environment. An agent run is a sequence of state transitions $R_0 \xrightarrow{a_1} R_1 \xrightarrow{a_2} \dots \xrightarrow{a_n} R_n$, where each action $a_i$ is executed by the agent via tools.
 

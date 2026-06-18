@@ -3,7 +3,7 @@
 
 As LLM-based coding agents transition from suggestion to delegated execution, we must treat agentic software engineering as a distributed systems execution problem rather than a simple text-generation task. The traditional transcript-only workflow—relying solely on chat transcripts and code diffs—fails to provide the safety, recovery, and verification guarantees required for enterprise codebases.
 
-This paper introduced the ICP framework, which formalizes four primitives for accountable agentic execution:
+This paper formalized four primitives for accountable agentic execution:
 \begin{itemize}
     \item \textbf{Intent}: Durable task objectives and constraints.
     \item \textbf{Custody}: Bounded execution sandboxes and permission limits.
@@ -13,4 +13,4 @@ This paper introduced the ICP framework, which formalizes four primitives for ac
 
 We presented Decapod, a local-first governance kernel, as a reference implementation of this framework. Our evaluation of Decapod across 35 multi-step software tasks demonstrated that enforcing custody limits and validation gates reduces false completion claims to near zero, prevents concurrent edit conflicts, improves state recoverability after process interruptions, and reduces developer auditing effort.
 
-Future work includes scaling the ICP framework to multi-repository orchestration, developing hardware-level isolation layers for agent runtime processes, and exploring methods for programmatically validating complex, soft software requirements. Ultimately, we argue that the future of agentic software engineering lies not in more complex prompting, but in building robust, accountable control planes for machine work.
+Future work includes scaling these primitives to multi-repository orchestration, developing hardware-level isolation layers for agent runtime processes, and exploring methods for programmatically validating complex, soft software requirements. Ultimately, we argue that the future of agentic software engineering lies not in more complex prompting, but in building robust, accountable control planes for machine work.
