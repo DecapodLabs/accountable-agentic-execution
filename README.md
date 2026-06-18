@@ -1,61 +1,77 @@
-# Intent, Custody, and Proof: Toward Accountable Execution in Agentic Software Engineering
+# Accountable Agentic Execution
 
-This repository contains the research paper and reproducible artifact for studying agentic software engineering through the lens of distributed accountable execution. 
-
-## Project Overview
-
-As LLM-based agents transition from autocomplete suggestors to active, delegated software engineers—running tools, modifying files, executing tests, and coordinating across workspaces—agentic coding ceases to be a simple text-generation task. Instead, it becomes a **distributed execution problem** involving concurrency, authority boundary crossing, partial failure, and state recovery.
-
-The current record of agentic work—typically consisting only of a user prompt, a chat transcript, and a git diff—is insufficient for rigorous audit, safe concurrency, and verified completion. This project introduces a conceptual framework built on four systems-minded primitives:
-
-1. **Intent**: The durable, structured objective driving a task, which must survive runtime interruption, tool failures, and context window drift.
-2. **Custody**: The bounded execution and authority context assigned to an agent, defining which branches, files, tools, and credentials the agent is permitted to touch.
-3. **Trajectory**: An ordered, immutable ledger of the agent's actions, tool invocations, environment feedback, validation results, and state transitions.
-4. **Proof**: Machine-checkable or audit-ready evidence (e.g., test suites, compiler outputs, runtime assertions) demonstrating that the declared *intent* has been verified as complete.
-
-We present **Decapod**, a local-first governance kernel, as a reference implementation of these primitives. Decapod acts as a control plane around existing coding agents to enforce custody boundaries, record trajectories, and generate verifiable proof files before work is merged.
+> **Research paper and reproducible evaluation artifact investigating LLM-based software engineering agents as distributed execution processes governed by Intent, Custody, Trajectory, and Proof.**
 
 ---
 
-## Repository Structure
-
-The workspace is organized into three primary directories:
-
-* **`paper/`**: The LaTeX sources for the working paper.
-  * `main.tex`: Core document structure and compilation target.
-  * `sections/`: Individual LaTeX files for sections 01–09 (Introduction through Conclusion).
-  * `figures/` & `tables/`: Figures and generated statistical tables.
-  * `references.bib`: Academic references including foundation papers in computation, information, learning, systems, and transformers.
-* **`artifact/`**: The reproducible experiment package.
-  * `tasks/`: A benchmark suite of software-engineering tasks used to evaluate execution.
-  * `baselines/`: Run logs, metrics, and trajectories from baseline agents.
-  * `decapod-runs/`: Governed runs execution logs using the Decapod kernel.
-  * `scripts/`: Tools for executing tests, gathering metrics, and plotting results.
-  * `results/`: Processed empirical data, comparisons, and figure generators.
-* **`docs/`**: Research planning, taxonomy, and methodology documentation.
-  * `research-claim.md`: Clear, falsifiable research claims and non-claims.
-  * `experiment-plan.md`: The detailed evaluation protocol, metrics, and baselines.
-  * `publication-plan.md`: Practical execution roadmap toward peer-reviewed publication.
-  * `terminology.md`: Definitions of the conceptual framework.
+[![LaTeX Compilation](https://github.com/DecapodLabs/accountable-agentic-execution/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/DecapodLabs/accountable-agentic-execution/actions/workflows/deploy-pages.yml)
+[![Artifact Project Page](https://img.shields.io/badge/Project-Dashboard-blueviolet)](https://decapodlabs.github.io/accountable-agentic-execution/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
 ---
 
-## Build and Diagnostics
+## 1. Executive Summary
 
-This repository includes a `Makefile` to automate paper compilation and workspace checks:
+As Large Language Model (LLM) coding agents transition from passive completion assistants to autonomous, tool-using executors, their operations resemble concurrent processes running over a mutable repository space. The standard record of agentic work—typically consisting only of conversational chat transcripts and code diffs—fails to provide the verification, safety, and recoverability guarantees required for production environments. 
 
+This repository hosts the LaTeX source and reproducible evaluation harness for our paper: **"Intent, Custody, and Proof: Toward Accountable Execution in Agentic Software Engineering."**
+
+We formalize four core primitives to achieve accountable agentic execution:
+
+* **Intent**: A durable, structured manifest that defines the task objective and success criteria outside the model's transient context window.
+* **Custody**: The isolated workspace boundaries (branches, file scopes, permitted commands) within which the agent is allowed to execute.
+* **Trajectory**: An append-only, kernel-logged audit ledger of every observation, action, and validation state during the run.
+* **Proof**: Programmatically checkable, cryptographically signed evidence that the workspace state has passed all validation criteria.
+
+We evaluate these primitives using **Decapod**, a local-first governance kernel that enforces custody limits and compiles proof files around existing coding agents.
+
+---
+
+## 2. Directory Layout
+
+The workspace is organized to keep paper drafts, empirical records, and system documentation strictly partitioned:
+
+```text
+├── paper/                 # LaTeX paper sources and bibtex citations
+│   ├── sections/          # Draft files for sections 01-09
+│   ├── figures/           # Plot files and diagram vectors
+│   └── tables/            # Evaluator-generated LaTeX table inputs
+├── artifact/              # Reproducible experiment package
+│   ├── tasks/             # Suite of 35 benchmark tasks
+│   ├── baselines/         # Execution traces for prompt & checklist baselines
+│   ├── decapod-runs/      # Execution traces under Decapod governance
+│   ├── scripts/           # Execution and metrics collation scripts
+│   └── results/           # Processed summary data and chart generators
+├── docs/                  # Design registers, publications logs, and taxonomy
+│   ├── research-claim.md  # Main claims and falsifiable predictions
+│   ├── experiment-plan.md # Metric definitions and experimental layout
+│   └── terminology.md     # Project taxonomy and definitions
+└── pages/                 # Web landing page and metrics dashboard
+```
+
+---
+
+## 3. Getting Started
+
+> [!IMPORTANT]
+> To compile the LaTeX draft or execute the verification scripts, you must install the required system dependencies:
+> ```bash
+> sudo apt-get update && sudo apt-get install -y build-essential latexmk texlive-latex-extra git python3
+> ```
+
+### Building the Paper
+To build the LaTeX source document to a compiled PDF locally:
 ```bash
-# Verify structure and dependencies
-make check
-
-# Build the LaTeX paper to PDF
 make paper
-
-# Print repository tree
-make tree
-
-# Clean build artifacts
+```
+To check directory layout integrity and list system dependencies:
+```bash
+make check
+```
+To clean build files:
+```bash
 make clean
 ```
 
-For detailed setup instructions for running the experimental baselines and regenerating the paper's figures, please refer to [artifact/README.md](file:///home/arx/src/papers/accountable-agentic-execution/artifact/README.md).
+### Running the Artifact
+Please refer to the [reproducibility guide](artifact/README.md) inside the `artifact/` directory for instructions on executing baseline agents, running the Decapod governance kernel, and regenerating the statistical plots shown in the paper.
