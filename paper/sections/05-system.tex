@@ -1,0 +1,47 @@
+\section{Decapod: A Reference Governance Kernel}
+\label{sec:system}
+
+To validate the ICP model, we implement \textbf{Decapod}, a local-first, repo-native governance kernel. Decapod does not serve as an agent wrapper or model proxy; rather, it sits as a control plane between the agent's runtime process and the target repository.
+
+\subsection{System Architecture}
+Decapod operates entirely on the local file system within the target repository under a hidden configuration directory, \texttt{.decapod/}. This local-first structure ensures that all logs, trajectories, and parameters remain developer-controlled, avoiding dependency on remote orchestration platforms.
+
+The core execution flow is managed by three sub-modules:
+\begin{enumerate}
+    \item \textbf{Workspace Custodian}: Spawns isolated execution environments. When a task is initialized, the Custodian uses Git worktrees to create an ephemeral directory slice linked to a task-specific branch. It configures shell path controls, filtering out unauthorized system commands and blocking access to environment variables not explicitly permitted by the custody configuration.
+    \item \textbf{Trajectory Logger}: Intercepts all standard input, output, and file changes. Every shell command invoked by the agent is run through a pseudo-terminal (PTY) wrapper. The logger hashes workspace files before and after each command to generate accurate diff mappings ($\Delta(W_i)$) and appends this data to the immutable run log.
+    \item \textbf{Validation Gatekeeper}: Enforces the test suites defined in the intent manifest. The Gatekeeper intercepts completion requests, executes the validation suite within the isolated custody context, and compiles the outcomes.
+\end{enumerate}
+
+\subsection{Intent Manifest and Workflows}
+The lifecycle of a Decapod run is guided by a structured JSON manifest, \texttt{.decapod/intent.json}, containing:
+\begin{verbatim}
+{
+  "intent_id": "task-07-fix-auth",
+  "allowed_scopes": ["src/auth/", "tests/"],
+  "allowed_tools": ["python", "pytest", "git-diff"],
+  "validation_gates": [
+    {
+      "name": "Unit Tests",
+      "command": "pytest tests/test_auth.py"
+    },
+    {
+      "name": "Linter",
+      "command": "flake8 src/auth/"
+    }
+  ]
+}
+\end{verbatim}
+
+The agent is provided with this manifest at startup. It communicates with the kernel using simple file markers. When the agent believes it has finished, it writes a signal file. The Gatekeeper intercepts this signal, locks the workspace from further agent writes, and executes the validation gates.
+
+\subsection{Cryptographic Proof Compilation}
+If all validations pass, the kernel compiles the final \texttt{proof.json} file. This file contains:
+\begin{itemize}
+    \item The target repository commit hash.
+    \item The base64-encoded output of the successful validation commands.
+    \item The final file modifications (diff).
+    \item A cryptographic hash of the compiled trajectory.
+    \item A local signature generated using a developer-configured GPG or SSH key.
+\end{itemize}
+This proof artifact is committed directly to the task branch, allowing CI/CD systems or human reviewers to verify the integrity of the agent's work without re-running the entire execution.

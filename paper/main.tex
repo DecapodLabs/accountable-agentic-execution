@@ -1,0 +1,63 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+% Note: Using IEEEtran for a systems-minded formatting base. Can easily change to standard article or ACM.
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Intent, Custody, and Proof: Toward Accountable Execution in Agentic Software Engineering},
+    pdfpagemode=FullScreen,
+}
+
+\begin{document}
+
+\title{Intent, Custody, and Proof:\\Toward Accountable Execution in Agentic Software Engineering}
+
+\author{Anonymous~Author(s)%
+\thanks{Submission for peer review. Code and evaluation artifacts are located in the repository root.}}
+
+\markboth{Journal of Computer Science and Technology,~Vol.~X, ~No.~Y, ~June~2026}%
+{Anonymous Author(s): Intent, Custody, and Proof in Agentic SE}
+
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+Large language model (LLM) agents are transitioning from conversational programming assistants to autonomous executors capable of editing codebases, running build tools, executing tests, and managing multi-file software deployments. Despite this shift, current agent workflows still rely on standard prompt transcripts and code diffs as the primary logs of execution. As agent runs become concurrent, long-running, and tool-intensive, this transcript-only paradigm exposes repositories to significant failure modes: lost intent, authority leakage, concurrent state corruption, and unverifiable completion claims.
+
+This paper frames agentic software engineering as a distributed execution problem. We introduce the ICP framework, which formalizes four primitives to achieve accountable execution: \emph{Intent} (durable target objectives), \emph{Custody} (isolated environment bounds and tool permissions), \emph{Trajectory} (immutable, kernel-logged audit trails), and \emph{Proof} (cryptographically anchored, machine-checkable evidence of completion). We present Decapod, a local-first governance kernel, as a reference implementation of this framework. We evaluate the ICP framework across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. Our findings show that explicit custody and verification gates significantly reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Agentic Software Engineering, Software Governance, Program Verification, Distributed Execution, Large Language Models.
+\end{IEEEkeywords}}
+
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+% Inputting sections
+\input{sections/01-introduction}
+\input{sections/02-background}
+\input{sections/03-problem}
+\input{sections/04-model}
+\input{sections/05-system}
+\input{sections/06-evaluation}
+\input{sections/07-discussion}
+\input{sections/08-related-work}
+\input{sections/09-conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

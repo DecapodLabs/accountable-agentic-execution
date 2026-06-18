@@ -1,0 +1,44 @@
+# LaTeX Build Artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.toc
+*.synctex.gz
+*.pdf
+*.bbl
+*.blg
+*.out
+*.lof
+*.lot
+*.run.xml
+*-blx.bib
+
+# Python Scratch and Environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+.env
+
+# Local Experiments and Run Outputs (Raw Trajectories)
+# Note: Clean statistical results should be committed, but massive raw logs should be ignored.
+# For reproducibility, we keep raw logs out of git history and store them in an external archive, or keep them localized.
+artifact/baselines/*_raw.jsonl
+artifact/decapod-runs/*_raw.jsonl
+*.log
+*.trace
+
+# Editor and OS Junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+.agents/
+.gemini/

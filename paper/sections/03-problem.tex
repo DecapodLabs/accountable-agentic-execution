@@ -1,0 +1,23 @@
+\section{Problem Formulation}
+\label{sec:problem}
+
+The standard model of agentic software engineering relies on a chat-based transcript-only workflow. The agent is initialized with a system prompt and a user command, interacts with files and commands through tool wrappers, and logs its output in a conversational transcript. We formalize five distinct failure modes inherent in this architecture.
+
+\subsection{Intent Loss (State Loss Under Interruption)}
+When an agent's process is interrupted due to network timeouts, model rate limits, or crash events, the current state of its work is lost. In a transcript-only workflow, there is no separate, structured record of progress. Resuming the task requires either:
+\begin{enumerate}
+    \item Replaying the entire transcript from the beginning, which is slow and expensive.
+    \item Launching a new agent in the modified workspace. Because the new agent has no access to the previous agent's reasoning, it must guess the intent from the mutated files. This often leads to the agent reverting partially finished edits or introducing redundant code.
+\end{enumerate}
+
+\subsection{Context Drift (Loss of Task Focus)}
+LLMs operate within a finite context window. As an agent runs multi-step tasks (e.g., executing commands, reading compiler stack traces, parsing log files), the context window becomes saturated with terminal stdout/stderr. As the initial prompt and instructions are pushed out of the active context, the agent suffers from context drift: it forgets original constraints, ignores boundary rules, and enters infinite loops of repeating the same failing tool commands.
+
+\subsection{Authority Leakage (Unbounded Privileges)}
+Transcript-only workflows do not partition credentials or system permissions. The agent runs with the privileges of the parent terminal. If the agent receives a prompt to debug a web application, but is exposed to malicious input (e.g., via a dependency or a test database file), prompt injection or model hallucination can cause the agent to execute destructive commands (e.g., \texttt{rm -rf /}) or access sensitive environmental credentials (e.g., AWS tokens) that are unrelated to the target task.
+
+\subsection{Concurrent Workspace Collision (State Inconsistency)}
+In active development environments, multiple agents or human engineers work concurrently on the same codebase. In a transcript-only workflow operating directly on a single shared repository directory, concurrent edits cause state corruption. If Agent $A$ compiles the code while Agent $B$ is modifying a dependency, the build output is non-deterministic. Furthermore, without logical branch isolation, agents overwrite each other's files, leading to silent code regressions and complex merge conflicts.
+
+\subsection{Unverifiable Completion (False Success Claims)}
+Agents frequently hallucinate completion. When an agent runs into a hard debugging loop, it often stops executing tools and asserts verbally in the chat transcript: "I have successfully resolved the issue." However, the repository remains in a broken or incomplete state. Without an independent, machine-checkable verification gate that must be passed before a completion claim is registered, these false-positive assertions require humans to manually pull the code, compile it, and run tests themselves to check the agent's work.

@@ -1,0 +1,26 @@
+\section{Introduction}
+\label{sec:intro}
+
+The integration of Large Language Models (LLMs) into software engineering has progressed rapidly through three distinct phases: suggestion (e.g., inline autocompletion), instruction (e.g., conversational chat interfaces), and delegation (e.g., autonomous agents). In this current phase of delegated execution, an agent is not merely a generator of code snippets; it is an active developer. Equipped with a tool belt of shell executors, file readers, linters, compilers, and test suites, the agent operates directly on target repositories, running iterative loops to edit files, compile binaries, parse build logs, and debug errors.
+
+However, as agentic workflows evolve from simple scripts to long-running, concurrent, multi-agent systems, the mechanisms used to control and record their execution remain dangerously primitive. Most contemporary agent frameworks (e.g., AutoGPT, Devin-like implementations, and simple chat wrappers) treat the natural language prompt, the conversational chat transcript, and the final git diff as the sufficient record of work. 
+
+We argue that this transcript-only paradigm is fundamentally inadequate for serious software engineering environments. Chat transcripts are verbose, non-deterministic, and prone to context window drift. More critically, they lack clear boundaries of authority, fail to capture environment validation results in a machine-checkable format, and provide no guarantees that code changes satisfy the intended constraints. Once an agent is granted write access to a repository and the authority to run arbitrary CLI tools, software engineering transforms from a language-modeling problem into a **distributed execution and security problem**. 
+
+When viewed through a systems-oriented lens, agentic software engineering shares core challenges with classic distributed systems:
+\begin{itemize}
+    \item \textbf{Authority \& Isolation}: How do we ensure that an agent only mutates the directories it is authorized to touch, without leaking credentials or accessing sensitive environment variables?
+    \item \textbf{Concurrency}: How do we prevent multiple concurrent agents or human developers from corrupting the workspace, modifying overlapping code paths, or introducing uncoordinated merge conflicts?
+    \item \textbf{Failure \& Recovery}: If an agent runs out of tokens, hits rate limits, or crashes mid-task, how can a subsequent agent or human developer recover the execution state and continue without starting from scratch?
+    \item \textbf{Auditability}: How can a human developer efficiently verify that an agent's changes are correct without manually reviewing thousands of lines of conversational LLM reasoning?
+\end{itemize}
+
+To address these challenges, this paper formalizes the **ICP Framework** around four core primitives:
+\begin{enumerate}
+    \item \textbf{Intent}: A durable, structured manifest that defines the task objective and success criteria outside the model's transient context window.
+    \item \textbf{Custody}: The isolated workspace boundaries (branches, file scopes, permitted commands) within which the agent is allowed to execute.
+    \item \textbf{Trajectory}: An append-only, kernel-logged audit ledger of every observation, action, and validation state during the run.
+    \item \textbf{Proof}: Programmatically checkable, cryptographically signed evidence that the workspace state has passed all validation criteria.
+\end{enumerate}
+
+We present \textbf{Decapod}, a local-first governance kernel that implements these primitives, wrapping existing coding agents to enforce custody boundaries and compile proof artifacts. We evaluate our framework using a custom benchmark of 35 multi-step software tasks under three conditions: prompt-only baseline, checklist-disciplined baseline, and Decapod-governed treatment. Our results show that the ICP framework significantly reduces false completion claims and concurrent edit conflicts while reducing human auditing times.
