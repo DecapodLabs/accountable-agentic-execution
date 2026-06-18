@@ -13,20 +13,17 @@
     
     <style>
         :root {
-            --bg-color: #f8fafc; /* Sleek slate 50 background */
-            --text-color: #0f172a; /* Slate 900 */
-            --text-muted: #475569; /* Slate 600 */
-            --border-color: #e2e8f0; /* Slate 200 */
+            --bg-color: #faf9f6; /* Paper Off-white */
+            --text-color: #1c1f26; /* Dark Charcoal */
+            --text-muted: #5c6475; /* Slate Gray */
+            --border-color: #e5e7eb; /* Light Gray Border */
             --accent-color: #1e1b4b; /* Deep Indigo Slate */
-            --accent-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-            --accent-light: #4f46e5; /* Electric Indigo */
-            --card-bg: #ffffff;
-            --success: #0d9488; /* Teal 600 */
-            --danger: #e11d48; /* Rose 600 */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
-            --shadow-premium: 0 20px 25px -5px rgba(15, 23, 42, 0.03), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+            --card-bg: #ffffff; /* Pure White Card */
+            --status-bg: #fffbeb; /* Light Yellow Alert */
+            --status-border: #fef08a;
+            --status-text: #854d0e;
+            --success: #0f766e; /* Teal Success */
+            --danger: #991b1b; /* Dark Red */
         }
 
         * {
@@ -38,118 +35,65 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
-            background: radial-gradient(circle at top, rgba(99, 102, 241, 0.04) 0%, rgba(248, 250, 252, 0) 50%), var(--bg-color);
             color: var(--text-color);
-            line-height: 1.7;
+            line-height: 1.625;
             -webkit-font-smoothing: antialiased;
-            letter-spacing: -0.01em;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Top Warning Status Banner */
         .status-banner {
-            background: linear-gradient(90deg, #fffbeb 0%, #fef3c7 100%);
-            border-bottom: 1px solid #fde68a;
-            color: #78350f;
+            background-color: var(--status-bg);
+            border-bottom: 1px solid var(--status-border);
+            color: var(--status-text);
             text-align: center;
-            font-size: 0.875rem;
-            padding: 12px 24px;
+            font-size: 0.9rem;
+            padding: 10px 24px;
             font-weight: 500;
-            letter-spacing: -0.01em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
         }
 
-        .status-badge {
+        .status-banner strong {
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-size: 0.7rem;
-            background: rgba(120, 53, 15, 0.1);
-            color: #78350f;
-            padding: 3px 10px;
-            border-radius: 9999px;
-            border: 1px solid rgba(120, 53, 15, 0.15);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #d97706;
-            border-radius: 9999px;
-            display: inline-block;
-            box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.2);
-            animation: status-pulse 2s infinite;
-        }
-
-        @keyframes status-pulse {
-            0% {
-                box-shadow: 0 0 0 0px rgba(217, 119, 6, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 6px rgba(217, 119, 6, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0px rgba(217, 119, 6, 0);
-            }
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            background: rgba(133, 77, 14, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 6px;
         }
 
         /* Header / Hero */
         header {
-            position: relative;
-            max-width: 960px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 120px 24px 80px;
+            padding: 80px 24px 60px;
             text-align: center;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: -10%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(99, 102, 241, 0) 70%);
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(40px);
         }
 
         .category-tag {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            font-size: 0.75rem;
-            color: var(--accent-light);
+            font-size: 0.85rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 24px;
-            display: inline-block;
-            background: rgba(79, 70, 229, 0.08);
-            padding: 4px 14px;
-            border-radius: 9999px;
-            border: 1px solid rgba(79, 70, 229, 0.12);
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            display: block;
         }
 
         h1 {
             font-family: 'Lora', Georgia, serif;
-            font-size: 3.5rem;
+            font-size: 2.75rem;
             font-weight: 700;
-            line-height: 1.15;
+            line-height: 1.2;
             color: var(--accent-color);
-            margin-bottom: 32px;
-            letter-spacing: -0.025em;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
         }
 
         .author-block {
-            margin-bottom: 56px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
+            margin-bottom: 40px;
         }
 
         .author {
@@ -161,7 +105,7 @@
         .affiliation {
             font-size: 0.95rem;
             color: var(--text-muted);
-            font-weight: 400;
+            font-style: italic;
         }
 
         .cta-container {
@@ -175,50 +119,40 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 500;
             text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 8px;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 12px 24px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
             cursor: pointer;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .btn-icon {
-            width: 18px;
-            height: 18px;
         }
 
         .btn-primary {
-            background: var(--accent-gradient);
+            background-color: var(--accent-color);
             color: #ffffff;
             border: 1px solid var(--accent-color);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px -10px rgba(30, 27, 75, 0.4);
-            filter: brightness(1.1);
+            background-color: #312e81;
+            border-color: #312e81;
         }
 
         .btn-secondary {
             background-color: #ffffff;
             color: var(--text-color);
-            border: 1px solid var(--border-color);
+            border: 1px solid #d1d5db;
         }
 
         .btn-secondary:hover {
-            background-color: #f8fafc;
-            border-color: #cbd5e1;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            background-color: #f9fafb;
+            border-color: #9ca3af;
         }
 
         /* Divider line */
         .divider {
-            max-width: 960px;
+            max-width: 900px;
             margin: 0 auto;
             border: 0;
             border-top: 1px solid var(--border-color);
@@ -226,245 +160,149 @@
 
         /* Container */
         main {
-            max-width: 960px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 80px 24px 120px;
+            padding: 60px 24px 100px;
         }
 
         section {
-            margin-bottom: 100px;
+            margin-bottom: 70px;
         }
 
         .section-title {
             font-family: 'Lora', Georgia, serif;
-            font-size: 2rem;
+            font-size: 1.65rem;
             font-weight: 700;
             color: var(--accent-color);
-            margin-bottom: 32px;
-            letter-spacing: -0.015em;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 36px;
-            height: 3px;
-            background: var(--accent-light);
-            border-radius: 9999px;
+            margin-bottom: 24px;
         }
 
         /* Abstract Box */
         .abstract-card {
             background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 56px 48px;
-            box-shadow: var(--shadow-premium);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
 
         .abstract-text {
-            font-size: 1.0625rem;
-            color: #334155;
+            font-size: 1.05rem;
+            color: #374151;
             text-align: justify;
             text-justify: inter-word;
             font-weight: 400;
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
         /* Flow Diagram Visualizer */
         .flow-container {
             display: flex;
             justify-content: space-between;
-            align-items: stretch;
-            margin: 56px 0 16px;
-            background: #f8fafc;
+            align-items: center;
+            margin: 40px 0 10px;
+            background: #fdfdfd;
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 36px 24px;
+            border-radius: 8px;
+            padding: 24px;
             gap: 8px;
-            position: relative;
         }
 
         .flow-node {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
             background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px 16px;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            z-index: 2;
-        }
-
-        .flow-node:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-light);
-            box-shadow: 0 12px 24px -10px rgba(79, 70, 229, 0.2);
-        }
-
-        .flow-node-num {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 9999px;
-            background: rgba(79, 70, 229, 0.08);
-            color: var(--accent-light);
-            font-weight: 700;
-            font-size: 0.75rem;
-            margin-bottom: 12px;
-            border: 1px solid rgba(79, 70, 229, 0.15);
+            border-radius: 6px;
+            padding: 12px 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
         }
 
         .flow-node-title {
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             color: var(--accent-color);
-            margin-bottom: 6px;
+            margin-bottom: 2px;
         }
 
         .flow-node-desc {
             font-size: 0.75rem;
             color: var(--text-muted);
-            font-weight: 500;
-            line-height: 1.4;
         }
 
         .flow-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #cbd5e1;
-            font-size: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-muted);
             font-weight: 300;
             user-select: none;
-            padding: 0 4px;
-            z-index: 1;
         }
 
         /* Primitives Grid */
         .primitives-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
         .primitive-card {
             background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 36px 30px;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
+            border-radius: 8px;
+            padding: 28px 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .primitive-card:hover {
-            border-color: #cbd5e1;
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            border-color: #9ca3af;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         }
 
-        .primitive-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .primitive-icon-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: rgba(79, 70, 229, 0.06);
-            color: var(--accent-light);
-            transition: all 0.2s ease;
-        }
-
-        .primitive-card:hover .primitive-icon-container {
-            background: var(--accent-light);
-            color: #ffffff;
-        }
-
-        .primitive-icon-container svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .primitive-tag {
-            font-size: 0.7rem;
+        .primitive-icon {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--accent-light);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            background: rgba(79, 70, 229, 0.08);
-            padding: 2px 8px;
-            border-radius: 9999px;
-            border: 1px solid rgba(79, 70, 229, 0.1);
+            color: var(--accent-color);
+            margin-bottom: 12px;
         }
 
         .primitive-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 12px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
             color: var(--accent-color);
-            letter-spacing: -0.015em;
         }
 
         .primitive-desc {
-            font-size: 0.9375rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.65;
-            flex-grow: 1;
+            line-height: 1.5;
         }
 
         /* Metrics Table Section */
         .metrics-tabs {
             display: flex;
-            gap: 4px;
-            margin-bottom: 24px;
-            background: #f1f5f9;
-            padding: 4px;
-            border-radius: 10px;
-            width: fit-content;
-            border: 1px solid var(--border-color);
+            gap: 8px;
+            margin-bottom: 16px;
         }
 
         .tab-btn {
-            background: transparent;
-            border: none;
-            color: #64748b;
-            font-size: 0.875rem;
-            font-weight: 600;
-            padding: 8px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .tab-btn.active {
             background: #ffffff;
-            color: var(--accent-light);
-            box-shadow: var(--shadow-sm);
+            border: 1px solid #d1d5db;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .tab-btn:hover:not(.active) {
-            color: var(--text-color);
-            background: rgba(255, 255, 255, 0.4);
+        .tab-btn.active, .tab-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background: #f9fafb;
         }
 
         .table-container {
@@ -472,9 +310,9 @@
             overflow-x: auto;
             background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: var(--shadow-premium);
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
         }
 
         table {
@@ -483,21 +321,20 @@
         }
 
         th {
-            font-size: 0.75rem;
-            color: #475569;
+            font-size: 0.85rem;
+            color: var(--text-muted);
             border-bottom: 2px solid var(--accent-color); /* booktabs style */
-            padding: 18px 24px;
-            font-weight: 700;
+            padding: 12px 16px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            text-align: left;
+            letter-spacing: 0.05em;
         }
 
         td {
-            padding: 18px 24px;
+            padding: 14px 16px;
             border-bottom: 1px solid var(--border-color);
-            font-size: 0.95rem;
-            color: #334155;
+            font-size: 0.98rem;
+            color: #374151;
         }
 
         tr:last-child td {
@@ -509,51 +346,30 @@
         }
 
         tr:hover td {
-            background-color: #f8fafc;
+            background-color: #fafbfc;
         }
 
         .treatment-col {
-            background-color: rgba(79, 70, 229, 0.015);
             font-weight: 600;
-            border-left: 1px dashed rgba(79, 70, 229, 0.12);
-            border-right: 1px dashed rgba(79, 70, 229, 0.12);
-        }
-
-        th.treatment-col {
-            background-color: rgba(79, 70, 229, 0.03);
-            border-left: 1px dashed rgba(79, 70, 229, 0.12);
-            border-right: 1px dashed rgba(79, 70, 229, 0.12);
-            border-bottom: 2px solid var(--accent-light);
-            color: var(--accent-light);
         }
 
         .metric-highlight {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            display: inline-block;
+            font-size: 0.9rem;
         }
 
         .highlight-success {
             color: var(--success);
-            background: rgba(13, 148, 136, 0.08);
-            border-color: rgba(13, 148, 136, 0.15);
         }
 
         .highlight-danger {
             color: var(--danger);
-            background: rgba(225, 29, 72, 0.08);
-            border-color: rgba(225, 29, 72, 0.15);
         }
 
         .table-note {
-            margin-top: 24px;
+            margin-top: 16px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.775rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             text-align: center;
         }
@@ -561,21 +377,17 @@
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
-            padding: 80px 24px;
+            padding: 60px 24px;
             text-align: center;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             background: #ffffff;
         }
 
-        footer p {
-            margin-bottom: 8px;
-        }
-
         footer a {
-            color: var(--accent-light);
+            color: var(--accent-color);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         footer a:hover {
@@ -584,33 +396,23 @@
 
         /* Responsive changes */
         @media (max-width: 768px) {
-            header {
-                padding: 80px 24px 50px;
-            }
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.1rem;
             }
             .abstract-card {
-                padding: 36px 24px;
+                padding: 24px;
             }
             .flow-container {
                 flex-direction: column;
                 gap: 16px;
-                padding: 28px 20px;
-            }
-            .flow-node {
-                width: 100%;
+                padding: 16px;
             }
             .flow-arrow {
                 transform: rotate(90deg);
-                margin: 4px 0;
-            }
-            .table-container {
-                padding: 20px 16px;
             }
             td, th {
-                padding: 12px 14px;
-                font-size: 0.875rem;
+                padding: 10px 12px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -619,8 +421,7 @@
 
     <!-- Top Status Warning -->
     <div class="status-banner" id="banner-warning">
-        <span class="status-dot"></span>
-        <span class="status-text"><span class="status-badge">Status</span> Pre-results technical report. The model, terminology, paper scaffold, and reproducibility harness are public. All metrics remain TBD.</span>
+        <strong>Status</strong> Pre-results technical report. The model, terminology, paper scaffold, and reproducibility harness are public. All metrics remain TBD.
     </div>
 
     <header>
@@ -633,18 +434,8 @@
         </div>
         
         <div class="cta-container">
-            <a href="./main.pdf" class="btn btn-primary" id="btn-download" download="decapod-accountable-agentic-execution.pdf">
-                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                </svg>
-                Download Paper PDF
-            </a>
-            <a href="https://github.com/DecapodLabs/accountable-agentic-execution" class="btn btn-secondary" id="btn-github">
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                </svg>
-                View Repository
-            </a>
+            <a href="./main.pdf" class="btn btn-primary" id="btn-download" download>Download Paper PDF</a>
+            <a href="https://github.com/DecapodLabs/accountable-agentic-execution" class="btn btn-secondary" id="btn-github">View Repository</a>
         </div>
     </header>
 
@@ -667,26 +458,22 @@
                 <!-- Flow Visualizer -->
                 <div class="flow-container">
                     <div class="flow-node">
-                        <div class="flow-node-num">1</div>
-                        <div class="flow-node-title">Intent</div>
+                        <div class="flow-node-title">1. Intent</div>
                         <div class="flow-node-desc">Persistent Goals</div>
                     </div>
                     <div class="flow-arrow">&rarr;</div>
                     <div class="flow-node">
-                        <div class="flow-node-num">2</div>
-                        <div class="flow-node-title">Custody</div>
+                        <div class="flow-node-title">2. Custody</div>
                         <div class="flow-node-desc">Isolated Boundaries</div>
                     </div>
                     <div class="flow-arrow">&rarr;</div>
                     <div class="flow-node">
-                        <div class="flow-node-num">3</div>
-                        <div class="flow-node-title">Trajectory</div>
+                        <div class="flow-node-title">3. Trajectory</div>
                         <div class="flow-node-desc">Kernel Audit Ledger</div>
                     </div>
                     <div class="flow-arrow">&rarr;</div>
                     <div class="flow-node">
-                        <div class="flow-node-num">4</div>
-                        <div class="flow-node-title">Proof</div>
+                        <div class="flow-node-title">4. Proof</div>
                         <div class="flow-node-desc">Cryptographic Success</div>
                     </div>
                 </div>
@@ -699,57 +486,27 @@
             <div class="primitives-grid">
                 
                 <div class="primitive-card" id="card-intent">
-                    <div class="primitive-header">
-                        <div class="primitive-icon-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="2" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <span class="primitive-tag">Primitive 1</span>
-                    </div>
+                    <div class="primitive-icon">Intent</div>
                     <h3 class="primitive-name">Durable Intent</h3>
                     <p class="primitive-desc">A structured task manifest tracked outside the agent's context window. Ensures success criteria and goals survive process interruptions, timeouts, and context drift.</p>
                 </div>
                 
                 <div class="primitive-card" id="card-custody">
-                    <div class="primitive-header">
-                        <div class="primitive-icon-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                            </svg>
-                        </div>
-                        <span class="primitive-tag">Primitive 2</span>
-                    </div>
+                    <div class="primitive-icon">Custody</div>
                     <h3 class="primitive-name">Isolated Custody</h3>
                     <p class="primitive-desc">Isolated workspaces (git worktrees) and execution sandboxes. Prevents credential leakage, unsafe file operations, and concurrent state corruption.</p>
                 </div>
 
                 <div class="primitive-card" id="card-trajectory">
-                    <div class="primitive-header">
-                        <div class="primitive-icon-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.94" />
-                            </svg>
-                        </div>
-                        <span class="primitive-tag">Primitive 3</span>
-                    </div>
+                    <div class="primitive-icon">Trajectory</div>
                     <h3 class="primitive-name">Auditable Trajectory</h3>
-                    <p class="primitive-desc">An append-only, kernel-logged audit trail of all commands, file diffs, and validation outputs. Anchors execution history and supports recoverability.</p>
+                    <p class="primitive-desc">An append-only, kernel-logged audit trail of all commands, file diffs, and validation outputs. Designed to anchor history integrity and support recoverability.</p>
                 </div>
                 
                 <div class="primitive-card" id="card-proof">
-                    <div class="primitive-header">
-                        <div class="primitive-icon-container">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0110 21a3.745 3.745 0 01-3.296-1.043 3.745 3.745 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.745 3.745 0 013.296-1.043A3.746 3.746 0 0114 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                            </svg>
-                        </div>
-                        <span class="primitive-tag">Primitive 4</span>
-                    </div>
+                    <div class="primitive-icon">Proof</div>
                     <h3 class="primitive-name">Verifiable Proof</h3>
-                    <p class="primitive-desc">Cryptographically anchored compiler, lint, and test suite logs linked to workspace snapshots. Provides programmatic completion evidence before code is merged.</p>
+                    <p class="primitive-desc">Cryptographically anchored compiler, lint, and test suite logs linked to workspace snapshots. Provides programmatically checkable evidence of completion before code is merged.</p>
                 </div>
                 
             </div>
@@ -778,21 +535,21 @@
                         <!-- Default view populated -->
                         <tr>
                             <td>Task Completion Rate (%)</td>
-                            <td><span class="metric-highlight">[TBD]</span></td>
-                            <td><span class="metric-highlight">[TBD]</span></td>
-                            <td class="treatment-col"><span class="metric-highlight highlight-success">[TBD]</span></td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
                         </tr>
                         <tr>
                             <td>Invalid Success Claims (%)</td>
-                            <td><span class="metric-highlight highlight-danger">[TBD]</span></td>
-                            <td><span class="metric-highlight">[TBD]</span></td>
-                            <td class="treatment-col"><span class="metric-highlight highlight-success">[TBD]</span></td>
+                            <td class="metric-highlight highlight-danger">[TBD]</td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
                         </tr>
                         <tr>
                             <td>Interruption Recovery Rate (%)</td>
-                            <td><span class="metric-highlight">[TBD]</span></td>
-                            <td><span class="metric-highlight">[TBD]</span></td>
-                            <td class="treatment-col"><span class="metric-highlight highlight-success">[TBD]</span></td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
                         </tr>
                     </tbody>
                 </table>
@@ -817,42 +574,42 @@
         const primaryData = `
             <tr>
                 <td>Task Completion Rate (%)</td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td class="treatment-col"><span class="metric-highlight highlight-success">[TBD]</span></td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
             <tr>
                 <td>Invalid Success Claims (%)</td>
-                <td><span class="metric-highlight highlight-danger">[TBD]</span></td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td class="treatment-col"><span class="metric-highlight highlight-success">[TBD]</span></td>
+                <td class="metric-highlight highlight-danger">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
             <tr>
                 <td>Interruption Recovery Rate (%)</td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td class="treatment-col"><span class="metric-highlight highlight-success">[TBD]</span></td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
         `;
 
         const systemsData = `
             <tr>
                 <td>Validation Accuracy (%)</td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td class="treatment-col"><span class="metric-highlight highlight-success">[TBD]</span></td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
             <tr>
                 <td>Concurrent Edit Conflicts (Count)</td>
-                <td><span class="metric-highlight highlight-danger">[TBD]</span></td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td class="treatment-col"><span class="metric-highlight highlight-success">[TBD]</span></td>
+                <td class="metric-highlight highlight-danger">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
             <tr>
                 <td>Average Human Review Time</td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td><span class="metric-highlight">[TBD]</span></td>
-                <td class="treatment-col"><span class="metric-highlight highlight-success">[TBD]</span></td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight">[TBD]</td>
+                <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
             </tr>
         `;
 
