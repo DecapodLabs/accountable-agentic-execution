@@ -1,6 +1,6 @@
 # Reproducible Research Artifact
 
-This directory contains the code, data, and scripts required to reproduce the experiments presented in the paper *"Intent, Custody, and Proof: Toward Accountable Execution in Agentic Software Engineering"*.
+This directory contains the code, data, and scripts required to reproduce the experiments presented in the paper *"Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering"*.
 
 ---
 

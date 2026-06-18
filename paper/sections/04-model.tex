@@ -20,7 +20,7 @@ where:
     \item $A$ is the set of authorized tools and shell commands.
     \item $P$ represents the file access permissions (read-only vs. read-write scopes).
 \end{itemize}
-By enforcing custody boundaries, the governance kernel guarantees that actions $a_i \in A$ can only mutate states within $W$, preventing authority leakage and concurrent collisions.
+By enforcing custody boundaries, the governance kernel constrains actions $a_i \in A$ to only mutate states within $W$, preventing authority leakage and concurrent collisions.
 
 \subsection{Trajectory: The Immutable Ledger}
 The Trajectory ($T$) is an append-only sequence of execution records:

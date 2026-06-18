@@ -1,6 +1,8 @@
 # Accountable Agentic Execution
 
 > **Research paper and reproducible evaluation artifact investigating LLM-based software engineering agents as distributed execution processes governed by Intent, Custody, Trajectory, and Proof.**
+>
+> **Status**: Pre-results technical report. The model, terminology, paper scaffold, and reproducibility harness are public. The empirical benchmark has not yet been executed; all metric values remain TBD until artifact runs are completed and reviewed.
 
 ---
 
@@ -14,7 +16,7 @@
 
 As Large Language Model (LLM) coding agents transition from passive completion assistants to autonomous, tool-using executors, their operations resemble concurrent processes running over a mutable repository space. The standard record of agentic work—typically consisting only of conversational chat transcripts and code diffs—fails to provide the verification, safety, and recoverability guarantees required for production environments. 
 
-This repository hosts the LaTeX source and reproducible evaluation harness for our paper: **"Intent, Custody, and Proof: Toward Accountable Execution in Agentic Software Engineering."**
+This repository hosts the LaTeX source and reproducible evaluation harness for our paper: **"Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering."**
 
 We formalize four core primitives to achieve accountable agentic execution:
 
