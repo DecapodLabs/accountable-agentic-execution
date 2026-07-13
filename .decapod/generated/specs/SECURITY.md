@@ -83,7 +83,7 @@ Generated security specs should document the active trust boundaries exposed by 
 <!-- decapod:codebase-attestation:start -->
 ## Codebase Attestation
 
-- Repository signal fingerprint: `805f7edea198e6572aaea32de08b8f24d4a74b0c48bd92d2c7ec67145d1d1407`
+- Repository signal fingerprint: `a983d6dcee9e1886992d6699cd65b0a7dac93310151fa4a6af315918e52bf826`
 - Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
 - Refreshed from the current codebase by `decapod specs.refresh`
 <!-- decapod:codebase-attestation:end -->

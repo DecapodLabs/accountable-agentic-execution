@@ -1,6 +1,6 @@
 # Reproducible Research Artifact
 
-This directory contains the code, data, and scripts for the planned evaluation in *"Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering"*. The checked-in run records and summaries are synthetic harness fixtures, not executions by an LLM or human reviewers.
+This directory contains the code, data contracts, scripts, and staged execution harness for the empirical study in *"Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering"*. The checked-in run records and summaries are explicitly `synthetic_fixture` records, not executions by an LLM or human reviewers.
 
 ---
 
@@ -10,11 +10,12 @@ A key contribution of this paper is the **reproducible artifact**. Rather than s
 
 To achieve this, the artifact strictly adheres to the following principles:
 
-1. **Completeness of Run Data**: Every generated fixture preserves the schema needed for the planned experiment:
+1. **Completeness of Run Data**: Every run record must identify its data kind and preserve the schema needed for the planned experiment:
+   * **Kind**: `synthetic_fixture`, `pilot`, or `empirical`; aggregation fails closed when kinds are mixed.
    * **Initial State**: The base repository and exact commit hash before the run.
    * **Prompt**: The exact natural language instruction given to the agent.
-   * **Trajectory**: A placeholder outcome record; real tool trajectories are not present in these fixtures.
-   * **Validation Logs**: Synthetic outcome fields; real validation logs must be collected during the benchmark.
+   * **Trajectory**: Governance and intervention records; real tool trajectories are not present in synthetic fixtures.
+   * **Validation Logs**: Synthetic outcome fields in fixtures; real validation logs must be collected and provenance-linked for pilot or empirical runs.
    * **Proof Artifact**: A planned evidence field, not a claim that a proof certificate was generated.
 2. **Separation of Raw Data from Analyzed Results**:
    * Raw run logs (`.jsonl` files) can be quite large and are not committed directly to the git history. They should be stored locally (or downloaded using download scripts) to keep the repository lightweight.
@@ -25,10 +26,11 @@ To achieve this, the artifact strictly adheres to the following principles:
 
 ## Directory Organization
 
-* **`tasks/`**: The benchmark task suite. Contains the coding task specifications, test suites, and target codebases.
+* **`tasks/`**: Canonical paired task packages. The current draft contains one example package; 34 additional packages must be authored before protocol freeze.
+* **`schemas/`**: Versioned task, run-record, and protocol data contracts.
 * **`baselines/`**: Executions under Condition A (prompt-only) and Condition B (checklist-only).
 * **`decapod-runs/`**: Executions under Condition C (Decapod-governed).
 * **`scripts/`**: Automation scripts to run evaluations, collect metrics, and generate tables/figures.
 * **`results/`**: Parsed statistical results, generated tables, and plotting files.
 
-For details on how to run a reproduction test, see the scripts documentation in [artifact/scripts/README.md](file:///home/arx/src/papers/accountable-agentic-execution/artifact/scripts/README.md).
+For the delegation design and staged execution rules, see [docs/delegation-protocol.md](../docs/delegation-protocol.md), [docs/human-intervention-protocol.md](../docs/human-intervention-protocol.md), and [docs/statistical-analysis-plan.md](../docs/statistical-analysis-plan.md). For commands, see [artifact/scripts/README.md](scripts/README.md).

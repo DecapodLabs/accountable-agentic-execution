@@ -1,11 +1,61 @@
 {
+  "schema_version": "run-record.v2",
+  "kind": "synthetic_fixture",
+  "run_id": "fixture-task-19-A-127",
   "task_id": "task-19",
-  "condition": "A",
-  "seed": 127,
-  "success": true,
-  "invalid_success_claim": false,
-  "validation_accuracy": false,
-  "interruption_recovery_success": false,
-  "concurrent_conflicts": 0,
-  "human_review_time_seconds": 158.6
+  "protocol_id": "legacy-three-condition-fixture-v1",
+  "substrate": "legacy_fixture",
+  "instruction_style": "legacy_fixture",
+  "prompt": {
+    "text": "Legacy three-condition synthetic fixture; no model prompt was executed.",
+    "characters": 0,
+    "approx_tokens": 0,
+    "procedural_steps": 0,
+    "named_paths": 0,
+    "named_commands": 0,
+    "named_tests": 0,
+    "implementation_prescriptions": 0
+  },
+  "provenance": {
+    "protocol_id": "legacy-three-condition-fixture-v1",
+    "task_commit": "synthetic-fixture-no-repository",
+    "model": {
+      "provider": "none",
+      "identifier": "none",
+      "version": "none",
+      "decoding": {}
+    },
+    "runtime": {
+      "agent_version": "fixture-generator",
+      "decapod_version": "none"
+    },
+    "timestamps": {
+      "started_at": null,
+      "ended_at": null,
+      "elapsed_seconds": null
+    },
+    "environment": {
+      "host": "fixture",
+      "container": false
+    },
+    "configuration": {
+      "tool_permissions": "not_applicable",
+      "workspace": "not_applicable"
+    }
+  },
+  "outcome": {
+    "task_success": true,
+    "intent_fidelity": null,
+    "invalid_completion_claim": false,
+    "proof_completeness": null,
+    "validation_accuracy": true,
+    "interruption_recovery_success": false,
+    "concurrent_conflicts": 0,
+    "human_review_time_seconds": 139.57
+  },
+  "synthetic_parameters": {
+    "condition": "A",
+    "seed": 127,
+    "generator": "run_benchmark.py"
+  }
 }

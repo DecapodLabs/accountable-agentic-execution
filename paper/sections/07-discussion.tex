@@ -1,7 +1,7 @@
 \section{Discussion}
 \label{sec:discussion}
 
-The proposed evaluation is designed to test the core thesis that agentic software engineering is more than a language-modeling task; it is a distributed systems problem that requires formal control planes.
+The proposed evaluation is designed to test whether agentic software engineering benefits from a control plane that lets humans delegate outcomes rather than enumerate procedures. This is a system-level capability hypothesis, not a claim that Decapod changes the underlying model's parameters or intrinsic intelligence.
 
 \subsection{Systems Framing vs. Prompt Engineering}
 Historically, the primary method for improving coding agent performance has been prompt engineering—tuning system instructions, adding few-shot examples, or structuring chat outputs. While these methods improve the probability of a model generating correct syntax, they do not change the fundamental execution model. A model executing directly on a production workspace remains unbounded and unverified.
@@ -18,4 +18,4 @@ Decapod acts as a local control plane for machine work. It brings intent resolut
 \subsection{Trust, Auditing, and the Limitations of Proof}
 A central hypothesis of this study is that structured proof files and trajectories will reduce human review time. In a transcript-only workflow, human reviews are cognitively demanding: the developer must read long chat threads, try to understand why the agent chose a specific path, and then manually check if the code works. A Decapod run, however, separates the conversational noise from the systems evidence.
 
-Programmatic proof has strict limits. Decapod evidence can show that configured commands ran and what they returned, but it cannot verify soft requirements such as code elegance, architectural maintainability, or completeness of an unstated user goal. The goal is therefore to make objective checks and governance state easier to inspect, not to replace human review or convert a validation pass into a security guarantee.
+Programmatic proof has strict limits. Decapod evidence can show that configured commands ran and what they returned, but it cannot verify soft requirements such as code elegance, architectural maintainability, or completeness of an unstated user goal. The goal is therefore to make objective checks and governance state easier to inspect, not to replace human review or convert a validation pass into a security guarantee. The thesis is weakened if natural delegation performs no better, if procedural prompts remain necessary, if governance relocates human effort into setup, or if overhead outweighs reliability and autonomy benefits.

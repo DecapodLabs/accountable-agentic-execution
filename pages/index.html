@@ -452,7 +452,7 @@
                 </p>
                 <br>
                 <p class="abstract-text">
-                    This paper frames agentic software engineering as a distributed execution problem. We introduce a framework built around four primitives to achieve accountable execution: <strong>Intent</strong> (durable target objectives), <strong>Custody</strong> (isolated environment bounds and tool permissions), <strong>Trajectory</strong> (event-backed records of governance activity), and <strong>Proof</strong> (machine-checkable validation and provenance evidence). We present Decapod, a local-first governance kernel, as a reference implementation of this model. We propose an empirical evaluation protocol to measure governed execution across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. We discuss how explicit custody and verification gates are projected to reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
+                    This paper frames agentic software engineering as a distributed execution problem and asks whether governed systems can support natural outcome-oriented delegation with less human micromanagement. <strong>Intent</strong> is the human or team’s desired outcome, motivation, constraints, priorities, unresolved questions, and completion standard, progressively represented through governed artifacts. <strong>Custody</strong> bounds task ownership and workspace authority; <strong>Trajectory</strong> records selected governance activity; and <strong>Proof</strong> provides machine-checkable validation and provenance evidence. We present Decapod as a local-first reference implementation and propose a 2×2 study crossing conventional versus Decapod-governed execution with natural versus procedural prompts. No empirical result is reported here.
                 </p>
 
                 <!-- Flow Visualizer -->
@@ -488,7 +488,7 @@
                 <div class="primitive-card" id="card-intent">
                     <div class="primitive-icon">Intent</div>
                     <h3 class="primitive-name">Durable Intent</h3>
-                    <p class="primitive-desc">A durable task contract represented across plans, todos, specs, unknowns, stop conditions, and proof expectations.</p>
+                    <p class="primitive-desc">The human or team’s desired outcome, motivation, constraints, priorities, unknowns, stop conditions, and completion standard, progressively resolved through governed plans, todos, specs, and proof expectations.</p>
                 </div>
                 
                 <div class="primitive-card" id="card-custody">
@@ -517,18 +517,19 @@
             <h2 class="section-title">Evaluation Plan</h2>
             
             <div class="metrics-tabs">
-                <button class="tab-btn active" id="tab-primary">Core Metrics — Synthetic Fixture Demo</button>
-                <button class="tab-btn" id="tab-systems">Audit &amp; Safety Metrics — Synthetic Fixture Demo</button>
+                <button class="tab-btn active" id="tab-primary">Primary 2×2 Protocol — TBD</button>
+                <button class="tab-btn" id="tab-systems">Cost &amp; Governance Metrics — TBD</button>
             </div>
 
             <div class="table-container">
                 <table id="metrics-table">
                     <thead>
                         <tr id="table-headers">
-                            <th>Core Metrics — Synthetic Fixture Demo</th>
-                            <th>Baseline A (Prompt-Only)</th>
-                            <th>Baseline B (Checklist)</th>
-                            <th class="treatment-col">Treatment (Decapod governed)</th>
+                            <th>Primary 2×2 Protocol — TBD</th>
+                            <th>Conventional · Natural</th>
+                            <th>Conventional · Procedural</th>
+                            <th class="treatment-col">Decapod · Natural</th>
+                            <th class="treatment-col">Decapod · Procedural</th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
@@ -537,23 +538,26 @@
                             <td>Task Completion Rate (%)</td>
                             <td class="metric-highlight">[TBD]</td>
                             <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
+                            <td class="metric-highlight treatment-col">[TBD]</td>
+                            <td class="metric-highlight treatment-col">[TBD]</td>
                         </tr>
                         <tr>
                             <td>Invalid Success Claims (%)</td>
-                            <td class="metric-highlight highlight-danger">[TBD]</td>
                             <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
+                            <td class="metric-highlight">[TBD]</td>
+                            <td class="metric-highlight treatment-col">[TBD]</td>
+                            <td class="metric-highlight treatment-col">[TBD]</td>
                         </tr>
                         <tr>
                             <td>Interruption Recovery Rate (%)</td>
                             <td class="metric-highlight">[TBD]</td>
                             <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight treatment-col highlight-success">[TBD]</td>
+                            <td class="metric-highlight treatment-col">[TBD]</td>
+                            <td class="metric-highlight treatment-col">[TBD]</td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="table-note">Note: The following metrics are synthetic/demo results generated from a simulation of the benchmark harness.</div>
+                <div class="table-note">No empirical results are displayed. Synthetic fixture records exist only for schema and harness tests; they are not shown in this dashboard.</div>
             </div>
         </section>
 
@@ -572,58 +576,28 @@
         const tableBody = document.getElementById('table-body');
 
         const primaryData = `
-            <tr>
-                <td>Task Completion Rate (%)</td>
-                <td class="metric-highlight">38.3</td>
-                <td class="metric-highlight">45.7</td>
-                <td class="metric-highlight treatment-col highlight-success">82.9</td>
-            </tr>
-            <tr>
-                <td>Invalid Success Claims (%)</td>
-                <td class="metric-highlight highlight-danger">43.5</td>
-                <td class="metric-highlight">37.9</td>
-                <td class="metric-highlight treatment-col highlight-success">0.0</td>
-            </tr>
-            <tr>
-                <td>Interruption Recovery Rate (%)</td>
-                <td class="metric-highlight">12.0</td>
-                <td class="metric-highlight">18.3</td>
-                <td class="metric-highlight treatment-col highlight-success">64.0</td>
-            </tr>
+            <tr><td>Task outcome quality</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Human instruction and intervention burden</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Intent fidelity and proof completeness</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
 `;
 
         const systemsData = `
-            <tr>
-                <td>Validation Accuracy (%)</td>
-                <td class="metric-highlight">45.1</td>
-                <td class="metric-highlight">64.6</td>
-                <td class="metric-highlight treatment-col highlight-success">99.4</td>
-            </tr>
-            <tr>
-                <td>Concurrent Edit Conflicts (Count)</td>
-                <td class="metric-highlight highlight-danger">224</td>
-                <td class="metric-highlight">195</td>
-                <td class="metric-highlight treatment-col highlight-success">0</td>
-            </tr>
-            <tr>
-                <td>Average Human Review Time</td>
-                <td class="metric-highlight">125.3</td>
-                <td class="metric-highlight">99.3</td>
-                <td class="metric-highlight treatment-col highlight-success">42.5</td>
-            </tr>
+            <tr><td>Elapsed time, tokens, and tool calls</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Validation, proof, and workspace overhead</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Invalid claims, recovery, and collisions</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
 `;
 
         tabPrimary.addEventListener('click', () => {
             tabPrimary.classList.add('active');
             tabSystems.classList.remove('active');
-            tableHeaders.cells[0].innerText = "Core Metrics — Synthetic Fixture Demo";
+            tableHeaders.cells[0].innerText = "Primary 2×2 Protocol — TBD";
             tableBody.innerHTML = primaryData;
         });
 
         tabSystems.addEventListener('click', () => {
             tabSystems.classList.add('active');
             tabPrimary.classList.remove('active');
-            tableHeaders.cells[0].innerText = "Audit & Safety Metrics — Synthetic Fixture Demo";
+            tableHeaders.cells[0].innerText = "Cost & Governance Metrics — TBD";
             tableBody.innerHTML = systemsData;
         });
     </script>

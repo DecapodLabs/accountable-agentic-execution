@@ -1,6 +1,6 @@
 # Benchmark Task Suite
 
-This directory contains the definitions and target codebases for the 35 benchmark tasks used in the evaluation.
+This directory contains the definitions and target codebases for the target 35-task cohort. The repository currently contains one example package to validate the contract; the cohort is not frozen and no confirmatory execution is authorized.
 
 ## Task Format
 
@@ -8,20 +8,23 @@ Each task is defined in a structured subdirectory containing:
 * `task.json`: A manifest detailing:
   * `id`: Unique identifier (e.g., `task-01-code-mod`).
   * `category`: One of the 7 task categories.
-  * `description`: The prompt description provided to the agent.
+  * `canonical_intent`: The outcome, motivation, constraints, priorities, unknowns, and completion standard shared by both cells.
+  * `prompt_variants`: Semantically matched `natural_delegation` and `procedural` prompts.
   * `base_commit`: The commit hash of the target repository state.
   * `validation_commands`: Shell commands that must succeed for the task to be considered complete (e.g., `pytest tests/test_parser.py`).
 * `gold/`: The reference solution diff, used only for human auditing comparisons and checking correctness.
-* `eval_suite/`: An independent set of unit and integration tests run by the evaluation harness to verify the agent's work. Crucially, these tests are *not* accessible to the agent during execution, acting as an external correctness check.
+  * `eval_suite/`: An independent evaluator withheld from the agent workspace during execution.
+  * `oracle.json`: Prewritten responses for clarification questions.
 
-## Directory Structure (Planned)
+## Directory Structure
 
 ```text
 tasks/
 ├── task-01-code-mod/
 │   ├── task.json
-│   ├── gold.diff
-│   └── eval_suite/
+│   ├── oracle.json
+│   ├── prompts/
+│   └── eval_suite/       # harness-controlled, withheld from the agent
 ├── task-02-refactor/
 │   └── ...
 └── README.md (this file)

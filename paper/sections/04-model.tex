@@ -5,10 +5,10 @@ To resolve the five failure modes identified in Section~\ref{sec:problem}, we fo
 
 Let $R$ represent the state of the repository, including the files, directory structure, git history, and runtime environment. An agent run is a sequence of state transitions $R_0 \xrightarrow{a_1} R_1 \xrightarrow{a_2} \dots \xrightarrow{a_n} R_n$, where each action $a_i$ is executed by the agent via tools.
 
-\subsection{Intent: The Goal Objective}
-We define Intent ($I$) as a durable task contract containing goals, constraints, unresolved questions, stop conditions, and proof expectations:
-$$I = \langle G, C, V \rangle$$
-where $G = \{g_1, g_2, \dots, g_k\}$ represents the goals, $C$ represents explicit constraints, and $V = \{v_1, v_2, \dots, v_m\}$ represents proof hooks or validation expectations. In Decapod, these concerns are distributed across governed plan artifacts, todo records, project specs, and proof configuration rather than a single universal \texttt{intent.json}. The contract persists outside the model context, allowing later steps to re-resolve intent and detect unresolved questions before execution.
+\subsection{Intent: Desired Outcome and Resolution}
+Intent ($I$) is the human or team's desired outcome, why it matters, the constraints and priorities that must remain true, unresolved questions, stop conditions, and standard of completion:
+$$I = \langle O, M, C, Q, S, A \rangle$$
+where $O$ is the desired outcome, $M$ its motivation, $C$ constraints and priorities, $Q$ unresolved questions, $S$ stop conditions, and $A$ acceptable completion. A prompt is an initial and often incomplete expression of $I$. Plans, todos, specifications, context capsules, proof hooks, and rubrics are governed projections or resolutions of intent, not its source of authority. Decapod distributes these representations across repository artifacts so intent can be re-resolved against repository state and human escalation points without requiring the initial prompt to contain a complete procedural specification.
 
 \subsection{Custody: Environment Bounding}
 Custody ($K$) defines the execution and security sandbox for the agent. Formally, it is a tuple:

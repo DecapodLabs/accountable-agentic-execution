@@ -10,7 +10,7 @@ This document defines the key concepts and terms used in our paper and evaluatio
 The execution of software-engineering tasks by autonomous agents in a manner that is auditable, bounded, recoverable, and verifiable. It shifts the operational model of agents from unsupervised text generation to bounded systems processes whose actions are tracked and whose outputs are checked against formal assertions.
 
 ### Intent
-The durable, human-declared objective, constraints, open questions, stop conditions, and proof expectations driving an agentic task. In Decapod these concerns are represented across governed plans, todo records, project specs, and proof configuration rather than one universal manifest. They persist beyond a single model context and can be re-resolved after interruption.
+The human or team’s desired outcome, why it matters, constraints and priorities, unresolved questions, stop conditions, and standard of completion. A prompt is an initial and often incomplete expression of intent. Decapod preserves and progressively resolves intent through governed plans, todos, project specifications, context capsules, proof hooks, and acceptance rubrics; those artifacts are projections of intent, not its source of authority.
 
 ### Custody
 The scoped ownership and authority context assigned to an agent for a specific task. Custody defines the boundaries of the agent's environment, specifying:

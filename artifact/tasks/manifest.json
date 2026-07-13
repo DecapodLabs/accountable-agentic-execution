@@ -1,0 +1,10 @@
+{
+  "schema_version": "task-manifest.v1",
+  "status": "draft",
+  "task_count_target": 35,
+  "canonical_task_packages_present": 1,
+  "task_packages": ["task-01-code-mod"],
+  "protocol_id": "delegation-factorial-v1-draft",
+  "freeze_blockers": ["34 canonical task packages remain to be authored", "starting commits must be immutable", "hidden evaluator review and oracle review are pending", "power analysis and non-inferiority margin are pending"],
+  "agent_visibility": "Agents receive only the task intent, selected prompt variant, permitted context, and public validation contract. Hidden evaluator logic remains harness-controlled."
+}

@@ -20,12 +20,12 @@ This repository hosts the LaTeX source and reproducible evaluation harness for o
 
 We formalize four core primitives to achieve accountable agentic execution:
 
-* **Intent**: A durable task contract represented across plans, todos, specs, unknowns, stop conditions, and proof expectations.
+* **Intent**: The human or team’s desired outcome, motivation, constraints, priorities, unresolved questions, and standard of completion, progressively represented across governed artifacts.
 * **Custody**: Exclusive task ownership and isolated git-worktree or container boundaries within which the agent operates.
 * **Trajectory**: Event-backed records of task, broker, proof, and governance activity that can be rendered as a flight-recorder timeline.
 * **Proof**: Programmatically checkable validation, proof-run, workunit, and provenance evidence for a governed workspace state.
 
-This artifact is designed to evaluate these primitives using **Decapod**, a daemonless, local-first governance kernel that coordinates intent, task custody, validation, proof events, and publication around existing coding agents. It does not claim complete OS-level sandboxing, universal action interception, or signed completion certificates.
+This artifact is designed to evaluate these primitives using **Decapod**, a daemonless, local-first governance kernel that coordinates intent, task custody, validation, proof events, and publication around existing coding agents. The live research program is preparing and conducting an empirical study of whether governed agents can accept natural outcome-oriented delegation with less human micromanagement. It does not claim complete OS-level sandboxing, universal action interception, or signed completion certificates.
 
 ---
 
