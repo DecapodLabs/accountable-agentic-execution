@@ -16,7 +16,7 @@ Our position is not that a longer constitution is automatically better. Decapod 
 \subsection{Program Verification and Sandboxing}
 Our custody and proof primitives build on a long history of program verification and systems sandboxing. Traditional verification systems focus on mathematical proof of correctness (e.g., using Coq, Isabelle, or TLA+). In contrast, our proof primitive focuses on pragmatic, machine-checkable verification (compilers, test suites, static analysis) that can be easily executed in standard software engineering workspaces.
 
-Sandboxing technologies (e.g., Docker, WebAssembly, gVisor) are widely used to secure untrusted code execution. In our framework, we apply these concepts to agent tool execution. Decapod's custody primitive uses Git worktrees and shell sandboxing to isolate agent writes, preventing authority leakage and concurrent collisions.
+Sandboxing technologies (e.g., Docker, WebAssembly, gVisor) are widely used to secure untrusted code execution. In our framework, we apply these concepts to agent tool execution. Decapod's custody primitive uses Git worktrees and shell sandboxing to isolate agent writes, reducing repository authority leakage and direct workspace collisions.
 
 \subsection{Distributed Systems and Ledger Audits}
 The framing of agentic coding as a distributed systems execution problem is inspired by classic distributed consensus and audit architectures. Lamport's happenings-before relation~\cite{lamport1978time} laid the groundwork for ordering events across independent computing nodes. MapReduce~\cite{dean2004mapreduce} and distributed databases demonstrated how to partition state and manage concurrency across large scale clusters.
