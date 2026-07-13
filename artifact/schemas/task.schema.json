@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://decapodlabs.github.io/accountable-agentic-execution/schemas/task.schema.json",
+  "type": "object",
+  "required": ["schema_version", "task_id", "canonical_intent", "motivation", "constraints", "priorities", "open_questions", "stop_conditions", "acceptance_rubric", "prompt_variants", "clarification_oracle", "starting_repository", "evaluation"],
+  "properties": {
+    "schema_version": {"const": "task-package.v1"},
+    "task_id": {"type": "string", "pattern": "^task-[0-9]{2}-"},
+    "canonical_intent": {"type": "string", "minLength": 1},
+    "motivation": {"type": "string", "minLength": 1},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "priorities": {"type": "array", "items": {"type": "string"}},
+    "open_questions": {"type": "array"},
+    "stop_conditions": {"type": "array", "items": {"type": "string"}},
+    "acceptance_rubric": {"type": "string", "minLength": 1},
+    "prompt_variants": {"type": "object", "required": ["natural_delegation", "procedural"]},
+    "clarification_oracle": {"type": "string", "minLength": 1},
+    "starting_repository": {"type": "object", "required": ["source", "commit"]},
+    "evaluation": {"type": "object", "required": ["hidden_evaluator", "validation_commands"]}
+  },
+  "additionalProperties": true
+}

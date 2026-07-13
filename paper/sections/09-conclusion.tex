@@ -5,12 +5,12 @@ As LLM-based coding agents transition from suggestion to delegated execution, we
 
 This paper formalized four primitives for accountable agentic execution:
 \begin{itemize}
-    \item \textbf{Intent}: Durable task objectives and constraints.
+    \item \textbf{Intent}: Human/team desired outcomes, motivations, constraints, priorities, unknowns, stop conditions, and completion standards, progressively resolved through governed artifacts.
     \item \textbf{Custody}: Bounded execution sandboxes and permission limits.
     \item \textbf{Trajectory}: Event-backed governance records rendered for reconstruction and review.
     \item \textbf{Proof}: Machine-checkable validation, proof-run, workunit, and provenance evidence.
 \end{itemize}
 
-We presented Decapod, a daemonless, local-first governance kernel, as a reference implementation of this framework. The implementation mapping and evaluation protocol are grounded in the current codebase, while quantitative results remain future work: the checked-in numerical fixtures are synthetic and are not evidence of treatment effects. The protocol is designed to test whether task ownership, isolated workspaces, validation, and proof gates reduce invalid completion claims, improve recovery, and reduce audit effort, subject to the stated limitations.
+We presented Decapod, a daemonless, local-first governance kernel, as a reference implementation of this framework. The implementation mapping and delegation-centered factorial protocol are grounded in the current codebase, while quantitative results remain future work: checked-in fixtures are synthetic and are not evidence of treatment effects. The live research program will test whether governed context, coordination, custody, validation, and evidence let humans delegate desired outcomes naturally while remaining less hands-on, subject to the stated limitations and explicit failure conditions.
 
 Future work includes executing and independently auditing the benchmark, scaling these primitives to multi-repository orchestration, developing stronger isolation layers for agent runtime processes, and exploring methods for validating complex, soft software requirements. Decapod demonstrates one repo-native design, not a complete security boundary or a universal solution.

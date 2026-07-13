@@ -1,0 +1,18 @@
+{
+  "schema_version": "task-package.v1",
+  "task_id": "task-01-code-mod",
+  "canonical_intent": "Add a user-facing greeting variant without changing existing greeting behavior.",
+  "motivation": "The project needs a small, backwards-compatible communication feature.",
+  "constraints": ["Preserve existing greeting behavior", "Keep the change scoped to the application and its tests", "Do not add dependencies"],
+  "priorities": ["Correctness", "Backwards compatibility", "Small reviewable diff"],
+  "open_questions": [{"id": "format", "question": "Should punctuation be preserved?", "resolution": "Use the exact punctuation in the acceptance rubric."}],
+  "stop_conditions": ["The existing greeting behavior cannot be preserved", "The requested behavior requires an unapproved dependency", "The evaluator or starting commit is unavailable"],
+  "acceptance_rubric": "The existing greeting returns Hello, {name}! and the new farewell returns Goodbye, {name}! for ordinary names; no unrelated files change.",
+  "prompt_variants": {
+    "natural_delegation": "Add a small, backwards-compatible farewell capability to this project. It should return a clear goodbye for a supplied name, preserve the existing greeting behavior, avoid new dependencies, and include appropriate validation. Keep the change focused and leave the repository in a reviewable, tested state.",
+    "procedural": "Open app.py and test_app.py. Add a farewell(name) function returning Goodbye, {name}!, import it in test_app.py, add a test for researcher, run the focused Python assertions, and report the result. Preserve greeting(name), add no dependencies, and do not edit unrelated files."
+  },
+  "clarification_oracle": "oracle.json",
+  "starting_repository": {"source": "contained fixture derived from lab-example", "commit": "recorded at run time; freeze required before empirical execution"},
+  "evaluation": {"hidden_evaluator": "eval_suite/evaluate.py", "validation_commands": ["python3 -c 'from app import farewell, greeting; assert greeting(\"researcher\") == \"Hello, researcher!\"; assert farewell(\"researcher\") == \"Goodbye, researcher!\"'"]}
+}

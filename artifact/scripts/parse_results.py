@@ -1,158 +1,104 @@
 #!/usr/bin/env python3
-"""
-parse_results.py: Aggregates raw benchmark outcomes, computes mean values
-and confidence intervals, and outputs the statistics in CSV and JSON format.
-"""
-import os
+"""Fail-closed aggregation for synthetic, pilot, or empirical run records."""
+
+from __future__ import annotations
+
+import argparse
 import json
-import math
+import random
+from pathlib import Path
 
-CONDITIONS = ["A", "B", "C"]
+ALLOWED_KINDS = {"synthetic_fixture", "pilot", "empirical"}
 
-def load_all_runs():
-    runs = []
-    for folder in ["artifact/baselines", "artifact/decapod-runs"]:
-        if not os.path.exists(folder):
-            continue
-        for filename in os.listdir(folder):
-            if filename.endswith(".json"):
-                path = os.path.join(folder, filename)
-                with open(path, "r") as f:
-                    runs.append(json.load(f))
-    return runs
 
-def compute_bootstrap_ci(data, replicates=1000):
-    # Simple bootstrapping for 95% confidence interval
-    # Since we are in Python without external libraries (numpy/pandas), we write a lightweight sampler.
-    import random
-    random.seed(42)
-    
+def bootstrap_ci(data: list[float], replicates: int = 1000) -> tuple[float, float]:
     if not data:
         return 0.0, 0.0
-        
-    means = []
-    n = len(data)
-    for _ in range(replicates):
-        sample = [random.choice(data) for _ in range(n)]
-        means.append(sum(sample) / n)
-        
+    random.seed(42)
+    means = [sum(random.choice(data) for _ in data) / len(data) for _ in range(replicates)]
     means.sort()
-    low = means[int(replicates * 0.025)]
-    high = means[int(replicates * 0.975)]
-    return low, high
+    return means[int(replicates * 0.025)], means[int(replicates * 0.975)]
 
-def main():
-    runs = load_all_runs()
-    print(f"Loaded {len(runs)} execution runs.")
-    
-    if not runs:
-        print("No run files found. Run run_benchmark.py first.")
-        return
-        
-    results = {}
-    
-    for cond in CONDITIONS:
-        cond_runs = [r for r in runs if r["condition"] == cond]
-        if not cond_runs:
+
+def load_records(root: Path) -> list[dict[str, object]]:
+    records = []
+    for folder in (root / "baselines", root / "decapod-runs", root / "runs"):
+        if not folder.exists():
             continue
-            
-        successes = [1 if r["success"] else 0 for r in cond_runs]
-        # Invalid claims rate is fraction of FAILURES where agent falsely claimed success
-        failures = [r for r in cond_runs if not r["success"]]
-        invalid_claims = [1 if r["invalid_success_claim"] else 0 for r in failures]
-        
-        val_accuracies = [1 if r["validation_accuracy"] else 0 for r in cond_runs]
-        recovery_successes = [1 if r["interruption_recovery_success"] else 0 for r in cond_runs]
-        conflict_counts = [r["concurrent_conflicts"] for r in cond_runs]
-        review_times = [r["human_review_time_seconds"] for r in cond_runs]
-        
-        # Calculate statistics
-        # 1. Completion Rate
-        comp_mean = sum(successes) / len(successes)
-        comp_ci = compute_bootstrap_ci(successes)
-        
-        # 2. Invalid Claims
-        invalid_mean = sum(invalid_claims) / len(invalid_claims) if invalid_claims else 0.0
-        invalid_ci = compute_bootstrap_ci(invalid_claims) if invalid_claims else (0.0, 0.0)
-        
-        # 3. Validation Accuracy
-        val_mean = sum(val_accuracies) / len(val_accuracies)
-        val_ci = compute_bootstrap_ci(val_accuracies)
-        
-        # 4. Interruption Recovery
-        rec_mean = sum(recovery_successes) / len(recovery_successes)
-        rec_ci = compute_bootstrap_ci(recovery_successes)
-        
-        # 5. Concurrent Conflicts
-        conflict_sum = sum(conflict_counts)
-        # For conflicts, we sum them across concurrent tasks
-        
-        # 6. Avg Review Time
-        time_mean = sum(review_times) / len(review_times)
-        time_ci = compute_bootstrap_ci(review_times)
-        
-        results[cond] = {
-            "runs_count": len(cond_runs),
-            "task_completion_rate": {
-                "mean": round(comp_mean * 100, 1),
-                "ci": [round(comp_ci[0] * 100, 1), round(comp_ci[1] * 100, 1)]
-            },
-            "invalid_success_claims": {
-                "mean": round(invalid_mean * 100, 1),
-                "ci": [round(invalid_ci[0] * 100, 1), round(invalid_ci[1] * 100, 1)]
-            },
-            "validation_accuracy": {
-                "mean": round(val_mean * 100, 1),
-                "ci": [round(val_ci[0] * 100, 1), round(val_ci[1] * 100, 1)]
-            },
-            "interruption_recovery": {
-                "mean": round(rec_mean * 100, 1),
-                "ci": [round(rec_ci[0] * 100, 1), round(rec_ci[1] * 100, 1)]
-            },
-            "concurrent_conflicts_sum": conflict_sum,
-            "human_review_time": {
-                "mean": round(time_mean, 1),
-                "ci": [round(time_ci[0], 1), round(time_ci[1], 1)]
-            }
+        for path in sorted(folder.glob("*.json")):
+            record = json.loads(path.read_text())
+            record["_path"] = str(path)
+            records.append(record)
+    return records
+
+
+def validate_kind(records: list[dict[str, object]], requested_kind: str) -> None:
+    if not records:
+        raise SystemExit("No run records found; refusing to generate an empty aggregate.")
+    kinds = {record.get("kind") for record in records}
+    if kinds - ALLOWED_KINDS:
+        raise SystemExit(f"Unknown run kind(s): {sorted(kinds - ALLOWED_KINDS)}")
+    if kinds != {requested_kind}:
+        raise SystemExit(f"fail-closed: requested kind={requested_kind}, found kinds={sorted(kinds)}")
+    for record in records:
+        if record.get("schema_version") != "run-record.v2":
+            raise SystemExit(f"Unsupported schema in {record['_path']}")
+        if requested_kind in {"pilot", "empirical"}:
+            provenance = record.get("provenance", {})
+            if provenance.get("task_commit") in {None, "", "synthetic-fixture-no-repository"}:
+                raise SystemExit(f"Missing real task provenance in {record['_path']}")
+            model = provenance.get("model", {})
+            if model.get("identifier") in {None, "", "none"}:
+                raise SystemExit(f"Missing model provenance in {record['_path']}")
+
+
+def legacy_metrics(records: list[dict[str, object]]) -> dict[str, dict[str, object]]:
+    """Aggregate only the retained legacy three-condition synthetic fixture."""
+    results: dict[str, dict[str, object]] = {}
+    for condition in ("A", "B", "C"):
+        selected = [r for r in records if r.get("synthetic_parameters", {}).get("condition") == condition]
+        if not selected:
+            continue
+        outcome = [r["outcome"] for r in selected]
+        successes = [float(o["task_success"]) for o in outcome]
+        failures = [o for o in outcome if not o["task_success"]]
+        invalid = [float(o["invalid_completion_claim"]) for o in failures]
+        accuracy = [float(o["validation_accuracy"]) for o in outcome]
+        recovery = [float(o["interruption_recovery_success"]) for o in outcome]
+        review = [float(o["human_review_time_seconds"]) for o in outcome]
+        results[condition] = {
+            "kind": "synthetic_fixture",
+            "runs_count": len(selected),
+            "task_completion_rate": {"mean": round(sum(successes) / len(successes) * 100, 1), "ci": [round(x * 100, 1) for x in bootstrap_ci(successes)]},
+            "invalid_success_claims": {"mean": round(sum(invalid) / len(invalid) * 100, 1) if invalid else 0.0, "ci": [round(x * 100, 1) for x in bootstrap_ci(invalid)]},
+            "validation_accuracy": {"mean": round(sum(accuracy) / len(accuracy) * 100, 1), "ci": [round(x * 100, 1) for x in bootstrap_ci(accuracy)]},
+            "interruption_recovery": {"mean": round(sum(recovery) / len(recovery) * 100, 1), "ci": [round(x * 100, 1) for x in bootstrap_ci(recovery)]},
+            "concurrent_conflicts_sum": sum(int(o["concurrent_conflicts"]) for o in outcome),
+            "human_review_time": {"mean": round(sum(review) / len(review), 1), "ci": [round(x, 1) for x in bootstrap_ci(review)]},
         }
-        
-    # Ensure results folder exists
-    os.makedirs("artifact/results", exist_ok=True)
-    
-    # Save JSON
-    with open("artifact/results/summary.json", "w") as f:
-        json.dump(results, f, indent=2)
-        
-    # Save CSV
-    with open("artifact/results/summary.csv", "w") as f:
-        f.write("Condition,Runs,CompletionRate_Mean,CompletionRate_CI_Low,CompletionRate_CI_High,InvalidClaims_Mean,InvalidClaims_CI_Low,InvalidClaims_CI_High,ValAccuracy_Mean,ValAccuracy_CI_Low,ValAccuracy_CI_High,Recovery_Mean,Recovery_CI_Low,Recovery_CI_High,Conflicts_Sum,ReviewTime_Mean,ReviewTime_CI_Low,ReviewTime_CI_High\n")
-        for cond in CONDITIONS:
-            if cond not in results:
-                continue
-            r = results[cond]
-            f.write(f"{cond},{r['runs_count']},"
-                    f"{r['task_completion_rate']['mean']},{r['task_completion_rate']['ci'][0]},{r['task_completion_rate']['ci'][1]},"
-                    f"{r['invalid_success_claims']['mean']},{r['invalid_success_claims']['ci'][0]},{r['invalid_success_claims']['ci'][1]},"
-                    f"{r['validation_accuracy']['mean']},{r['validation_accuracy']['ci'][0]},{r['validation_accuracy']['ci'][1]},"
-                    f"{r['interruption_recovery']['mean']},{r['interruption_recovery']['ci'][0]},{r['interruption_recovery']['ci'][1]},"
-                    f"{r['concurrent_conflicts_sum']},"
-                    f"{r['human_review_time']['mean']},{r['human_review_time']['ci'][0]},{r['human_review_time']['ci'][1]}\n")
-                    
-    print("\n=== Aggregated Results ===")
-    for cond in CONDITIONS:
-        if cond not in results:
-            continue
-        r = results[cond]
-        label = "Baseline A (Prompt-Only)" if cond == "A" else ("Baseline B (Checklist)" if cond == "B" else "Treatment (Decapod)")
-        print(f"\nCondition {cond}: {label}")
-        print(f"  Task Completion:        {r['task_completion_rate']['mean']}% (95% CI: {r['task_completion_rate']['ci']})")
-        print(f"  Invalid Success Claims: {r['invalid_success_claims']['mean']}% (95% CI: {r['invalid_success_claims']['ci']})")
-        print(f"  Validation Accuracy:    {r['validation_accuracy']['mean']}% (95% CI: {r['validation_accuracy']['ci']})")
-        print(f"  Interruption Recovery:  {r['interruption_recovery']['mean']}% (95% CI: {r['interruption_recovery']['ci']})")
-        print(f"  Concurrent Conflicts:   {r['concurrent_conflicts_sum']}")
-        print(f"  Avg Review Time:        {r['human_review_time']['mean']}s (95% CI: {r['human_review_time']['ci']})")
-        
-    print("\nResults successfully saved to artifact/results/summary.json and summary.csv.")
+    return results
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input-root", type=Path, default=Path("artifact"))
+    parser.add_argument("--output-root", type=Path, default=Path("artifact/results"))
+    parser.add_argument("--kind", choices=sorted(ALLOWED_KINDS), default="synthetic_fixture")
+    args = parser.parse_args()
+    records = load_records(args.input_root)
+    validate_kind(records, args.kind)
+    if args.kind == "synthetic_fixture":
+        results = legacy_metrics(records)
+    else:
+        raise SystemExit("Real aggregation is intentionally not implemented by the legacy metric path; use the frozen statistical analysis plan.")
+    args.output_root.mkdir(parents=True, exist_ok=True)
+    (args.output_root / "summary.json").write_text(json.dumps({"kind": args.kind, "results": results}, indent=2) + "\n")
+    with (args.output_root / "summary.csv").open("w") as output:
+        output.write("kind,condition,runs,completion_mean,invalid_claims_mean,validation_accuracy_mean,recovery_mean,conflicts_sum,review_time_mean\n")
+        for condition, result in results.items():
+            output.write(f"{args.kind},{condition},{result['runs_count']},{result['task_completion_rate']['mean']},{result['invalid_success_claims']['mean']},{result['validation_accuracy']['mean']},{result['interruption_recovery']['mean']},{result['concurrent_conflicts_sum']},{result['human_review_time']['mean']}\n")
+    print(f"Aggregated {len(records)} {args.kind} records into {args.output_root / 'summary.json'}.")
+
 
 if __name__ == "__main__":
     main()

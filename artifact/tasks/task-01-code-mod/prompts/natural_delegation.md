@@ -1,0 +1,1 @@
+Add a small, backwards-compatible farewell capability to this project. It should return a clear goodbye for a supplied name, preserve the existing greeting behavior, avoid new dependencies, and include appropriate validation. Keep the change focused and leave the repository in a reviewable, tested state.

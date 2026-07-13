@@ -1,0 +1,1 @@
+Open app.py and test_app.py. Add a farewell(name) function returning Goodbye, {name}!, import it in test_app.py, add a test for researcher, run the focused Python assertions, and report the result. Preserve greeting(name), add no dependencies, and do not edit unrelated files.

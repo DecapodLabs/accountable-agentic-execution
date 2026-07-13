@@ -6,7 +6,7 @@ Decapod is a daemonless, local-first governance kernel for AI coding agents. It 
 \subsection{System Architecture}
 The CLI and JSON-RPC surfaces route requests into core subsystems that persist state under \texttt{.decapod/}. The principal surfaces relevant to this paper are:
 \begin{enumerate}
-    \item \textbf{Intent and coordination}: governed plans capture intent, unknowns, human questions, stop conditions, constraints, todo identifiers, and proof hooks. The todo subsystem records task ownership, claims, dependencies, and events.
+    \item \textbf{Intent and coordination}: governed plans, todos, specifications, context capsules, and proof hooks progressively resolve human intent: the desired outcome, motivation, constraints, priorities, unknowns, stop conditions, and completion standard. The todo subsystem records task ownership, claims, dependencies, and events; none of these projections replaces human or team authority.
     \item \textbf{Custody}: workspace management creates todo-scoped git worktrees and, when configured, container workspaces. Protected branches and workspace checks prevent an agent from treating the human root checkout as its execution surface.
     \item \textbf{Trajectory}: todo, broker, proof, and related event journals are rendered by the flight recorder as a timeline or transcript. This is a governance record, not a complete capture of all model or shell activity.
     \item \textbf{Proof and validation}: configurable proof commands produce structured results and proof events; \texttt{decapod validate}, workunit gates, provenance artifacts, and verification checks supply promotion evidence.

@@ -1,0 +1,8 @@
+{
+  "schema_version": "clarification-oracle.v1",
+  "task_id": "task-01-code-mod",
+  "responses": [
+    {"question_pattern": "punctuation", "response": "Use the exact punctuation in the acceptance rubric.", "classification": "necessary"},
+    {"question_pattern": "implementation approach", "response": "Choose a reasonable repository-consistent implementation; the acceptance rubric is authoritative.", "classification": "correctly_escalated"}
+  ]
+}
