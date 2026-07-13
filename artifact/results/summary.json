@@ -1,119 +1,125 @@
 {
-  "A": {
-    "runs_count": 175,
-    "task_completion_rate": {
-      "mean": 38.3,
-      "ci": [
-        30.9,
-        45.7
-      ]
+  "kind": "synthetic_fixture",
+  "results": {
+    "A": {
+      "kind": "synthetic_fixture",
+      "runs_count": 175,
+      "task_completion_rate": {
+        "mean": 38.9,
+        "ci": [
+          31.4,
+          46.3
+        ]
+      },
+      "invalid_success_claims": {
+        "mean": 41.1,
+        "ci": [
+          32.7,
+          50.5
+        ]
+      },
+      "validation_accuracy": {
+        "mean": 52.0,
+        "ci": [
+          44.6,
+          59.4
+        ]
+      },
+      "interruption_recovery": {
+        "mean": 16.0,
+        "ci": [
+          10.9,
+          21.7
+        ]
+      },
+      "concurrent_conflicts_sum": 254,
+      "human_review_time": {
+        "mean": 125.1,
+        "ci": [
+          120.7,
+          129.4
+        ]
+      }
     },
-    "invalid_success_claims": {
-      "mean": 43.5,
-      "ci": [
-        35.2,
-        52.8
-      ]
+    "B": {
+      "kind": "synthetic_fixture",
+      "runs_count": 175,
+      "task_completion_rate": {
+        "mean": 48.0,
+        "ci": [
+          40.6,
+          54.9
+        ]
+      },
+      "invalid_success_claims": {
+        "mean": 28.6,
+        "ci": [
+          19.8,
+          37.4
+        ]
+      },
+      "validation_accuracy": {
+        "mean": 69.1,
+        "ci": [
+          61.7,
+          76.6
+        ]
+      },
+      "interruption_recovery": {
+        "mean": 22.3,
+        "ci": [
+          16.6,
+          29.1
+        ]
+      },
+      "concurrent_conflicts_sum": 205,
+      "human_review_time": {
+        "mean": 98.2,
+        "ci": [
+          94.9,
+          101.8
+        ]
+      }
     },
-    "validation_accuracy": {
-      "mean": 45.1,
-      "ci": [
-        38.3,
-        52.6
-      ]
-    },
-    "interruption_recovery": {
-      "mean": 12.0,
-      "ci": [
-        7.4,
-        17.1
-      ]
-    },
-    "concurrent_conflicts_sum": 224,
-    "human_review_time": {
-      "mean": 125.3,
-      "ci": [
-        120.7,
-        130.4
-      ]
-    }
-  },
-  "B": {
-    "runs_count": 175,
-    "task_completion_rate": {
-      "mean": 45.7,
-      "ci": [
-        38.9,
-        53.7
-      ]
-    },
-    "invalid_success_claims": {
-      "mean": 37.9,
-      "ci": [
-        28.4,
-        48.4
-      ]
-    },
-    "validation_accuracy": {
-      "mean": 64.6,
-      "ci": [
-        57.7,
-        72.0
-      ]
-    },
-    "interruption_recovery": {
-      "mean": 18.3,
-      "ci": [
-        12.6,
-        24.6
-      ]
-    },
-    "concurrent_conflicts_sum": 195,
-    "human_review_time": {
-      "mean": 99.3,
-      "ci": [
-        95.9,
-        103.2
-      ]
-    }
-  },
-  "C": {
-    "runs_count": 175,
-    "task_completion_rate": {
-      "mean": 82.9,
-      "ci": [
-        77.1,
-        88.6
-      ]
-    },
-    "invalid_success_claims": {
-      "mean": 0.0,
-      "ci": [
-        0.0,
-        0.0
-      ]
-    },
-    "validation_accuracy": {
-      "mean": 99.4,
-      "ci": [
-        98.3,
-        100.0
-      ]
-    },
-    "interruption_recovery": {
-      "mean": 64.0,
-      "ci": [
-        57.1,
-        70.9
-      ]
-    },
-    "concurrent_conflicts_sum": 0,
-    "human_review_time": {
-      "mean": 42.5,
-      "ci": [
-        40.9,
-        44.2
-      ]
+    "C": {
+      "kind": "synthetic_fixture",
+      "runs_count": 175,
+      "task_completion_rate": {
+        "mean": 86.9,
+        "ci": [
+          81.7,
+          91.4
+        ]
+      },
+      "invalid_success_claims": {
+        "mean": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ]
+      },
+      "validation_accuracy": {
+        "mean": 98.3,
+        "ci": [
+          96.0,
+          100.0
+        ]
+      },
+      "interruption_recovery": {
+        "mean": 72.6,
+        "ci": [
+          66.3,
+          78.9
+        ]
+      },
+      "concurrent_conflicts_sum": 0,
+      "human_review_time": {
+        "mean": 40.7,
+        "ci": [
+          39.1,
+          42.4
+        ]
+      }
     }
   }
 }
