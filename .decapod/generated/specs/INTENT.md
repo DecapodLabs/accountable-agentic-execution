@@ -102,7 +102,7 @@ flowchart LR
 <!-- decapod:codebase-attestation:start -->
 ## Codebase Attestation
 
-- Repository signal fingerprint: `bc607e8df5930a3f897ae66fac758074a6064ed928bad1636de377251e338ab7`
+- Repository signal fingerprint: `c6b3f1cd7e0e13f2980ea81aba1f758566f44ed345164b6f153b424953e6acfb`
 - Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
 - Refreshed from the current codebase by `decapod specs.refresh`
 <!-- decapod:codebase-attestation:end -->
