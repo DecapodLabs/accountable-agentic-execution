@@ -425,6 +425,9 @@
             --text-muted: #91a1b2;
             --border-color: #263340;
             --accent-color: #64d8cb;
+            --link-color: #8bd5ff;
+            --link-visited: #d0b7ff;
+            --link-underline: #f2c75c;
             --card-bg: #111820;
             --status-bg: #241d0d;
             --status-border: #5e4b1b;
@@ -452,7 +455,26 @@
             overflow-x: hidden;
         }
 
-        a { color: var(--accent-color); text-underline-offset: 3px; }
+        a:not(.btn) {
+            color: var(--link-color);
+            font-weight: 600;
+            text-decoration-line: underline;
+            text-decoration-color: var(--link-underline);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 4px;
+            text-decoration-skip-ink: auto;
+            border-radius: 2px;
+        }
+
+        a:not(.btn):visited { color: var(--link-visited); }
+
+        a:not(.btn):hover {
+            color: #ffffff;
+            background: rgba(139, 213, 255, 0.12);
+            text-decoration-thickness: 2px;
+        }
+
+        a:not(.btn) code { color: inherit; }
         code { font-family: var(--mono); color: #80cbc4; font-size: 0.9em; }
         :focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
 
@@ -767,7 +789,7 @@
                     <div class="primitive-card"><div class="primitive-icon">Adoption</div><h3 class="primitive-name">Public Interest, Not Efficacy</h3><p class="primitive-desc">July 13 snapshot: 222 GitHub stars, 21 forks, and 6,983 crates.io downloads—approximately 7,000. These are distribution counts, not research results.</p></div>
                 </div>
                 <br>
-                <p class="abstract-text"><strong>Repository-use inventory:</strong> an authenticated marker audit verified Decapod configuration in 13 repositories across three owner namespaces—11 public and two private. <code>alexhraber</code>: <a href="https://github.com/alexhraber/pi-cluster">pi-cluster</a>, <a href="https://github.com/alexhraber/builddeck">builddeck</a>, <a href="https://github.com/alexhraber/agentic-sdlc-intake-attack">agentic-sdlc-intake-attack</a>, <a href="https://github.com/alexhraber/go-scaling">go-scaling</a>, <a href="https://github.com/alexhraber/nixos">nixos</a>, and private <a href="https://github.com/alexhraber/cycle"><code>cycle</code></a>. <code>worldofgeese</code>: <a href="https://github.com/worldofgeese/den">den</a>, <a href="https://github.com/worldofgeese/tarot-api">tarot-api</a>, and <a href="https://github.com/worldofgeese/mythras-chargen">mythras-chargen</a>. <code>DecapodLabs</code>: <a href="https://github.com/DecapodLabs/decapod">decapod</a>, private <a href="https://github.com/DecapodLabs/gensor"><code>gensor</code></a>, <a href="https://github.com/DecapodLabs/accountable-agentic-execution">accountable-agentic-execution</a>, and <a href="https://github.com/DecapodLabs/pincher">pincher</a>. This is a maintainer-correlated deployment footprint, not 13 independent adopters or outcome evidence.</p>
+                <p class="abstract-text"><strong>Repository-use inventory:</strong> the adoption footprint contains 18 repositories across three owner namespaces—15 public and three private. An authenticated audit verified public governance evidence in 17: 16 expose <code>.decapod/config.toml</code>, while the public <a href="https://github.com/alexhraber/alexhraber"><code>alexhraber/alexhraber</code></a> profile repository exposes a generated Decapod <code>AGENTS.md</code>. The author additionally identifies <a href="https://github.com/alexhraber/tensors-to-consciousness"><code>tensors-to-consciousness</code></a> as Decapod-enabled, although its public default branch exposes neither marker. <code>alexhraber</code>: <a href="https://github.com/alexhraber/alexhraber">alexhraber</a>, <a href="https://github.com/alexhraber/pi-cluster">pi-cluster</a>, <a href="https://github.com/alexhraber/builddeck">builddeck</a>, <a href="https://github.com/alexhraber/agentic-sdlc-intake-attack">agentic-sdlc-intake-attack</a>, <a href="https://github.com/alexhraber/metaplay-fake-interview-supply-chain-incident">metaplay-fake-interview-supply-chain-incident</a>, <a href="https://github.com/alexhraber/flowhawk">flowhawk</a>, <a href="https://github.com/alexhraber/tensors-to-consciousness">tensors-to-consciousness</a>, <a href="https://github.com/alexhraber/go-scaling">go-scaling</a>, <a href="https://github.com/alexhraber/nixos">nixos</a>, private <a href="https://github.com/alexhraber/cycle"><code>cycle</code></a>, and private <a href="https://github.com/alexhraber/mentora-automa"><code>mentora-automa</code></a>. <code>worldofgeese</code>: <a href="https://github.com/worldofgeese/den">den</a>, <a href="https://github.com/worldofgeese/tarot-api">tarot-api</a>, and <a href="https://github.com/worldofgeese/mythras-chargen">mythras-chargen</a>. <code>DecapodLabs</code>: <a href="https://github.com/DecapodLabs/decapod">decapod</a>, private <a href="https://github.com/DecapodLabs/gensor"><code>gensor</code></a>, <a href="https://github.com/DecapodLabs/accountable-agentic-execution">accountable-agentic-execution</a>, and <a href="https://github.com/DecapodLabs/pincher">pincher</a>. The profile README is the author's public researcher/engineer credential surface, not cryptographic identity authentication. This is a maintainer-correlated deployment footprint, not 18 independent adopters or outcome evidence.</p>
                 <br>
                 <p class="abstract-text"><strong>Author operating practice:</strong> each repository receives one <code>decapod init</code> before its first agent interaction or other engineering operation. Thereafter the human interacts naturally with agents, while the generated <code>AGENTS.md</code> contract requires continuous Decapod use at governance boundaries. Repository markers are consistent with this practice but do not independently prove compliance or effectiveness.</p>
                 <br>

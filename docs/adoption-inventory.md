@@ -2,20 +2,25 @@
 
 Snapshot date: July 13, 2026.
 
-This inventory records repositories identified by their maintainers as using Decapod and verified, through an authenticated GitHub API query, to contain `.decapod/config.toml` on the default branch. It is ecological deployment evidence only. Presence of a configuration marker does not establish active use, correct use, version compatibility, agent-host activation, outcome improvement, fleet coherence, or adoption by an independent organization.
+This inventory records repositories identified by their maintainers as using Decapod and checked through the authenticated GitHub API. Sixteen expose `.decapod/config.toml` on the default branch; the public profile repository exposes a generated Decapod `AGENTS.md`; and `tensors-to-consciousness` is author-attested as Decapod-enabled but exposes neither marker on its public default branch. It is ecological deployment evidence only. Marker presence or author testimony does not establish active use, correct use, version compatibility, agent-host activation, outcome improvement, fleet coherence, or adoption by an independent organization.
 
-The snapshot contains 13 repositories across three owner namespaces: 11 public and 2 private. The private repository names are included at the owner's direction; their contents are not part of this research artifact.
+The snapshot contains 18 repositories across three owner namespaces: 15 public and 3 private. The private repository names are included at the owner's direction; their contents are not part of this research artifact.
 
 The author reports running `decapod init` once when establishing each repository, before the first agent interaction or other engineering operation. Thereafter the human interacts naturally with agents, and the generated `AGENTS.md` contract requires the agents to continue using Decapod at governance boundaries. Marker presence is consistent with that operating practice but cannot independently establish initialization order, agent compliance, or outcome effects.
 
-## `alexhraber` — six repositories
+## `alexhraber` — eleven repositories
 
+- [`alexhraber/alexhraber`](https://github.com/alexhraber/alexhraber) — public; generated Decapod `AGENTS.md`; public researcher/engineer profile and professional credential surface, not cryptographic identity authentication
 - [`alexhraber/pi-cluster`](https://github.com/alexhraber/pi-cluster) — public
 - [`alexhraber/builddeck`](https://github.com/alexhraber/builddeck) — public
 - [`alexhraber/agentic-sdlc-intake-attack`](https://github.com/alexhraber/agentic-sdlc-intake-attack) — public
+- [`alexhraber/metaplay-fake-interview-supply-chain-incident`](https://github.com/alexhraber/metaplay-fake-interview-supply-chain-incident) — public
+- [`alexhraber/flowhawk`](https://github.com/alexhraber/flowhawk) — public
+- [`alexhraber/tensors-to-consciousness`](https://github.com/alexhraber/tensors-to-consciousness) — public; author-attested as Decapod-enabled; no public default-branch marker at the snapshot date
 - [`alexhraber/go-scaling`](https://github.com/alexhraber/go-scaling) — public
 - [`alexhraber/nixos`](https://github.com/alexhraber/nixos) — public
 - [`alexhraber/cycle`](https://github.com/alexhraber/cycle) — private
+- [`alexhraber/mentora-automa`](https://github.com/alexhraber/mentora-automa) — private
 
 ## `worldofgeese` — three repositories
 
@@ -34,5 +39,5 @@ The author reports running `decapod init` once when establishing each repository
 
 - Repository existence, visibility, and marker presence were queried through GitHub's repository and contents APIs.
 - The snapshot does not inspect private source or expose private configuration contents.
-- Maintainer ownership creates correlated adoption; this is not evidence of 13 independent adopters.
+- Maintainer ownership creates correlated adoption; this is not evidence of 18 independent adopters.
 - A future reproducible public inventory should record default-branch commit, Decapod version, first/last observed marker, and an explicit maintainer attestation without collecting repository secrets.
