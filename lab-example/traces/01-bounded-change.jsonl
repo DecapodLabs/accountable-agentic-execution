@@ -1,0 +1,6 @@
+{"event":"fixture.created","fixture_id":"lab-example-01","kind":"contained-demonstration","empirical":false,"scope":"single research repository"}
+{"event":"decapod.initialized","project":"lab-example","init_command":"decapod init --proof --no-git --no-container-workspaces","evidence":[".decapod/config.toml",".decapod/generated/specs/INTENT.md","AGENTS.md"]}
+{"event":"prompt.recorded","prompt_file":"prompts/01-bounded-change.md","prompt_sha256":"recorded-in-repository-history","boundary":"fixture prompt; not sent to an LLM"}
+{"event":"change.applied","files":["app.py","test_app.py"],"requested_behavior":"farewell(name) returns Goodbye, {name}!"}
+{"event":"validation.run","command":"python3 -c 'from app import farewell, greeting; assert greeting(\"researcher\") == \"Hello, researcher!\"; assert farewell(\"researcher\") == \"Goodbye, researcher!\"; print(\"2 assertions passed\")'","exit_code":0,"stdout":"2 assertions passed\n","evidence":["app.py","test_app.py"]}
+{"event":"claim_boundary","supported":["durable project initialization","bounded prompt record","explicit changed-file scope","reproducible validation result"],"not_supported":["credential isolation","universal command or file capture","LLM treatment effect","empirical benchmark result"]}

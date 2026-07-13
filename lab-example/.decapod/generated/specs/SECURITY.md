@@ -44,7 +44,7 @@ flowchart LR
 - Retention + deletion policy:
 
 ## Supply Chain Security
-- Recommended scanners: `npm audit`, `osv-scanner`, `snyk`
+- Recommended scanners: `pip-audit`, `safety`, `bandit`
 - Dependency update cadence:
 - Signed artifact/provenance strategy:
 
@@ -73,17 +73,9 @@ flowchart LR
 - [ ] No unresolved critical/high security findings.
 
 ## Strongest Security Primitives
-1. **Constitution Access System**: The assets module provides robust, versioned access to embedded constitution documents with override capability via OVERRIDE.md. This is a mature, well-tested system for declarative governance.
-2. **Proof System**: The proof.rs module enables configurable, auditable proof execution with health claim synchronization and event logging.
-3. **Workspace Isolation**: The workspace.rs module provides sophisticated git worktree management with branch protection, containerization support, and todo-scoped branch naming.
+Describe the security primitives and security controls implemented in this repository.
 
-## Generated Security Analysis
-Generated security specs should document the active trust boundaries exposed by repository facts: local state stores, generated artifacts, session tokens, workspace paths, command execution surfaces, policy gates, proof artifacts, and any external service integrations. Security output must distinguish confirmed repo facts from inferred risks and leave unresolved questions visible for future agents.
-
-<!-- decapod:codebase-attestation:start -->
-## Codebase Attestation
-
-- Repository signal fingerprint: `a6aaa08f24033349cc0e53c353c7f25f76be1f2a3e7e7bc78c7f19307d68490b`
-- Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
-- Refreshed from the current codebase by `decapod specs.refresh`
-<!-- decapod:codebase-attestation:end -->
+## Security Practices
+- **Least Privilege**: Ensure minimal access permissions for all subsystems and roles.
+- **Input Validation**: Strictly validate all inputs at trust boundaries.
+- **Secure Storage**: Encrypt sensitive data at rest and in transit.

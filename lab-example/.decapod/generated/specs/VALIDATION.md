@@ -4,25 +4,23 @@
 > Validation is a release gate, not documentation theater.
 
 ## Validation Harness
-The validate.rs module implements a comprehensive, extensible validation suite with clear pass/fail/warn semantics and auto-remediation hints. Key features include:
-- **Methodology Gates**: Numerous validation gates enforce intent-driven development practices
-- **Auto-Remediation Hints**: Provides specific guidance on how to fix validation failures
-- **Workspace Enforcement**: Ensures agents work in isolated git worktrees or containers
-- **Specs Integrity**: Validates that living specs match repository state
-- **Proof Requirements**: Requires evidence artifacts for promotion gates
-- **Constitution Integration**: Validates adherence to embedded constitution directives
+Define the test and verification harness used by this project.
+Key features:
+- **Automated Tests**: Unit and integration test suites.
+- **Linting & Formatting**: Static analysis tools and checkers.
+- **CI/CD Integration**: Automatic execution of validation gates on push.
 
 ## Generated Spec Refresh Gates
-Decapod must keep generated specs synchronized at governance pressure points. When repository surfaces change, validation should either fail with a concrete refresh instruction or, when explicitly requested through a refresh path, regenerate the existing spec files and update the manifest fingerprint. Refresh must update the canonical spec set rather than creating one-off analysis files.
+Decapod must keep generated specs synchronized at governance pressure points. Fresh `decapod init` may scaffold a missing specs directory. After initialization, refresh must re-evaluate the existing codebase, preserve authored spec content, update codebase-derived attestations, and refresh the manifest rather than rendering scaffold replacements.
 
 Refresh-capable paths:
 - `decapod validate --refresh-specs`
 - `decapod rpc --op specs.refresh`
-- initialization or scaffold refresh paths that regenerate `.decapod/generated/specs/*.md`
+- fresh initialization only: scaffold `.decapod/generated/specs/*.md` when the directory is absent
 
 Refresh output requirements:
-- Preserve hand-maintained epistemic custody fields where possible.
-- Blend repo context into the existing canonical spec files.
+- Preserve all authored canonical spec content.
+- Re-evaluate repo surfaces and update codebase-derived attestation blocks.
 - Update `.decapod/generated/specs/.manifest.json` after writing files.
 - Avoid adding parallel project-state or architecture-survey documents outside the canonical spec set.
 
@@ -54,7 +52,7 @@ flowchart LR
 ## Proof Surfaces
 - `decapod validate`
 - Required test commands:
-- Add repository-specific test command(s) here.
+- `python3 -c 'from app import farewell, greeting; assert greeting("researcher") == "Hello, researcher!"; assert farewell("researcher") == "Goodbye, researcher!"; print("2 assertions passed")'`
 - Required integration/e2e commands:
 
 ## Promotion Gates
@@ -63,7 +61,7 @@ flowchart LR
 | Gate | Command | Evidence |
 |---|---|---|
 | Architecture + interface drift check | `decapod validate` | Gate output |
-| Tests pass | project test command | CI + local logs |
+| Tests pass | direct Python assertion command | `traces/01-bounded-change.jsonl` |
 | Docs + changelog current | repo docs checks | PR diff |
 | Security critical checks pass | security scanner suite | scanner reports |
 
@@ -77,7 +75,7 @@ flowchart LR
 | Artifact | Path | Required For |
 |---|---|---|
 | Validation report | `.decapod/generated/artifacts/provenance/*` | Promotion |
-| Test logs | CI artifact store | Promotion |
+| Test logs | `traces/01-bounded-change.jsonl` | Demonstration review |
 | Architecture diagram snapshot | `ARCHITECTURE.md` | Promotion |
 | Changelog entry | `CHANGELOG.md` | Promotion |
 
@@ -98,11 +96,3 @@ flowchart LR
 - [ ] Integration tests cover key user flows.
 - [ ] Failure-path tests cover retries/timeouts.
 - [ ] Docs/diagram/changelog updates included.
-
-<!-- decapod:codebase-attestation:start -->
-## Codebase Attestation
-
-- Repository signal fingerprint: `a6aaa08f24033349cc0e53c353c7f25f76be1f2a3e7e7bc78c7f19307d68490b`
-- Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
-- Refreshed from the current codebase by `decapod specs.refresh`
-<!-- decapod:codebase-attestation:end -->

@@ -4,10 +4,10 @@ Canonical path: `.decapod/generated/specs/`.
 These files are the project-local contract for humans and agents.
 
 ## Snapshot
-- Project: accountable-agentic-execution
-- Outcome: > **Research paper and reproducible evaluation artifact investigating LLM-based software engineering agents as distributed execution processes governed by Intent, Custody, Trajectory, and Proof.**
-- Detected languages: Other
-- Detected surfaces: not detected yet
+- Project: lab-example
+- Outcome: Add and validate a bounded `farewell(name)` behavior.
+- Detected languages: Python
+- Detected surfaces: CLI / direct module validation
 
 ## How to use this folder
 - [INTENT.md](./INTENT.md): what success means and what is explicitly out of scope.
@@ -40,11 +40,3 @@ These files are the project-local contract for humans and agents.
 - [ ] Define threat model and auth/authz decisions in [SECURITY.md](./SECURITY.md).
 - [ ] Ensure architecture diagram, docs, changelog, and tests are mapped to promotion gates.
 - [ ] Run all validation/test commands and attach evidence artifacts.
-
-<!-- decapod:codebase-attestation:start -->
-## Codebase Attestation
-
-- Repository signal fingerprint: `a6aaa08f24033349cc0e53c353c7f25f76be1f2a3e7e7bc78c7f19307d68490b`
-- Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
-- Refreshed from the current codebase by `decapod specs.refresh`
-<!-- decapod:codebase-attestation:end -->

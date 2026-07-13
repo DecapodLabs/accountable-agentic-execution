@@ -1,0 +1,24 @@
+schema_version = "1.0.0"
+
+[init]
+specs = true
+ci = true
+diagram_style = "ascii"
+entrypoints = [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "GEMINI.md",
+    "CODEX.md",
+]
+
+[repo]
+product_name = "lab-example"
+product_summary = "Contained fake project for bounded governance trace demonstration"
+architecture_direction = "library"
+product_type = "application"
+done_criteria = "The focused test passes and the trace records the prompt, validation result, and evidence references."
+primary_languages = ["python"]
+detected_surfaces = ["cli"]
+external_tracker = false
+container_workspaces = false
+mode = "local"

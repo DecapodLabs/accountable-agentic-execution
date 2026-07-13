@@ -488,13 +488,13 @@
                 <div class="primitive-card" id="card-intent">
                     <div class="primitive-icon">Intent</div>
                     <h3 class="primitive-name">Durable Intent</h3>
-                    <p class="primitive-desc">A structured task manifest tracked outside the agent's context window. Ensures success criteria and goals survive process interruptions, timeouts, and context drift.</p>
+                    <p class="primitive-desc">A durable task contract represented across plans, todos, specs, unknowns, stop conditions, and proof expectations.</p>
                 </div>
                 
                 <div class="primitive-card" id="card-custody">
                     <div class="primitive-icon">Custody</div>
                     <h3 class="primitive-name">Isolated Custody</h3>
-                    <p class="primitive-desc">Isolated workspaces (git worktrees) and execution sandboxes. Prevents credential leakage, unsafe file operations, and concurrent state corruption.</p>
+                    <p class="primitive-desc">Isolated workspaces (git worktrees) and execution sandboxes. Reduces workspace collision and unsafe repository mutation risk; credential isolation depends on the configured runtime boundary.</p>
                 </div>
 
                 <div class="primitive-card" id="card-trajectory">
@@ -517,15 +517,15 @@
             <h2 class="section-title">Evaluation Plan</h2>
             
             <div class="metrics-tabs">
-                <button class="tab-btn active" id="tab-primary">Core Metrics</button>
-                <button class="tab-btn" id="tab-systems">Audit & Safety Metrics</button>
+                <button class="tab-btn active" id="tab-primary">Core Metrics — Synthetic Fixture Demo</button>
+                <button class="tab-btn" id="tab-systems">Audit &amp; Safety Metrics — Synthetic Fixture Demo</button>
             </div>
 
             <div class="table-container">
                 <table id="metrics-table">
                     <thead>
                         <tr id="table-headers">
-                            <th>Core Metrics</th>
+                            <th>Core Metrics — Synthetic Fixture Demo</th>
                             <th>Baseline A (Prompt-Only)</th>
                             <th>Baseline B (Checklist)</th>
                             <th class="treatment-col">Treatment (Decapod governed)</th>
@@ -616,14 +616,14 @@
         tabPrimary.addEventListener('click', () => {
             tabPrimary.classList.add('active');
             tabSystems.classList.remove('active');
-            tableHeaders.cells[0].innerText = "Core Metrics";
+            tableHeaders.cells[0].innerText = "Core Metrics — Synthetic Fixture Demo";
             tableBody.innerHTML = primaryData;
         });
 
         tabSystems.addEventListener('click', () => {
             tabSystems.classList.add('active');
             tabPrimary.classList.remove('active');
-            tableHeaders.cells[0].innerText = "Audit & Safety Metrics";
+            tableHeaders.cells[0].innerText = "Audit & Safety Metrics — Synthetic Fixture Demo";
             tableBody.innerHTML = systemsData;
         });
     </script>
