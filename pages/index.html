@@ -456,7 +456,7 @@
                 </p>
                 <br>
                 <p class="abstract-text">
-                    The expanded program defines <strong>fleet coherence</strong>: independently launched agents use the same durable project authority, task custody, selected trajectory, and proof boundary across sessions, handoffs, and concurrent work. Agents and conversations are ephemeral execution processes; the governed repository is the durable coordination subject. This is not a fifth primitive, global consensus, lossless conversation transfer, or a conflict-free merge guarantee. The human speaks naturally to the available agent; the agent handles the stable governance protocol. No controlled result is reported here.
+                    The expanded program defines <strong>fleet coherence</strong>: independently launched agents use the same durable project authority, task custody, selected trajectory, and proof boundary across sessions, handoffs, and concurrent work. Agents and conversations are ephemeral execution processes; the governed repository is the durable coordination subject. This is not a fifth primitive, global consensus, lossless conversation transfer, or a conflict-free merge guarantee. The human speaks naturally to the available agent; the agent handles the stable governance protocol. Decapod is offered as a candidate standard agent-callable component that coding-agent harnesses could pre-bundle or discover, not as an already adopted standard or shipped vendor integration. No controlled result is reported here.
                 </p>
 
                 <!-- Flow Visualizer -->
@@ -521,12 +521,32 @@
             <div class="abstract-card">
                 <p class="abstract-text"><strong>Implementation basis:</strong> Decapod <a href="https://github.com/DecapodLabs/decapod/commit/e7df80d8234a80c490f6fe2119a6cff32135a386">e7df80d</a> (<code>v0.66.1</code>). The audit verifies atomic exclusive claims, trust-gated shared ownership and handoff, task workspaces, deterministic context bundles, local project memory, selected governance events, proof/workunit state, and publication gates. Handoff does not transfer hidden chat state; worktrees do not prove integration; the public cloud backend is unavailable.</p>
                 <br>
+                <p class="abstract-text"><strong>Central fleet question:</strong> Can multiple independently launched agents concurrently solve similar but distinct problems in the same codebase while preserving shared authority, distinct task custody, isolated mutation, dependency awareness, and integrated proof? Similar work is not necessarily duplicate work, and separate worktrees do not resolve semantic overlap or prove the combined result.</p>
+                <br>
                 <div class="primitives-grid">
                     <div class="primitive-card"><div class="primitive-icon">Study A</div><h3 class="primitive-name">Walk-away alignment</h3><p class="primitive-desc">Primary CN versus DN comparison under the identical complex natural prompt.</p></div>
                     <div class="primitive-card"><div class="primitive-icon">Study B</div><h3 class="primitive-name">Handoff continuity</h3><p class="primitive-desc">Structured conventional handoff versus governed ownership/context/trajectory/proof transfer.</p></div>
                     <div class="primitive-card"><div class="primitive-icon">Study C–D</div><h3 class="primitive-name">Concurrency and tool switching</h3><p class="primitive-desc">Duplicate work, direct collisions, deferred integration failure, and reorientation across workbenches.</p></div>
                     <div class="primitive-card"><div class="primitive-icon">Study E</div><h3 class="primitive-name">Observational dogfooding</h3><p class="primitive-desc">At the inspected commit: 2,127 git commits and 326 tags from February–July 2026. Activity evidence only; no causal or review-burden claim.</p></div>
                 </div>
+            </div>
+        </section>
+
+        <section id="sec-interoperability">
+            <h2 class="section-title">A Portable Governance Contract for Agent Harnesses</h2>
+            <div class="abstract-card">
+                <p class="abstract-text"><strong>Target interaction:</strong> the human speaks naturally to whichever agent is available; the agent invokes the governance protocol. Decapod is offered as a candidate <strong>agent-governance interoperability profile</strong> so Claude, Codex, Antigravity, Grok, and other conforming coding-agent harnesses could pre-bundle or discover the same authority, custody, trajectory, and proof component. The aim is fluid movement across harnesses without making one vendor conversation the durable project state.</p>
+                <br>
+                <p class="abstract-text"><strong>Current boundary:</strong> the inspected implementation provides a daemonless local CLI and a Decapod-specific structured request/response document over process standard input/output. It is not currently a native MCP server, A2A endpoint, HTTP governance service, adopted Internet standard, or confirmed vendor bundle. MCP and A2A are candidate adapters; HTTP and IP are limited design analogies for a narrow, layered interface, not claims of equivalent maturity or adoption. See the <a href="https://github.com/DecapodLabs/accountable-agentic-execution/blob/main/docs/agent-governance-interoperability.md">profile and implementation roadmap</a>.</p>
+                <br>
+                <div class="primitives-grid">
+                    <div class="primitive-card"><div class="primitive-icon">Authority</div><h3 class="primitive-name">Baked-in Constitution</h3><p class="primitive-desc">A structured baseline constitution is embedded in the binary. A binding project override is implemented; an organization-level policy overlay is prospective.</p></div>
+                    <div class="primitive-card"><div class="primitive-icon">Projection</div><h3 class="primitive-name">Scoped Before Inference</h3><p class="primitive-desc">Task context is selected with source provenance and must be audited for relevance, contradiction, and harm. More context is not presumed better.</p></div>
+                    <div class="primitive-card"><div class="primitive-icon">Adapters</div><h3 class="primitive-name">MCP · A2A · HTTP</h3><p class="primitive-desc">Prospective adapters should preserve one versioned governance profile, conformance tests, identity boundaries, and fail-closed behavior.</p></div>
+                    <div class="primitive-card"><div class="primitive-icon">Adoption</div><h3 class="primitive-name">Public Interest, Not Efficacy</h3><p class="primitive-desc">July 13 snapshot: 222 GitHub stars, 21 forks, and 6,983 crates.io downloads—approximately 7,000. These are distribution counts, not research results.</p></div>
+                </div>
+                <br>
+                <p class="abstract-text"><strong>Context-poisoning chronology:</strong> the author reports deriving the constitutional approach through an independent internal evaluation several months before the February 2026 ETH Zurich preprint. Public git history currently establishes constitution and override work around the preprint’s posting, so the earlier chronology is labeled author testimony rather than a priority or efficacy claim.</p>
             </div>
         </section>
 
@@ -602,7 +622,7 @@
 
         const fleetData = `
             <tr><td>Handoff reorientation and duplicated exploration</td><td colspan="2">Prospective Study B — no runs</td></tr>
-            <tr><td>Duplicate starts, direct collisions, and integration repair</td><td colspan="2">Prospective Study C — no runs</td></tr>
+            <tr><td>Similar-but-distinct work, duplicate starts, false serialization, and integration repair</td><td colspan="2">Prospective Study C — no runs</td></tr>
             <tr><td>Tool-switch continuity without transcript replay</td><td colspan="2">Prospective Study D — no runs</td></tr>
             <tr><td>Longitudinal repository activity</td><td colspan="2">Observational only; excluded from controlled estimates</td></tr>
 `;

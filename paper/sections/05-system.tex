@@ -4,7 +4,7 @@
 Decapod is a daemonless, local-first governance kernel for AI coding agents. It is invoked by agents at governance boundaries; it does not replace the model's tool loop or alter model weights. The implementation mapping is pinned to commit \texttt{e7df80d} (tag \texttt{v0.66.1}); the companion claim matrix lists command, source, test, status, boundary, and planned measure for each research concept.
 
 \subsection{System Architecture}
-The CLI and JSON-RPC surfaces route requests into core subsystems that persist state under \texttt{.decapod/}. The principal surfaces relevant to this paper are:
+The CLI and Decapod-specific structured process-RPC surfaces route requests into core subsystems that persist state under \texttt{.decapod/}. The principal surfaces relevant to this paper are:
 \begin{enumerate}
     \item \textbf{Intent and coordination}: governed plans, todos, specifications, context capsules, knowledge, and proof hooks progressively resolve human intent. The todo subsystem records claims, tags/categories, dependencies, presence, owners, and approved handoffs; none of these projections replaces human or team authority.
     \item \textbf{Custody}: workspace management creates todo-scoped git worktrees and, when configured, container workspaces. Protected branches and workspace checks prevent an agent from treating the human root checkout as its execution surface.
@@ -28,8 +28,20 @@ decapod todo done --id <task-id> --validated
 \end{verbatim}
 Governed plans add a stronger pre-execution contract: execution is blocked when the plan is not approved, when intent or unknowns remain unresolved, or when no todo is selected. These mechanisms operationalize durable intent without implying that every natural-language requirement is machine-verifiable.
 
+\subsection{Constitutional Authority and Context-Poisoning Boundary}
+The baseline constitution is compiled into the Decapod binary and exposed as structured, queryable nodes. A binding project-local override is merged with tested project precedence. Context resolution then produces task-scoped, provenance-bearing projections of this authority. Thus the constitution is not merely another repository instruction file: the intended chain distinguishes embedded baseline authority, explicit override, and selected context supplied before implementation inference. Exact asset, command, and test paths appear in the companion implementation matrix.
+
+This is Decapod's proposed answer to repository-instruction poisoning: authority, scope, negative requirements, and proof expectations should be queryable and auditable rather than treating every available instruction as equally trustworthy. It does not prove that supplied context is relevant or benign, and project-controlled surfaces can still be hostile. The current code has no organization-level overlay; organization policy, three-level precedence, revocation, and conflict semantics remain roadmap work.
+
 \subsection{Operator Decoupling}
-Provider-specific \texttt{CLAUDE.md}, \texttt{CODEX.md}, and \texttt{GEMINI.md} entrypoints delegate to one universal \texttt{AGENTS.md} contract. The intended human interface remains natural language: the operator states the outcome to the available agent, and the agent invokes Decapod's CLI or JSON-RPC at governance boundaries. This is interaction-contract portability, not a claim that vendor-specific commands disappear or that every workbench obeys the contract.
+Generated provider/workbench entrypoint shims delegate to one universal \texttt{AGENTS.md} contract. The intended human interface remains natural language: the operator states the outcome to the available agent, and the agent invokes Decapod's CLI or structured RPC at governance boundaries. This is interaction-contract portability, not a claim that vendor-specific commands disappear or that every workbench obeys the contract.
+
+\subsection{Candidate Agent-Governance Interoperability Profile}
+We offer the governance boundary as a candidate thin-waist profile: versioned semantics for capability discovery, constitutional authority, task custody and handoff, workspace status, selected trajectory, proof, and publication. Coding-agent harnesses could pre-bundle or discover a conforming local component so a user and project can move among Claude, Codex, Antigravity, Grok, and other workbenches without making one vendor conversation authoritative.
+
+The implemented base is narrower. \texttt{decapod rpc} accepts a Decapod-specific structured request/response document over process standard input/output. It is not JSON-RPC 2.0, an MCP server, an A2A endpoint, or an HTTP service; no vendor-bundling agreement is claimed. MCP supplies a host--tool lifecycle and transport model~\cite{mcp2025architecture}. A2A supplies agent discovery and task/artifact exchange~\cite{a2a2026spec}. HTTP and IP illustrate narrow layered interfaces that permit independent evolution~\cite{rfc9110http,rfc791ip}, but the analogy does not imply comparable maturity, governance, or adoption. Native adapters, negotiation, conformance vectors, identity, and version-skew behavior are prospective.
+
+As of a July 13, 2026 API snapshot, Decapod had 222 GitHub stars, 21 forks, and 6,983 cumulative crates.io downloads~\cite{github2026decapod,cratesio2026decapod}. These counts establish public distribution and interest only, not correct use, interoperability, or empirical efficacy.
 
 \subsection{Proof and Evidence Boundaries}
 Proof definitions contain commands, arguments, descriptions, and required status. A proof run records exit status, duration, pass/fail state, bounded output, run identifiers, actor, and related requirements in the proof event journal. Workunit and workspace-publish gates can require proof results and validation evidence before promotion.

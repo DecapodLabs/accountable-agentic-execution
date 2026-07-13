@@ -63,6 +63,18 @@ An approved transfer of task ownership accompanied by durable summary/event and 
 ### Operator Decoupling
 Separation between the human's natural-language expression of software intent and the workbench-specific governance operations needed to execute it. The agent invokes the stable Decapod CLI/RPC contract at governance boundaries; this does not claim that vendor-specific commands cease to exist.
 
+### Agent-Governance Interoperability Profile
+A candidate, versioned machine contract through which independently implemented coding-agent harnesses can discover and invoke project authority, custody, trajectory, and proof semantics. Decapod's current CLI and structured process RPC are an implementation base, not an adopted standard, MCP server, A2A implementation, HTTP service, or proof of vendor bundling.
+
+### Interaction-Contract Portability
+The ability to preserve the human's natural delegation interface while agents in different workbenches invoke the same governance semantics. This concerns machine-facing governance portability; it does not require identical vendor user interfaces or eliminate every vendor command.
+
+### Constitutional Authority Chain
+The provenance and precedence relationship among the constitution embedded in the Decapod binary, binding project overrides, any future organization policy layer, and task-scoped context projections. At the inspected revision, the embedded baseline and project-local override are implemented; organization-level overrides are prospective.
+
+### Similar-but-Distinct Concurrent Work
+Tasks that are not duplicates but share architecture, files, tests, dependencies, or integration boundaries. Safe coordination requires more than separate worktrees: task identity, semantic overlap, dependency awareness, custody, integration validation, and publication proof must remain distinguishable.
+
 ### Proof Portability
 The ability of a later agent or reviewer to inspect and revalidate configured evidence bound to a governed state. Portability does not make stale local proof sufficient for a changed or integrated state.
 

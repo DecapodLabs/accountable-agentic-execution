@@ -44,9 +44,10 @@ C(v) &&& \text{resolved authoritative context},\\
 T(v) &&& \text{accumulated governance trajectory},\\
 P(v) &&& \text{proof and validation state},\\
 H(v,\alpha_i,\alpha_j) &&& \text{governed ownership transfer},\\
+\rho(v_i,v_j) &&& \text{audited task relationship},\\
 Q &&& \text{integration and publication state}.
 \end{align*}
-The repository state includes the durable representations of $G,o,w,C,T,P,$ and $Q$; a workbench conversation does not. A handoff $H$ changes ownership and records durable transfer information while the receiving process resolves the current repository state. It cannot transfer inaccessible hidden reasoning.
+The relation $\rho$ distinguishes duplicate, independent, dependent, and similar-but-distinct tasks. The last category shares architecture, modules, tests, or integration boundaries without sharing one desired outcome. It is a prospective experimental annotation, not an implemented Decapod oracle. The repository state includes the durable representations of $G,o,w,C,T,P,$ and $Q$; a workbench conversation does not. A handoff $H$ changes ownership and records durable transfer information while the receiving process resolves the current repository state. It cannot transfer inaccessible hidden reasoning.
 
 \subsection{Qualified Fleet Invariants}
 
@@ -55,6 +56,7 @@ The implementation audit distinguishes enforced, conditional, and desired proper
     \item \textbf{Exclusive primary custody (enforced for exclusive mode):} an atomic exclusive claim conflicts with another active primary assignee. Trust-gated shared secondary ownership exists, so uniqueness is not unconditional.
     \item \textbf{Workspace custody (enforced on governed paths):} a todo-scoped worktree is required and protected/root checkout work is blocked. External tools can bypass Decapod, and containers are configuration-dependent.
     \item \textbf{Dependency awareness (represented and partially gated):} dependencies are durable and replayable; this is not a globally serializable scheduler.
+    \item \textbf{Semantic-overlap awareness (desired, not enforced):} similar-but-distinct tasks should remain concurrent when safe and coordinate when their integration surfaces interact. Current task claims do not infer this relation automatically.
     \item \textbf{Handoff continuity (implemented but bounded):} approved ownership transfer preserves task assignment, summary/event, durable knowledge, and available repository references. Complete conversation state, unresolved-state completeness, and merge success are not guaranteed.
     \item \textbf{Provider-independent project state (implemented as an external contract):} generated entrypoints route multiple workbenches to one repository contract. Compliance by every workbench is empirical, not enforced by Decapod.
     \item \textbf{Proof-gated publication (enforced on the Decapod publish path):} provenance manifests and configured workunit/evaluation gates are required. Task-local evidence remains insufficient if post-integration gates fail or are absent.
