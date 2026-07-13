@@ -12,7 +12,7 @@ This document uses HTTP and IPv4 only as architectural analogies: a narrow inter
 
 ## Implemented base at the inspected revision
 
-The implementation audit is pinned to Decapod commit [`e7df80d8234a80c490f6fe2119a6cff32135a386`](https://github.com/DecapodLabs/decapod/commit/e7df80d8234a80c490f6fe2119a6cff32135a386), tag `v0.66.1`.
+The implementation audit is pinned to Decapod commit [`207e9a37e57ee970e881942de2994abea2cd737c`](https://github.com/DecapodLabs/decapod/commit/207e9a37e57ee970e881942de2994abea2cd737c), tag `v0.66.3`. The intervening commits from the prior `v0.66.1` audit change release metadata, CI, and research links rather than the mapped implementation paths.
 
 | Surface | Implemented status | Boundary |
 | --- | --- | --- |
@@ -58,7 +58,7 @@ An organization-level overlay is not implemented at the inspected revision. The 
 
 Its design must define precedence, conflicts, provenance, revocation, versioning, and minimum non-overridable safety rules before the paper can claim organization-level operation.
 
-The author reports that this constitutional design emerged from an independent internal evaluation of repository-instruction poisoning several months before the February 2026 ETH Zurich preprint on repository context files. Public git history currently establishes constitution and override work by February 11--13, around the preprint's February 12 posting, but does not by itself establish the stronger private chronology. The research report therefore labels the earlier chronology as author testimony and does not use it as a priority or efficacy claim.
+The author coined **Intent-Driven Design** as the name of Decapod's software-engineering approach in public LinkedIn posts beginning in August 2025. By September 2025, the core approach used a project constitution to scaffold boilerplate and derived agent guidance before implementation. This design lineage predates and arose independently of the February 2026 ETH Zurich preprint on repository context files. The chronology establishes provenance of the Decapod-specific method, not empirical efficacy.
 
 ## Central fleet-coherence question
 

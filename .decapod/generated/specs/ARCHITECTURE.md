@@ -155,7 +155,7 @@ sequenceDiagram
 <!-- decapod:codebase-attestation:start -->
 ## Codebase Attestation
 
-- Repository signal fingerprint: `2870fe4108fdac2fdef4fbd22d85b417c4a968662703cddd8c78f7066722d244`
+- Repository signal fingerprint: `7147acb7a854e1a6a472a5dbdb22018f960dcc38abcfbc6f8891c600f2eceab2`
 - Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
 - Refreshed from the current codebase by `decapod specs.refresh`
 <!-- decapod:codebase-attestation:end -->

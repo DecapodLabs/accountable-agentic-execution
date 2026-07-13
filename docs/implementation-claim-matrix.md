@@ -1,6 +1,6 @@
 # Decapod Implementation-to-Claim Matrix
 
-This matrix records the implementation audit used by the paper. The inspected Decapod revision is [`e7df80d8234a80c490f6fe2119a6cff32135a386`](https://github.com/DecapodLabs/decapod/commit/e7df80d8234a80c490f6fe2119a6cff32135a386), tagged `v0.66.1`, on 2026-07-12. Source and test paths below are relative to that revision of `DecapodLabs/decapod`.
+This matrix records the implementation audit used by the paper. The inspected Decapod revision is [`207e9a37e57ee970e881942de2994abea2cd737c`](https://github.com/DecapodLabs/decapod/commit/207e9a37e57ee970e881942de2994abea2cd737c), tagged `v0.66.3`, on 2026-07-13. Source and test paths below are relative to that revision of `DecapodLabs/decapod`. The diff from the previously inspected `v0.66.1` revision contains release metadata, CI, and research-link documentation changes; it does not move the implementation or test paths mapped below.
 
 The matrix distinguishes an implemented mechanism from an empirical effect. A checked command or test supports the former; only an authorized controlled study could support the latter.
 

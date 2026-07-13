@@ -7,8 +7,8 @@
   "canonical_intent": "Test whether governed execution lets humans delegate desired software outcomes with less procedural micromanagement and ongoing intervention while preserving outcome quality, intent fidelity, recoverability, and reviewability.",
   "implementation_basis": {
     "repository": "https://github.com/DecapodLabs/decapod",
-    "commit": "e7df80d8234a80c490f6fe2119a6cff32135a386",
-    "tag": "v0.66.1",
+    "commit": "207e9a37e57ee970e881942de2994abea2cd737c",
+    "tag": "v0.66.3",
     "audit": "docs/implementation-claim-matrix.md",
     "interoperability_profile": "docs/agent-governance-interoperability.md"
   },
@@ -51,6 +51,7 @@
   "walk_away_rule": "Start one complex natural delegation prompt, then provide no corrective coaching; clarification uses only a frozen oracle.",
   "context_alignment_audit": ["authority_source", "selection_rationale", "content_hash", "selected_or_excluded", "relevance_label", "resolution_latency"],
   "freeze_requirements": ["canonical task packages", "paired prompts", "hidden evaluators", "oracle tables", "context manifests", "exclusion rules", "statistical analysis plan", "model/runtime", "protocol tag"],
+  "pre_freeze_evolution": "Experiments, hypotheses, conditions, instrumentation, and sample plans may change as Decapod develops; every revision must be versioned and justified. After freeze, material changes require a new protocol version or a disclosed deviation.",
   "synthetic_fixture_boundary": "Legacy three-condition files and aggregates remain synthetic_fixture and cannot be aggregated with pilot or empirical records.",
   "study_boundary": "Aggregation must select exactly one study_id; longitudinal observational records cannot enter controlled summaries and one study's metrics cannot enter another study's headline result.",
   "fleet_execution_authorized": false,

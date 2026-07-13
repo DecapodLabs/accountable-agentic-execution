@@ -2,6 +2,8 @@
 
 This repository is in harness validation. The primary study tests one-shot walk-away delegation, not prompt length alone. Synthetic fixtures are harness artifacts and cannot support treatment claims.
 
+This protocol remains a prospective draft. As Decapod develops, experiments, hypotheses, conditions, instrumentation, and sample plans may change so they continue to test implemented mechanisms rather than stale assumptions. Each pre-freeze change must be versioned and justified. After protocol freeze, a material change requires a new protocol version or an explicit deviation; confirmatory rules cannot be revised in response to observed outcomes.
+
 ## 1. Primary study
 
 The experimental unit is an isolated run of one complex task from one clean starting commit and fresh model context. The primary paired comparison is:
