@@ -44,10 +44,10 @@
 \maketitle
 
 \begin{abstract}
-\noindent Large language model (LLM) agents are transitioning from conversational programming assistants to autonomous executors capable of editing codebases, running build tools, executing tests, and managing multi-file software deployments. Despite this shift, current agent workflows still rely on standard prompt transcripts and code diffs as the primary logs of execution. As agent runs become concurrent, long-running, and tool-intensive, this transcript-only paradigm exposes repositories to significant failure modes: lost intent, authority leakage, concurrent state corruption, and unverifiable completion claims.
+\noindent Large language model (LLM) agents are transitioning from conversational programming assistants to autonomous executors capable of editing codebases, running build tools, executing tests, and managing multi-file software deployments. Despite this shift, many coding-agent workflows still rely heavily on prompt transcripts and code diffs as durable records. As runs become concurrent, long-running, and tool-intensive, this chat-centered baseline exposes repositories to lost intent, cross-runtime discontinuity, ambiguous ownership, duplicated inference, workspace and integration failure, and unverifiable completion claims.
 
 \medskip
-\noindent This paper frames agentic software engineering as a distributed execution problem and asks whether one complex natural outcome-oriented request can support ``type the outcome and walk away.'' We introduce four primitives: \emph{Intent} (human/team desired outcome and its governed resolutions), \emph{Custody} (task ownership and bounded workspace), \emph{Trajectory} (event-backed governance records), and \emph{Proof} (machine-checkable validation and provenance evidence). We present Decapod, a daemonless, local-first governance kernel, as a reference implementation and define a primary paired comparison of conventional versus Decapod-governed execution under the identical natural prompt; natural-versus-procedural prompting is secondary. The accompanying artifact is in harness validation: checked-in summaries are explicitly synthetic and must not be interpreted as measurements. The hypothesis concerns system-level operational capability at a fixed underlying model, not a change to intrinsic model intelligence or a guarantee of security.
+\noindent This paper frames agentic software engineering as a distributed execution problem and asks whether one complex natural outcome-oriented request can support ``type the outcome and walk away.'' We introduce four primitives: \emph{Intent} (human/team desired outcome and its governed resolutions), \emph{Custody} (task ownership and bounded workspace), \emph{Trajectory} (event-backed governance records), and \emph{Proof} (machine-checkable validation and provenance evidence). We present Decapod, a daemonless, local-first governance kernel, as a reference implementation and define a primary paired comparison under the identical natural prompt. We further define \emph{fleet coherence}: the bounded ability of independently launched, heterogeneous agents to use one durable project authority, custody model, governance trajectory, and proof boundary across sessions, handoffs, and concurrent work. Prospective secondary studies test handoff continuity, duplicate-work prevention, tool switching, and integration; a separate longitudinal snapshot establishes ecological use without a causal claim. The artifact remains in harness validation: checked-in controlled records are synthetic. The hypotheses concern system-level operational alignment and coordination at a fixed model, not changed model intelligence, complete sandboxing, conflict-free merging, or global consensus.
 \end{abstract}
 
 \vspace{1.5em}
@@ -58,9 +58,11 @@
 \input{sections/03-problem}
 \input{sections/04-model}
 \input{sections/05-system}
+\input{sections/05b-fleet-coherence}
 \input{sections/06-evaluation}
 \input{sections/07-discussion}
 \input{sections/08-related-work}
+\input{sections/08b-threats-future}
 \input{sections/09-conclusion}
 
 \bibliographystyle{abbrv}

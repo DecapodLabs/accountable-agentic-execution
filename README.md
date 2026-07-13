@@ -1,6 +1,6 @@
 # Accountable Agentic Execution
 
-> **Research paper and reproducible evaluation artifact investigating LLM-based software engineering agents as distributed execution processes governed by Intent, Custody, Trajectory, and Proof.**
+> **Research paper and executable evaluation program investigating individual-agent alignment and heterogeneous fleet coherence through Intent, Custody, Trajectory, and Proof.**
 >
 > **Status**: Pre-results technical report. The model, terminology, paper, and reproducibility harness are public. The empirical benchmark has not yet been executed. Checked-in run records and aggregate values are synthetic harness fixtures, not observations; no treatment effect or performance claim should be inferred from them.
 
@@ -14,18 +14,24 @@
 
 ## 1. Executive Summary
 
-As Large Language Model (LLM) coding agents transition from passive completion assistants to autonomous, tool-using executors, their operations resemble concurrent processes running over a mutable repository space. The standard record of agentic work—typically consisting only of conversational chat transcripts and code diffs—fails to provide the verification, safety, and recoverability guarantees required for production environments. 
+As Large Language Model (LLM) coding agents transition from passive completion assistants to autonomous, tool-using executors, their operations resemble concurrent processes running over a mutable repository space. Many workflows still rely heavily on conversational transcripts and code diffs as durable records; that baseline does not by itself preserve authority, ownership, cross-session continuity, or machine-checkable completion evidence.
 
 This repository hosts the LaTeX source and reproducible evaluation harness for our paper: **"Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering."**
 
 We formalize four core primitives to achieve accountable agentic execution:
 
 * **Intent**: The human or team’s desired outcome, motivation, constraints, priorities, unresolved questions, and standard of completion, progressively represented across governed artifacts.
-* **Custody**: Exclusive task ownership and isolated git-worktree or container boundaries within which the agent operates.
-* **Trajectory**: Event-backed records of task, broker, proof, and governance activity that can be rendered as a flight-recorder timeline.
+* **Custody**: Governed task ownership and isolated git-worktree or configured container boundaries within which the agent operates.
+* **Trajectory**: Event-backed records of selected task, broker, proof, memory, and governance activity that can be rendered as a flight-recorder timeline.
 * **Proof**: Programmatically checkable validation, proof-run, workunit, and provenance evidence for a governed workspace state.
 
-This artifact is designed to evaluate these primitives using **Decapod**, a daemonless, local-first governance kernel that coordinates intent, task custody, validation, proof events, and publication around existing coding agents. The primary empirical question is whether one complex natural outcome-oriented request can support “type the outcome and walk away”: Decapod resolves authoritative project context before implementation inference, while the underlying model remains unchanged. A secondary ablation tests natural versus procedural prompting. The project does not claim complete OS-level sandboxing, universal action interception, or signed completion certificates.
+This artifact is designed to evaluate these primitives using **Decapod**, a daemonless, local-first governance kernel that coordinates intent, task custody, validation, proof events, and publication around existing coding agents. The primary empirical question remains whether one complex natural outcome-oriented request can support “type the outcome and walk away”: Decapod resolves authoritative project context before implementation inference, while the underlying model remains unchanged.
+
+The expanded research program also tests **fleet coherence**: whether independently launched agents can use durable project authority, task ownership, selected trajectory, and shared proof to hand work across sessions/workbenches and execute concurrently with less reconstruction, duplication, and integration waste. Fleet coherence is an emergent property of the four primitives, not a fifth primitive or a claim of global consensus. The human speaks naturally to the available agent; the agent handles Decapod's stable governance protocol.
+
+The implementation mapping is pinned to Decapod [`e7df80d`](https://github.com/DecapodLabs/decapod/commit/e7df80d8234a80c490f6fe2119a6cff32135a386) (`v0.66.1`). It verifies real task claims, trust-gated handoff, workspaces, context capsules, repository memory, governance events, proofs, and publication gates. It also records narrower boundaries: shared ownership exists, handoff does not transfer hidden conversation state, worktrees do not guarantee clean integration, and the public cloud backend is unavailable.
+
+Study A is the primary walk-away CN-versus-DN comparison. Prospective Studies B–D cover handoff continuity, concurrent fleets, and tool switching. Study E is a separately labeled longitudinal case study: at the inspected commit, a checked-in git-derived snapshot records 2,127 commits and 326 tags between February and July 2026, but those facts do not establish a causal effect or low review burden. No controlled fleet results exist. The project does not claim complete OS-level sandboxing, credential isolation, universal action interception, conflict-free merging, or signed completion certificates.
 
 ---
 
@@ -39,14 +45,18 @@ The workspace is organized to keep paper drafts, empirical records, and system d
 │   ├── figures/           # Plot files and diagram vectors
 │   └── tables/            # Evaluator-generated LaTeX table inputs
 ├── artifact/              # Reproducible experiment package
-│   ├── tasks/             # Suite of 35 benchmark tasks
+│   ├── tasks/             # Task-package contract + one non-empirical fixture; target suite is 35
 │   ├── baselines/         # Execution traces for prompt & checklist baselines
 │   ├── decapod-runs/      # Execution traces under Decapod governance
 │   ├── scripts/           # Execution and metrics collation scripts
-│   └── results/           # Processed summary data and chart generators
+│   ├── fixtures/          # Synthetic schema fixtures, never empirical evidence
+│   ├── observational/     # Separately bounded longitudinal repository facts
+│   └── results/           # Processed synthetic summary data and future generators
 ├── docs/                  # Design registers, publications logs, and taxonomy
 │   ├── research-claim.md  # Main claims and falsifiable predictions
 │   ├── experiment-plan.md # Metric definitions and experimental layout
+│   ├── fleet-coherence-protocol.md # Prospective handoff/concurrency/tool-switch studies
+│   ├── implementation-claim-matrix.md # Decapod code/test support and boundaries
 │   └── terminology.md     # Project taxonomy and definitions
 └── pages/                 # Web landing page and metrics dashboard
 ```
