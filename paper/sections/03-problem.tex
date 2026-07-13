@@ -1,7 +1,7 @@
 \section{Problem Formulation}
 \label{sec:problem}
 
-The standard model of agentic software engineering relies on a chat-based transcript-only workflow. The agent is initialized with a system prompt and a user command, interacts with files and commands through tool wrappers, and logs its output in a conversational transcript. We formalize five distinct failure modes inherent in this architecture.
+The standard model of agentic software engineering often relies on a chat-centered workflow. The agent is initialized with a system prompt and a user command, interacts with files and commands through tool wrappers, and returns a conversational transcript and repository diff. We first retain five single-run failure modes, then distinguish failures that arise when independently launched agents share a project without durable coordination.
 
 \subsection{Intent Loss (State Loss Under Interruption)}
 When an agent's process is interrupted due to network timeouts, model rate limits, or crash events, the current state of its work is lost. In a transcript-only workflow, there is no separate, structured record of progress. Resuming the task requires either:
@@ -14,10 +14,25 @@ When an agent's process is interrupted due to network timeouts, model rate limit
 LLMs operate within a finite context window. As an agent runs multi-step tasks (e.g., executing commands, reading compiler stack traces, parsing log files), the context window becomes saturated with terminal stdout/stderr. As the initial prompt and instructions are pushed out of the active context, the agent suffers from context drift: it forgets original constraints, ignores boundary rules, and enters infinite loops of repeating the same failing tool commands.
 
 \subsection{Authority Leakage (Unbounded Privileges)}
-Transcript-only workflows do not partition credentials or system permissions. The agent runs with the privileges of the parent terminal. If the agent receives a prompt to debug a web application, but is exposed to malicious input (e.g., via a dependency or a test database file), prompt injection or model hallucination can cause the agent to execute destructive commands (e.g., \texttt{rm -rf /}) or access sensitive environmental credentials (e.g., AWS tokens) that are unrelated to the target task.
+Chat-centered workflows do not themselves partition credentials or system permissions. An agent commonly inherits the parent runtime's authority unless the workbench supplies a stronger boundary. Repository worktrees can isolate mutation surfaces, but they do not establish credential isolation or a complete operating-system sandbox. A governance layer must therefore state exactly which mutations it gates and which runtime authority remains outside its control.
 
 \subsection{Concurrent Workspace Collision (State Inconsistency)}
 In active development environments, multiple agents or human engineers work concurrently on the same codebase. In a transcript-only workflow operating directly on a single shared repository directory, concurrent edits cause state corruption. If Agent $A$ compiles the code while Agent $B$ is modifying a dependency, the build output is non-deterministic. Furthermore, without logical branch isolation, agents overwrite each other's files, leading to silent code regressions and complex merge conflicts.
 
 \subsection{Unverifiable Completion (False Success Claims)}
-Agents frequently hallucinate completion. When an agent runs into a hard debugging loop, it often stops executing tools and asserts verbally in the chat transcript: "I have successfully resolved the issue." However, the repository remains in a broken or incomplete state. Without an independent, machine-checkable verification gate that must be passed before a completion claim is registered, these false-positive assertions require humans to manually pull the code, compile it, and run tests themselves to check the agent's work.
+Agents can declare completion while the repository remains broken or incomplete. Without an independent, machine-checkable verification gate tied to the governed state, these false-positive assertions require humans to compile, test, and reconstruct the evidence themselves.
+
+\subsection{Cross-Runtime Context Discontinuity}
+A new session or workbench does not inherently inherit another provider's conversation. Relevant decisions may exist, yet remain trapped in a prior chat. This \emph{cross-runtime discontinuity} differs from context-window drift: the lost state was available to another process, not merely displaced inside the current one. The receiver reconstructs intent, progress, and uncertainty from diffs, summaries, or guesses.
+
+\subsection{Ownership Ambiguity and Duplicated Inference}
+Without durable claims, multiple agents may investigate the same failure, reread the same architecture, run the same tests, or produce competing implementations. This is waste before a textual conflict occurs. Branch isolation alone does not tell an agent whether another process already owns the task or a prerequisite.
+
+\subsection{Handoff Loss and Project-Memory Fragmentation}
+A commit or diff does not necessarily preserve why a task exists, rejected alternatives, unresolved questions, dependency state, validation already performed, missing proof, or the reason execution stopped. Vendor conversations and personal session memory further fragment knowledge that should belong to the project. A handoff protocol must preserve durable references while acknowledging that hidden reasoning and complete transcripts may remain unavailable.
+
+\subsection{Workbench Dialect Fragmentation}
+Agent platforms expose different slash commands, memory behavior, lifecycle controls, and orchestration conventions. Humans can be forced to translate the same desired outcome into provider-specific operational rituals. We call the separation of natural human delegation from those machine-facing governance calls \emph{operator decoupling}: the agent uses a stable control-plane contract at governance boundaries. This does not imply that vendor commands cease to exist.
+
+\subsection{Integration, Publication, and Governance-State Races}
+Separate worktrees prevent direct file trampling but do not guarantee compatible designs. Multi-agent analysis must distinguish mutation collision, overlapping ownership, dependency-order violation, textual merge conflict, semantic integration failure, task-local proof, post-integration proof, and publish authorization. Related agents may also resolve inconsistent context or stale projections. A local validation pass is insufficient when the integrated state violates a dependency or publication gate.

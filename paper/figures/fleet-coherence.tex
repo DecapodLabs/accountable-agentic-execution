@@ -1,0 +1,17 @@
+\begin{figure}[t]
+\centering
+\setlength{\fboxsep}{6pt}
+\fbox{\parbox{0.92\linewidth}{
+\centering
+\textsf{Claude/workbench A}\quad\textsf{Codex/workbench B}\quad\textsf{Gemini/workbench C}\\[-0.2em]
+$\downarrow$\hspace{0.22\linewidth}$\downarrow$\hspace{0.22\linewidth}$\downarrow$\\[0.3em]
+\textbf{Stable agent-facing governance contract}\\
+$\downarrow$\\[-0.2em]
+\textbf{Governed repository substrate}\\
+intent/specs $\mid$ task graph/claims $\mid$ context/memory $\mid$ trajectory/proof\\
+$\downarrow$\\[-0.2em]
+task worktrees/containers $\longrightarrow$ integration checks $\longrightarrow$ publication gate
+}}
+\caption{Ephemeral agent/workbench processes use one durable local project substrate. Arrows denote governed interfaces, not interception of every runtime action or global consensus.}
+\label{fig:fleet-coherence}
+\end{figure}

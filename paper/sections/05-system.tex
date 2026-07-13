@@ -1,18 +1,18 @@
 \section{Decapod: A Reference Governance Kernel}
 \label{sec:system}
 
-Decapod is a daemonless, local-first governance kernel for AI coding agents. It is invoked by agents at governance boundaries; it does not replace the model's tool loop or claim to make the underlying model more capable. The implementation mapping below is based on the current Decapod source tree and generated project specifications.
+Decapod is a daemonless, local-first governance kernel for AI coding agents. It is invoked by agents at governance boundaries; it does not replace the model's tool loop or alter model weights. The implementation mapping is pinned to commit \texttt{e7df80d} (tag \texttt{v0.66.1}); the companion claim matrix lists command, source, test, status, boundary, and planned measure for each research concept.
 
 \subsection{System Architecture}
 The CLI and JSON-RPC surfaces route requests into core subsystems that persist state under \texttt{.decapod/}. The principal surfaces relevant to this paper are:
 \begin{enumerate}
-    \item \textbf{Intent and coordination}: governed plans, todos, specifications, context capsules, and proof hooks progressively resolve human intent: the desired outcome, motivation, constraints, priorities, unknowns, stop conditions, and completion standard. The todo subsystem records task ownership, claims, dependencies, and events; none of these projections replaces human or team authority.
+    \item \textbf{Intent and coordination}: governed plans, todos, specifications, context capsules, knowledge, and proof hooks progressively resolve human intent. The todo subsystem records claims, tags/categories, dependencies, presence, owners, and approved handoffs; none of these projections replaces human or team authority.
     \item \textbf{Custody}: workspace management creates todo-scoped git worktrees and, when configured, container workspaces. Protected branches and workspace checks prevent an agent from treating the human root checkout as its execution surface.
-    \item \textbf{Trajectory}: todo, broker, proof, and related event journals are rendered by the flight recorder as a timeline or transcript. This is a governance record, not a complete capture of all model or shell activity.
+    \item \textbf{Trajectory}: todo, broker, proof, federation-memory, and related event journals are rendered by the flight recorder as a timeline or transcript. This is a selected governance record, not a complete capture of all model or shell activity.
     \item \textbf{Proof and validation}: configurable proof commands produce structured results and proof events; \texttt{decapod validate}, workunit gates, provenance artifacts, and verification checks supply promotion evidence.
 \end{enumerate}
 
-The generated specs describe the same corridor as intent $\rightarrow$ claim $\rightarrow$ workspace $\rightarrow$ proofs $\rightarrow$ publish. The repository is local-first and cloud-disabled in the evaluated configuration; external systems are optional publication or coordination surfaces rather than the local source of truth.
+The generated specs describe the same corridor as intent $\rightarrow$ claim $\rightarrow$ workspace $\rightarrow$ proofs $\rightarrow$ publish. The public crate's cloud backend explicitly reports unavailable; cloud-mode initialization writes only an experimental registration payload while local state remains usable. Remote leases, synchronization, and cloud handoff are therefore future work, not evaluated capabilities.
 
 \subsection{Intent and Governed Workflow}
 Decapod does not currently require a universal \texttt{.decapod/intent.json} manifest or file-marker completion protocol. Instead, the workflow is distributed across explicit interfaces such as:
@@ -20,12 +20,16 @@ Decapod does not currently require a universal \texttt{.decapod/intent.json} man
 decapod session acquire
 decapod todo add "task description"
 decapod todo claim --id <task-id>
+decapod todo handoff --id <task-id> --to <agent> --summary "..."
 decapod infer orientation --intent "..." --task-id <task-id>
 decapod workspace ensure --container
 decapod validate
 decapod todo done --id <task-id> --validated
 \end{verbatim}
 Governed plans add a stronger pre-execution contract: execution is blocked when the plan is not approved, when intent or unknowns remain unresolved, or when no todo is selected. These mechanisms operationalize durable intent without implying that every natural-language requirement is machine-verifiable.
+
+\subsection{Operator Decoupling}
+Provider-specific \texttt{CLAUDE.md}, \texttt{CODEX.md}, and \texttt{GEMINI.md} entrypoints delegate to one universal \texttt{AGENTS.md} contract. The intended human interface remains natural language: the operator states the outcome to the available agent, and the agent invokes Decapod's CLI or JSON-RPC at governance boundaries. This is interaction-contract portability, not a claim that vendor-specific commands disappear or that every workbench obeys the contract.
 
 \subsection{Proof and Evidence Boundaries}
 Proof definitions contain commands, arguments, descriptions, and required status. A proof run records exit status, duration, pass/fail state, bounded output, run identifiers, actor, and related requirements in the proof event journal. Workunit and workspace-publish gates can require proof results and validation evidence before promotion.

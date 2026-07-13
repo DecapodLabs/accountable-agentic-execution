@@ -421,7 +421,7 @@
 
     <!-- Top Status Warning -->
     <div class="status-banner" id="banner-warning">
-        <strong>Status</strong> Pre-results technical report. The model, terminology, paper scaffold, and reproducibility harness are public. All metrics remain TBD.
+        <strong>Status</strong> Pre-results technical report. Controlled metrics remain TBD. Synthetic fixtures are schema tests; a separately labeled git-derived Decapod snapshot is observational, not treatment evidence.
     </div>
 
     <header>
@@ -448,11 +448,15 @@
             <h2 class="section-title">Abstract</h2>
             <div class="abstract-card">
                 <p class="abstract-text">
-                    Large language model (LLM) agents are transitioning from conversational programming assistants to autonomous executors capable of editing codebases, running build tools, executing tests, and managing multi-file software deployments. Despite this shift, current agent workflows still rely on standard prompt transcripts and code diffs as the primary logs of execution. As agent runs become concurrent, long-running, and tool-intensive, this transcript-only paradigm exposes repositories to significant failure modes: lost intent, authority leakage, concurrent state corruption, and unverifiable completion claims.
+                    Large language model (LLM) agents are transitioning from conversational programming assistants to autonomous executors capable of editing codebases, running build tools, executing tests, and managing multi-file software deployments. Many coding-agent workflows still rely heavily on prompt transcripts and diffs as durable records. As runs become concurrent, long-running, and tool-intensive, this chat-centered baseline exposes projects to lost intent, cross-runtime discontinuity, ambiguous ownership, duplicated inference, workspace and integration failure, and unverifiable completion claims.
                 </p>
                 <br>
                 <p class="abstract-text">
-                    This paper frames agentic software engineering as a distributed execution problem and asks whether a human can type one complex outcome, start the agent, and walk away. <strong>Intent</strong> is the human or team’s desired outcome, motivation, constraints, priorities, unresolved questions, and completion standard, progressively represented through governed artifacts. <strong>Custody</strong> bounds task ownership and workspace authority; <strong>Trajectory</strong> records selected governance activity; and <strong>Proof</strong> provides machine-checkable validation and provenance evidence. We present Decapod as a local-first reference implementation and make the primary comparison conventional versus Decapod-governed execution under the identical natural delegation prompt. Natural-versus-procedural prompting is secondary. No empirical result is reported here.
+                    This paper frames agentic software engineering as a distributed execution problem and asks whether a human can type one complex outcome, start the agent, and walk away. <strong>Intent</strong> is the human or team’s desired outcome, motivation, constraints, priorities, unresolved questions, and completion standard, progressively represented through governed artifacts. <strong>Custody</strong> bounds task ownership and workspace authority; <strong>Trajectory</strong> records selected governance activity; and <strong>Proof</strong> provides machine-checkable validation and provenance evidence. The primary comparison remains conventional versus Decapod-governed execution under the identical natural delegation prompt.
+                </p>
+                <br>
+                <p class="abstract-text">
+                    The expanded program defines <strong>fleet coherence</strong>: independently launched agents use the same durable project authority, task custody, selected trajectory, and proof boundary across sessions, handoffs, and concurrent work. Agents and conversations are ephemeral execution processes; the governed repository is the durable coordination subject. This is not a fifth primitive, global consensus, lossless conversation transfer, or a conflict-free merge guarantee. The human speaks naturally to the available agent; the agent handles the stable governance protocol. No controlled result is reported here.
                 </p>
 
                 <!-- Flow Visualizer -->
@@ -487,20 +491,20 @@
                 
                 <div class="primitive-card" id="card-intent">
                     <div class="primitive-icon">Intent</div>
-                    <h3 class="primitive-name">Durable Intent</h3>
+                    <h3 class="primitive-name">Human/Team Intent</h3>
                     <p class="primitive-desc">The human or team’s desired outcome, motivation, constraints, priorities, unknowns, stop conditions, and completion standard, progressively resolved through governed plans, todos, specs, and proof expectations.</p>
                 </div>
                 
                 <div class="primitive-card" id="card-custody">
                     <div class="primitive-icon">Custody</div>
-                    <h3 class="primitive-name">Isolated Custody</h3>
-                    <p class="primitive-desc">Isolated workspaces (git worktrees) and execution sandboxes. Reduces workspace collision and unsafe repository mutation risk; credential isolation depends on the configured runtime boundary.</p>
+                    <h3 class="primitive-name">Governed Custody</h3>
+                    <p class="primitive-desc">Task claims, task-scoped git worktrees, and configured containers reduce workspace collision and unsafe repository mutation risk; credential isolation depends on the runtime boundary.</p>
                 </div>
 
                 <div class="primitive-card" id="card-trajectory">
                     <div class="primitive-icon">Trajectory</div>
                     <h3 class="primitive-name">Auditable Trajectory</h3>
-                    <p class="primitive-desc">Event-backed governance records for task, broker, proof, and validation activity. Designed to anchor execution history and support recoverability.</p>
+                    <p class="primitive-desc">Event-backed records for selected task, broker, proof, memory, and validation activity. Designed to support reconstruction without claiming complete runtime capture.</p>
                 </div>
                 
                 <div class="primitive-card" id="card-proof">
@@ -512,20 +516,35 @@
             </div>
         </section>
 
+        <section id="sec-fleet">
+            <h2 class="section-title">Fleet Coherence Research Program</h2>
+            <div class="abstract-card">
+                <p class="abstract-text"><strong>Implementation basis:</strong> Decapod <a href="https://github.com/DecapodLabs/decapod/commit/e7df80d8234a80c490f6fe2119a6cff32135a386">e7df80d</a> (<code>v0.66.1</code>). The audit verifies atomic exclusive claims, trust-gated shared ownership and handoff, task workspaces, deterministic context bundles, local project memory, selected governance events, proof/workunit state, and publication gates. Handoff does not transfer hidden chat state; worktrees do not prove integration; the public cloud backend is unavailable.</p>
+                <br>
+                <div class="primitives-grid">
+                    <div class="primitive-card"><div class="primitive-icon">Study A</div><h3 class="primitive-name">Walk-away alignment</h3><p class="primitive-desc">Primary CN versus DN comparison under the identical complex natural prompt.</p></div>
+                    <div class="primitive-card"><div class="primitive-icon">Study B</div><h3 class="primitive-name">Handoff continuity</h3><p class="primitive-desc">Structured conventional handoff versus governed ownership/context/trajectory/proof transfer.</p></div>
+                    <div class="primitive-card"><div class="primitive-icon">Study C–D</div><h3 class="primitive-name">Concurrency and tool switching</h3><p class="primitive-desc">Duplicate work, direct collisions, deferred integration failure, and reorientation across workbenches.</p></div>
+                    <div class="primitive-card"><div class="primitive-icon">Study E</div><h3 class="primitive-name">Observational dogfooding</h3><p class="primitive-desc">At the inspected commit: 2,127 git commits and 326 tags from February–July 2026. Activity evidence only; no causal or review-burden claim.</p></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Empirical Results Dashboard -->
         <section id="sec-results">
             <h2 class="section-title">Evaluation Plan</h2>
             
             <div class="metrics-tabs">
-                <button class="tab-btn active" id="tab-primary">Primary Walk-Away Protocol — TBD</button>
-                <button class="tab-btn" id="tab-systems">Cost &amp; Governance Metrics — TBD</button>
+                <button class="tab-btn active" id="tab-primary">Primary Walk-Away Protocol — Not Yet Executed</button>
+                <button class="tab-btn" id="tab-systems">Cost &amp; Governance Metrics — Not Yet Executed</button>
+                <button class="tab-btn" id="tab-fleet">Fleet Studies — Prospective</button>
             </div>
 
             <div class="table-container">
                 <table id="metrics-table">
                     <thead>
                         <tr id="table-headers">
-                            <th>Primary Walk-Away Protocol — TBD</th>
+                            <th>Primary Walk-Away Protocol — Not Yet Executed</th>
                             <th>Conventional · Natural</th>
                             <th class="treatment-col">Decapod · Natural</th>
                         </tr>
@@ -534,18 +553,18 @@
                         <!-- Default view populated -->
                         <tr>
                             <td>Task Completion Rate (%)</td>
-                            <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight treatment-col">[TBD]</td>
+                            <td class="metric-highlight">No controlled run</td>
+                            <td class="metric-highlight treatment-col">No controlled run</td>
                         </tr>
                         <tr>
                             <td>Invalid Success Claims (%)</td>
-                            <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight treatment-col">[TBD]</td>
+                            <td class="metric-highlight">No controlled run</td>
+                            <td class="metric-highlight treatment-col">No controlled run</td>
                         </tr>
                         <tr>
                             <td>Interruption Recovery Rate (%)</td>
-                            <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight treatment-col">[TBD]</td>
+                            <td class="metric-highlight">No controlled run</td>
+                            <td class="metric-highlight treatment-col">No controlled run</td>
                         </tr>
                     </tbody>
                 </table>
@@ -564,34 +583,52 @@
     <script>
         const tabPrimary = document.getElementById('tab-primary');
         const tabSystems = document.getElementById('tab-systems');
+        const tabFleet = document.getElementById('tab-fleet');
         const tableHeaders = document.getElementById('table-headers');
         const tableBody = document.getElementById('table-body');
 
         const primaryData = `
-            <tr><td>Independent intent fidelity</td><td>[TBD]</td><td>[TBD]</td></tr>
-            <tr><td>Acceptable completion without coaching</td><td>[TBD]</td><td>[TBD]</td></tr>
-            <tr><td>Model requests, failed cycles, and rewrites</td><td>[TBD]</td><td>[TBD]</td></tr>
-            <tr><td>Context relevance and evidence completeness</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Independent intent fidelity</td><td>No controlled run</td><td>No controlled run</td></tr>
+            <tr><td>Acceptable completion without coaching</td><td>No controlled run</td><td>No controlled run</td></tr>
+            <tr><td>Model requests, failed cycles, and rewrites</td><td>No controlled run</td><td>No controlled run</td></tr>
+            <tr><td>Context relevance and evidence completeness</td><td>No controlled run</td><td>No controlled run</td></tr>
 `;
 
         const systemsData = `
-            <tr><td>Elapsed time, tokens, and tool calls</td><td>[TBD]</td><td>[TBD]</td></tr>
-            <tr><td>Validation, proof, and workspace overhead</td><td>[TBD]</td><td>[TBD]</td></tr>
-            <tr><td>Invalid claims, recovery, and collisions</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Elapsed time, tokens, and tool calls</td><td>No controlled run</td><td>No controlled run</td></tr>
+            <tr><td>Validation, proof, and workspace overhead</td><td>No controlled run</td><td>No controlled run</td></tr>
+            <tr><td>Invalid claims, recovery, and collisions</td><td>No controlled run</td><td>No controlled run</td></tr>
+`;
+
+        const fleetData = `
+            <tr><td>Handoff reorientation and duplicated exploration</td><td colspan="2">Prospective Study B — no runs</td></tr>
+            <tr><td>Duplicate starts, direct collisions, and integration repair</td><td colspan="2">Prospective Study C — no runs</td></tr>
+            <tr><td>Tool-switch continuity without transcript replay</td><td colspan="2">Prospective Study D — no runs</td></tr>
+            <tr><td>Longitudinal repository activity</td><td colspan="2">Observational only; excluded from controlled estimates</td></tr>
 `;
 
         tabPrimary.addEventListener('click', () => {
             tabPrimary.classList.add('active');
             tabSystems.classList.remove('active');
-            tableHeaders.cells[0].innerText = "Primary Walk-Away Protocol — TBD";
+            tabFleet.classList.remove('active');
+            tableHeaders.cells[0].innerText = "Primary Walk-Away Protocol — Not Yet Executed";
             tableBody.innerHTML = primaryData;
         });
 
         tabSystems.addEventListener('click', () => {
             tabSystems.classList.add('active');
             tabPrimary.classList.remove('active');
+            tabFleet.classList.remove('active');
             tableHeaders.cells[0].innerText = "Cost & Governance Metrics — TBD";
             tableBody.innerHTML = systemsData;
+        });
+
+        tabFleet.addEventListener('click', () => {
+            tabFleet.classList.add('active');
+            tabPrimary.classList.remove('active');
+            tabSystems.classList.remove('active');
+            tableHeaders.cells[0].innerText = "Fleet Coherence Program";
+            tableBody.innerHTML = fleetData;
         });
     </script>
 </body>

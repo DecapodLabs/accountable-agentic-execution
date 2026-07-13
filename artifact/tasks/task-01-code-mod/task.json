@@ -1,6 +1,7 @@
 {
   "schema_version": "task-package.v1",
   "task_id": "task-01-code-mod",
+  "study_eligibility": [],
   "canonical_intent": "Add a user-facing greeting variant without changing existing greeting behavior.",
   "motivation": "The project needs a small, backwards-compatible communication feature.",
   "constraints": ["Preserve existing greeting behavior", "Keep the change scoped to the application and its tests", "Do not add dependencies"],

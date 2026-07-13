@@ -19,3 +19,14 @@ Failed, timed-out, crashed, clarification-blocked, and incomplete runs remain in
 ## Non-inferiority and multiplicity
 
 No non-inferiority claim is permitted until a domain-justified margin and power analysis are frozen before confirmatory execution. Otherwise describe the study as exploratory/pilot and report estimates with uncertainty. Declare the primary outcome family before collection and state multiplicity treatment for secondary outcomes.
+
+## Prospective fleet-study analyses
+
+Studies B–D are separate outcome families and do not enter Study A's primary estimate. Each requires its own frozen task/checkpoint blocks, sample-size justification, retry policy, and multiplicity treatment.
+
+- **Study B:** pair by task, checkpoint, repetition, source/destination workbench, and (where possible) model. Estimate differences in reorientation calls/time, duplicate exploration, preserved constraints, final fidelity, proof continuity, and human briefing. Stratify rather than pool same-model and heterogeneous-model transfers.
+- **Study C:** treat the task graph/repetition as the cluster. Report duplicate starts, claim conflicts, direct collisions, textual merge conflicts, semantic integration failures, repair effort, integrated fidelity, publication success, and wall-clock/resource cost. Do not combine direct-collision and integration-failure outcomes.
+- **Study D:** use Study B estimands with workbench pair as a declared factor. Version drift and provider failures remain in denominators or the frozen infrastructure-failure stratum.
+- **Study E:** descriptive observational statistics only. No controlled effect estimate, hypothesis test, or pooling with Studies A–D is permitted.
+
+Study-specific aggregation requires one `study_id`, one run kind, and one evidence class. Sensitivity analyses must include alternate duplicate-operation adjudication, stale-context exclusions, failed handoffs, integration-gate availability, and total governance/configuration cost.

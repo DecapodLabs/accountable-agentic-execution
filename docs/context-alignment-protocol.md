@@ -22,3 +22,5 @@ The conventional run records an explicit empty Decapod-context manifest and the 
 An auditor who does not execute the task classifies every supplied item as `necessary`, `useful`, `irrelevant`, `redundant`, `contradictory`, or `harmful`, with a reason and source reference. The audit is separate from the agent's completion claim and is included in the provenance chain.
 
 The study must report harmful or irrelevant context, not discard it as an instrumentation nuisance. Context quantity alone is not a mechanism outcome.
+
+For Studies B–D, record the context manifest available immediately before and after transfer or concurrent task claim. The audit distinguishes newly resolved context from reused project memory and records stale, contradictory, redundant, or lost items. This extension does not change Study A's primary context-alignment estimand.

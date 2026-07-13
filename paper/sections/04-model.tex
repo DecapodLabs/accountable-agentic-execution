@@ -33,3 +33,32 @@ where a record may include timestamp, operation, actor, session, correlation ide
 A Proof ($P_f$) is the set of machine-checkable evidence attached to a governed task:
 $$P_f = \langle I, R_n, \{\operatorname{Pass}(v_j)\}, E \rangle$$
 where $E$ contains relevant proof events, workunit results, validation output, and provenance references. In Decapod, validation and proof gates can block promotion or completion paths when required evidence is absent. A proof record establishes what the configured gates observed; it does not establish semantic correctness beyond those gates, and this paper makes no claim that the current implementation signs a universal certificate.
+
+\subsection{Heterogeneous Multi-Agent Layer}
+
+The single-run transition sequence is insufficient for independently launched processes. Let $\mathcal{A}=\{\alpha_1,\ldots,\alpha_m\}$ be agent processes, $\mathcal{M}$ the underlying models, $\mathcal{W}$ the workbenches or runtimes, and $G=(V,E_G)$ a governed task/dependency graph. Each agent has a model/workbench pair, but neither is the durable project subject. We define:
+\begin{align*}
+o &: V \rightarrow \mathcal{A}\cup\{\varnothing\} && \text{primary task ownership},\\
+w &: V \rightarrow \mathcal{S} && \text{task-to-workspace assignment},\\
+C(v) &&& \text{resolved authoritative context},\\
+T(v) &&& \text{accumulated governance trajectory},\\
+P(v) &&& \text{proof and validation state},\\
+H(v,\alpha_i,\alpha_j) &&& \text{governed ownership transfer},\\
+Q &&& \text{integration and publication state}.
+\end{align*}
+The repository state includes the durable representations of $G,o,w,C,T,P,$ and $Q$; a workbench conversation does not. A handoff $H$ changes ownership and records durable transfer information while the receiving process resolves the current repository state. It cannot transfer inaccessible hidden reasoning.
+
+\subsection{Qualified Fleet Invariants}
+
+The implementation audit distinguishes enforced, conditional, and desired properties:
+\begin{enumerate}
+    \item \textbf{Exclusive primary custody (enforced for exclusive mode):} an atomic exclusive claim conflicts with another active primary assignee. Trust-gated shared secondary ownership exists, so uniqueness is not unconditional.
+    \item \textbf{Workspace custody (enforced on governed paths):} a todo-scoped worktree is required and protected/root checkout work is blocked. External tools can bypass Decapod, and containers are configuration-dependent.
+    \item \textbf{Dependency awareness (represented and partially gated):} dependencies are durable and replayable; this is not a globally serializable scheduler.
+    \item \textbf{Handoff continuity (implemented but bounded):} approved ownership transfer preserves task assignment, summary/event, durable knowledge, and available repository references. Complete conversation state, unresolved-state completeness, and merge success are not guaranteed.
+    \item \textbf{Provider-independent project state (implemented as an external contract):} generated entrypoints route multiple workbenches to one repository contract. Compliance by every workbench is empirical, not enforced by Decapod.
+    \item \textbf{Proof-gated publication (enforced on the Decapod publish path):} provenance manifests and configured workunit/evaluation gates are required. Task-local evidence remains insufficient if post-integration gates fail or are absent.
+    \item \textbf{Projection consistency (enforced for declared surfaces):} validation detects known derived-state drift. This is not global distributed consensus.
+\end{enumerate}
+
+We define \emph{fleet coherence} as the degree to which these bounded properties let heterogeneous processes preserve common authority, avoid conflicting custody, reconstruct relevant state, and share an acceptance boundary. It is an emergent property of Intent, Custody, Trajectory, and Proof, not a fifth primitive.

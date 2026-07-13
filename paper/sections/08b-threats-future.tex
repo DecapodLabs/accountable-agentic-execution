@@ -1,0 +1,17 @@
+\section{Threats to Validity and Future Work}
+\label{sec:threats}
+
+\subsection{Controlled-Study Validity}
+The walk-away study may be sensitive to one model/runtime, provider nondeterminism, task selection, prompt-pair equivalence, benchmark contamination, evaluator validity, hidden-rubric leakage, and repeated-run dependence. Instrumentation may alter behavior, while task authors may encode Decapod-compatible conventions that favor the treatment. Clean context and repository resets, frozen oracles, blinded independent evaluation, task-level clustering, protocol tags, and complete failure accounting reduce but do not remove these threats.
+
+Fleet studies add checkpoint selection, workbench/version drift, model heterogeneity, handoff-document quality, shared-state contamination, and concurrency scheduling. Duplicate operations are difficult to classify semantically: rereading a file may be prudent verification rather than waste. A Decapod condition may also receive more information than the baseline. The protocols therefore record exact supplied context, use credible structured handoffs and worktrees, stratify model changes, and audit relevance. Generalization to production teams, proprietary repositories, distributed organizations, and long-lived maintenance remains unestablished.
+
+The longitudinal case study is especially limited. Git history measures repository activity, not agent autonomy, review effort, defect escape, or causal benefit. Author testimony about workbench use is subject to recall and selection bias and remains separate from repository-derived facts.
+
+\subsection{Implementation and Security Boundaries}
+The implementation audit is pinned to one Decapod commit and may become stale. The kernel does not alter model weights, provide a complete OS sandbox, guarantee credential isolation, capture every token/shell byte/tool event, guarantee conflict-free merges, prove semantics beyond configured gates, or make all shared context useful. Governance may relocate human work into configuration, increase latency/tokens, or perform no better than simpler controls.
+
+\subsection{Federated Agentic Software Execution}
+The evaluated system is local-first. A future optional cloud coordination plane could expose cross-machine task discovery, distributed leases, remote handoff, evidence publication, and cross-team visibility while retaining local repository authority. That direction introduces identity and actor attribution, lease expiry, synchronization conflict, institution-specific policy, privacy and data minimization, disconnected operation, trust, revocation, and evidence-portability questions.
+
+Such federation should not silently move source-of-truth authority into one vendor's agent platform. Institutions may retain local custody and synchronize only bounded coordination/evidence records. The inspected public crate does not implement this system: its cloud backend is unavailable and its local subsystem named federation is a typed memory graph, not distributed consensus. Future claims require an implemented protocol, threat model, consistency semantics, and separate evaluation.

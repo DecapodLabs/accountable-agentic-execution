@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://decapodlabs.github.io/accountable-agentic-execution/schemas/observational-record.schema.json",
+  "type": "object",
+  "required": ["schema_version", "kind", "study_id", "evidence_class", "record_id", "repository", "provenance", "facts", "claim_boundary"],
+  "properties": {
+    "schema_version": {"const": "observational-record.v1"},
+    "kind": {"const": "observational"},
+    "study_id": {"const": "longitudinal_case_study"},
+    "evidence_class": {"const": "observational"},
+    "record_id": {"type": "string", "minLength": 1},
+    "repository": {"type": "string", "minLength": 1},
+    "provenance": {
+      "type": "object",
+      "required": ["git_commit", "generated_at", "generator", "commands"],
+      "properties": {
+        "git_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "generated_at": {"type": "string"},
+        "generator": {"type": "string"},
+        "commands": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "facts": {"type": "object"},
+    "author_reported_experience": {"type": "array", "items": {"type": "object"}},
+    "claim_boundary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

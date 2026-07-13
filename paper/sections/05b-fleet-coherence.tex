@@ -1,0 +1,31 @@
+\section{Cross-Agent Continuity and Heterogeneous Fleet Coordination}
+\label{sec:fleet}
+
+Decapod's second systems contribution is not a role-playing multi-agent team inside one orchestrator. It externalizes selected governance state into the project so independently launched processes can participate through a common contract. Figure~\ref{fig:fleet-coherence} summarizes this local-first topology. We call the resulting bounded property \emph{fleet coherence}.
+
+\input{figures/fleet-coherence}
+
+\subsection{Provider-Independent Project State}
+Generated workbench entrypoints route agents to one universal contract, while todos, context capsules, specifications, memory records, event journals, and proof artifacts live outside any one provider conversation. This makes a workbench replaceable in principle: a later process can query current project state rather than inherit only a chat summary. The current implementation does not prove that every workbench follows the contract, and machine-local session credentials are not themselves project memory.
+
+\subsection{Project-Owned Memory and Context Continuity}
+Decapod exposes provenance-bearing knowledge, aptitude observations/preferences, and a typed local memory graph with lifecycle state. Context bundles and capsules bind canonical contents to task, scope, policy, and repository revision. These mechanisms permit later agents to retrieve selected decisions and constraints, but they do not ingest complete conversations automatically. More memory is not necessarily better: stale, contradictory, irrelevant, or harmful context is a first-class failure condition and is independently audited in the proposed studies.
+
+\subsection{Ownership, Dependencies, and Handoff}
+Exclusive claims use an atomic conditional update and conflict when another primary assignee is active. Trust-gated shared secondary ownership, category routing, tags, dependencies, heartbeat/presence, and agent expertise also exist. Because shared mode exists, this paper does not assert unconditional single ownership; the controlled fleet protocol selects exclusive claims.
+
+The \texttt{todo handoff} path requires verified trust and explicit approval. It transfers assignment, appends a task-handoff event, stores a persistent knowledge record and observation, and attempts branch reconciliation. This is a real handoff protocol, but a bounded one: the summary may omit relevant reasoning, hidden chat state is unavailable, and reconciliation may fail. Study B measures exactly what the receiver obtained and what was preserved or lost.
+
+\subsection{Workspace Isolation and Integration Boundaries}
+Todo-scoped worktrees isolate direct mutations and protected-branch interlocks keep governed implementation out of the root checkout. Optional containers add a configured runtime boundary. Neither mechanism guarantees credential isolation, prevents an ungoverned external process from bypassing Decapod, or ensures independently valid changes are semantically compatible.
+
+Publication therefore requires a separate state $Q$: task-local proof, integrated validation, provenance, evaluation/workunit state, and authorization may differ. Decapod's publish path checks an unprotected worktree, provenance manifests, and configured workunit/evaluation gates. It does not manufacture post-merge correctness when no integration gate is configured.
+
+\subsection{Trajectory Reconstruction and Proof Portability}
+The flight recorder combines known todo, broker, proof, federation, and related events into timelines or transcripts. A later agent can use those records and state-bound proof references to avoid some reconstruction and repeated verification. Coverage is selective: model tokens, arbitrary shell output, every diff, and every tool event are not universally captured. Proof portability means evidence can be inspected and revalidated against its state; it does not authorize reuse after relevant state changes.
+
+\subsection{Natural-Language Operator Interface}
+The human-facing contribution is operator decoupling. The human continues to express the outcome and constraints in natural language to whichever workbench is available; the agent translates governance boundaries into stable CLI/RPC calls. The proposed Study D measures whether this reduces ad hoc briefing and workbench-dialect translation rather than assuming it does.
+
+\subsection{Local Coordination Boundary}
+The inspected implementation supports local repository coordination. Its subsystem named \emph{federation} is a local typed memory graph, not a cloud consensus service, and the public cloud backend is explicitly unavailable. Cross-machine leases, remote ownership transfer, identity federation, and synchronization are future systems questions.

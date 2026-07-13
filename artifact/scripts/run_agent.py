@@ -120,7 +120,7 @@ def main() -> None:
     context_manifest = read_json(args.context_manifest)
     ended_at = now()
     record = {
-        "schema_version": "run-record.v3", "kind": args.kind, "run_id": str(uuid.uuid4()), "task_id": task["task_id"],
+        "schema_version": "run-record.v4", "kind": args.kind, "study_id": "walk_away_alignment", "evidence_class": "controlled", "run_id": str(uuid.uuid4()), "task_id": task["task_id"],
         "repetition_index": args.repetition_index, "canonical_intent_id": args.canonical_intent_id,
         "substrate": args.substrate, "instruction_style": args.instruction_style,
         "walk_away": {"coaching_allowed": False, "oracle_allowed": True, "human_present_after_start": False},

@@ -4,8 +4,10 @@
   "type": "object",
   "required": ["schema_version", "kind", "run_id", "task_id", "substrate", "instruction_style", "prompt", "provenance", "outcome"],
   "properties": {
-    "schema_version": {"enum": ["run-record.v2", "run-record.v3"]},
+    "schema_version": {"enum": ["run-record.v2", "run-record.v3", "run-record.v4"]},
     "kind": {"enum": ["synthetic_fixture", "pilot", "empirical"]},
+    "study_id": {"enum": ["walk_away_alignment", "handoff_continuity", "concurrent_fleet", "tool_switch_continuity"]},
+    "evidence_class": {"const": "controlled"},
     "run_id": {"type": "string", "minLength": 1},
     "task_id": {"type": "string", "minLength": 1},
     "substrate": {"enum": ["conventional", "decapod_governed", "legacy_fixture"]},
@@ -16,9 +18,54 @@
     "prompt": {"type": "object", "required": ["text", "characters", "approx_tokens", "procedural_steps", "named_paths", "named_commands", "named_tests", "implementation_prescriptions"]},
     "provenance": {"type": "object", "required": ["protocol_id", "task_commit", "model", "runtime", "timestamps", "environment", "configuration"]},
     "context_alignment": {"type": "object"},
+    "coordination": {
+      "type": "object",
+      "properties": {
+        "source_workbench": {"type": ["string", "null"]},
+        "destination_workbench": {"type": ["string", "null"]},
+        "source_model": {"type": ["string", "null"]},
+        "destination_model": {"type": ["string", "null"]},
+        "source_session_id": {"type": ["string", "null"]},
+        "destination_session_id": {"type": ["string", "null"]},
+        "owner_before": {"type": ["string", "null"]},
+        "owner_after": {"type": ["string", "null"]},
+        "handoff_timestamp": {"type": ["string", "null"]},
+        "handoff_reason": {"type": ["string", "null"]},
+        "handoff_payload_refs": {"type": "array", "items": {"type": "string"}},
+        "context_manifest_before": {"type": ["string", "null"]},
+        "context_manifest_after": {"type": ["string", "null"]},
+        "unresolved_questions_preserved": {"type": ["integer", "null"], "minimum": 0},
+        "unresolved_questions_lost": {"type": ["integer", "null"], "minimum": 0},
+        "dependencies_preserved": {"type": ["integer", "null"], "minimum": 0},
+        "dependencies_lost": {"type": ["integer", "null"], "minimum": 0},
+        "proof_state_preserved": {"type": ["boolean", "null"]},
+        "reorientation_model_calls": {"type": ["integer", "null"], "minimum": 0},
+        "duplicate_file_reads": {"type": ["integer", "null"], "minimum": 0},
+        "duplicate_searches": {"type": ["integer", "null"], "minimum": 0},
+        "duplicate_commands": {"type": ["integer", "null"], "minimum": 0},
+        "duplicate_implementation_attempts": {"type": ["integer", "null"], "minimum": 0},
+        "workspace_identities": {"type": "array", "items": {"type": "string"}},
+        "claim_conflicts": {"type": ["integer", "null"], "minimum": 0},
+        "merge_conflicts": {"type": ["integer", "null"], "minimum": 0},
+        "semantic_integration_failures": {"type": ["integer", "null"], "minimum": 0},
+        "publication_gate_passed": {"type": ["boolean", "null"]},
+        "human_briefing": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    },
     "convergence": {"type": "object"},
     "execution": {"type": "object"},
     "outcome": {"type": "object", "required": ["task_success", "intent_fidelity", "invalid_completion_claim", "proof_completeness"]}
   },
+  "allOf": [
+    {
+      "if": {"properties": {"kind": {"enum": ["pilot", "empirical"]}}},
+      "then": {"required": ["study_id", "evidence_class", "walk_away", "context_alignment", "convergence", "execution"]}
+    },
+    {
+      "if": {"properties": {"study_id": {"enum": ["handoff_continuity", "concurrent_fleet", "tool_switch_continuity"]}}, "required": ["study_id"]},
+      "then": {"required": ["coordination"]}
+    }
+  ],
   "additionalProperties": true
 }
