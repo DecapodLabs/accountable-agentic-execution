@@ -83,6 +83,7 @@ As queried on July 13, 2026, the official GitHub API reported 222 stars and 21 f
 - [#877](https://github.com/DecapodLabs/decapod/issues/877): add organization-level constitution overlays.
 - [#878](https://github.com/DecapodLabs/decapod/issues/878): coordinate similar-but-distinct concurrent tasks.
 - [#879](https://github.com/DecapodLabs/decapod/issues/879): document constitution-design chronology and evidence.
+- [#880](https://github.com/DecapodLabs/decapod/issues/880): prove that fresh agents activate governed context across representative hosts without manual human protocol commands.
 - Existing [#852](https://github.com/DecapodLabs/decapod/issues/852), [#860](https://github.com/DecapodLabs/decapod/issues/860), and [#861](https://github.com/DecapodLabs/decapod/issues/861) remain the parent work for leases, fleet projections, and portable trust/provenance.
 - Existing [#868](https://github.com/DecapodLabs/decapod/issues/868) tracks the observed mandatory-orientation bootstrap failure; [#715](https://github.com/DecapodLabs/decapod/issues/715) is the earlier closed materialization issue.
 
