@@ -10,6 +10,7 @@ complete empirical dataset. It models the probabilistic outcomes for:
 import os
 import json
 import random
+import hashlib
 
 TASKS_COUNT = 35
 RUNS_PER_TASK = 5
@@ -45,7 +46,10 @@ COND_CONFIGS = {
 }
 
 def simulate_run(task_id, condition, seed):
-    random.seed(seed + hash(task_id))
+    # Python's built-in hash is intentionally randomized per process. Use a
+    # stable task-derived value so the fixture generator is reproducible.
+    task_hash = int.from_bytes(hashlib.sha256(str(task_id).encode()).digest()[:8], "big")
+    random.seed(seed + task_hash)
     config = COND_CONFIGS[condition]
     
     # 1. Task Completion (Utility)

@@ -12,18 +12,19 @@ Agentic software engineering is increasingly a distributed execution problem. Wh
 
 ## 2. Main Claim
 
-Implementing explicit, repo-native mechanisms for **Intent**, **Custody**, **Trajectory**, and **Proof** as first-class primitives in agentic coding workflows:
+Implementing explicit, repo-native mechanisms for **Intent**, **Custody**, **Trajectory**, and **Proof** as first-class primitives in agentic coding workflows is hypothesized to:
 1. **Reduces the rate of invalid completion claims** (where an agent falsely asserts it has completed a task when the requirements are not met or verification fails).
 2. **Improves recoverability** (the ability of a human or subsequent agent to resume work from an interrupted, aborted, or partially failed agent run).
-3. **Prevents authority leakage and cross-task state corruption** in environments where multiple agents operate concurrently.
+3. **Reduces authority leakage and cross-task state corruption** in environments where multiple agents operate concurrently; the study does not claim to eliminate either risk.
 
 ---
 
 ## 3. Secondary Claims
 
-* **Auditability**: Traces generated under custody constraints with explicit trajectory logs require significantly less human review effort to verify for correctness than raw LLM execution transcripts.
-* **Deterministic Verification**: Embedding validation gates directly in the agent's workspace custody context ensures that completion claims can be checked programmatically before code is proposed for merge.
+* **Auditability**: Governance and proof records generated under custody constraints may require less human review effort to verify than raw LLM execution transcripts.
+* **Deterministic Verification**: Configured validation and promotion gates allow completion evidence to be checked programmatically before code is proposed for merge; they do not prove all semantic requirements.
 * **Intent Drift Mitigation**: A durable intent statement (e.g., a formal checklist or spec tracked outside the context window) reduces the likelihood of an agent drifting off-task during long-running tool loops.
+* **Context Quality and Poisoning**: Repository context is an active intervention: even when agents follow it, unnecessary or conflicting requirements can redirect exploration and increase inference cost. Structured, scoped context should be evaluated for whether it reduces harmful drift without reproducing that overhead.
 
 ---
 
@@ -41,10 +42,10 @@ To remain rigorous, we explicitly state what this paper does **NOT** claim:
 
 Our evaluation is designed around the following concrete, falsifiable predictions:
 
-1. **Prediction 1 (Completion Claims)**: In a benchmark of 50 multi-step coding tasks, the Treatment group (Decapod-governed) will exhibit at least a 50% reduction in "false-positive completion claims" compared to Baseline A (prompt-only) and Baseline B (checklist-only).
-2. **Prediction 2 (Interruption Recovery)**: When an agent's execution is abruptly killed mid-task and resumed, the Treatment group (using the checkpointed Trajectory and Intent primitives) will successfully complete the task in at least 30% more cases than Baseline A, which must restart from the initial prompt and current workspace state.
-3. **Prediction 3 (Concurrent Safety)**: Under a test of two agents making edits to overlapping sections of a repository, Treatment group runs (using isolated workspace custody and branch lockouts) will result in zero uncoordinated merge conflicts, whereas baselines running on the same branch will show frequent overwrites or corrupt states.
-4. **Prediction 4 (Audit Speed)**: An independent human reviewer can correctly accept/reject a task modification 40% faster when presented with a Decapod Trajectory and Proof artifact than when reviewing a raw chat transcript.
+1. **Prediction 1 (Completion Claims)**: In the planned benchmark of 35 multi-step coding tasks, the Treatment group (Decapod-governed) will exhibit fewer invalid completion claims than Baseline A (prompt-only) and Baseline B (checklist-only), with the effect size estimated from completed runs rather than assumed in advance.
+2. **Prediction 2 (Interruption Recovery)**: When an agent's execution is abruptly killed mid-task and resumed, the Treatment group (using durable intent and governance records) will successfully complete more tasks than Baseline A, subject to an explicitly recorded interruption and recovery protocol.
+3. **Prediction 3 (Concurrent Safety)**: Under a test of two agents making edits to overlapping sections of a repository, Treatment group runs will have fewer uncoordinated shared-workspace write failures. Isolated workspaces do not imply zero later merge conflicts, so those outcomes must be measured separately.
+4. **Prediction 4 (Audit Speed)**: An independent human reviewer will correctly accept or reject a task modification faster when presented with Decapod governance and proof artifacts than when reviewing a raw chat transcript, if the preregistered reviewer study supports that result.
 
 ---
 

@@ -6,30 +6,28 @@ To resolve the five failure modes identified in Section~\ref{sec:problem}, we fo
 Let $R$ represent the state of the repository, including the files, directory structure, git history, and runtime environment. An agent run is a sequence of state transitions $R_0 \xrightarrow{a_1} R_1 \xrightarrow{a_2} \dots \xrightarrow{a_n} R_n$, where each action $a_i$ is executed by the agent via tools.
 
 \subsection{Intent: The Goal Objective}
-We define Intent ($I$) as a structured, immutable manifest of goals, sub-tasks, constraints, and validation assertions:
+We define Intent ($I$) as a durable task contract containing goals, constraints, unresolved questions, stop conditions, and proof expectations:
 $$I = \langle G, C, V \rangle$$
-where $G = \{g_1, g_2, \dots, g_k\}$ represents the set of discrete goals (checklists) the agent must accomplish, $C$ represents the execution constraints (e.g., file edit scopes, maximum token budget), and $V = \{v_1, v_2, \dots, v_m\}$ is a set of programmatic validation specifications (e.g., test commands, compile flags). By maintaining $I$ as an external manifest outside the agent's context window, the orchestrator can monitor progress and enforce compliance without relying on conversational context.
+where $G = \{g_1, g_2, \dots, g_k\}$ represents the goals, $C$ represents explicit constraints, and $V = \{v_1, v_2, \dots, v_m\}$ represents proof hooks or validation expectations. In Decapod, these concerns are distributed across governed plan artifacts, todo records, project specs, and proof configuration rather than a single universal \texttt{intent.json}. The contract persists outside the model context, allowing later steps to re-resolve intent and detect unresolved questions before execution.
 
 \subsection{Custody: Environment Bounding}
 Custody ($K$) defines the execution and security sandbox for the agent. Formally, it is a tuple:
 $$K = \langle W, B, A, P \rangle$$
 where:
 \begin{itemize}
-    \item $W \subset R$ is the isolated workspace slice (e.g., a local git worktree).
+    \item $W \subset R$ is the isolated workspace slice (a task-scoped git worktree and, when configured, a container).
     \item $B$ is the task-specific branch locked for the agent.
-    \item $A$ is the set of authorized tools and shell commands.
-    \item $P$ represents the file access permissions (read-only vs. read-write scopes).
+    \item $A$ is the set of governance operations and proof capabilities available to the run.
+    \item $P$ represents the repository and runtime boundary enforced by the workspace configuration.
 \end{itemize}
-By enforcing custody boundaries, the governance kernel constrains actions $a_i \in A$ to only mutate states within $W$, preventing authority leakage and concurrent collisions.
+By enforcing custody boundaries, the kernel keeps the agent's repository mutations in $W$ and prevents direct work on protected branches. This reduces cross-task workspace collisions; it is not a complete operating-system sandbox or credential-isolation proof.
 
-\subsection{Trajectory: The Immutable Ledger}
-The Trajectory ($T$) is an append-only sequence of execution records:
+\subsection{Trajectory: The Governance Record}
+The Trajectory ($T$) is an event-backed sequence of governance records:
 $$T = [t_1, t_2, \dots, t_n]$$
-where each event $t_i$ captures the full execution context of action $a_i$:
-$$t_i = \langle \text{Timestamp}, \text{Action } a_i, \text{Observation } o_i, \Delta(W_i), \text{Tokens} \rangle$$
-Here, $o_i$ is the environment's response to the tool call, and $\Delta(W_i)$ is the cryptographic diff of the workspace. Because $T$ is recorded by the governance kernel rather than the agent, it represents an objective, untampered log. If an agent fails mid-run, a subsequent agent can ingest $T$ to restore context and reconstruct the exact line of execution.
+where a record may include timestamp, operation, actor, session, correlation identifier, status, and structured details. Decapod journals todo, broker, proof, and related governance events and can render them through its flight recorder. These records improve reconstruction and review, but they are not asserted here to be a complete capture of every model token, shell byte, file diff, or tamper-proof execution event.
 
 \subsection{Proof: Completion Evidence}
-A Proof ($P_f$) is the machine-checkable certificate generated at the end of the run. It is defined as:
-$$P_f = \langle I, R_n, \text{Sign}(K_{\text{kernel}}, \text{Hash}(W_n) \cup \{ \text{Pass}(v_j) \}) \rangle$$
-where $\text{Pass}(v_j)$ is the verifiable execution trace showing that validation $v_j \in V$ passed on the final workspace state $W_n$, signed by the local governance kernel. A completion claim is only valid if $P_f$ is complete and cryptographically sound. Verbal assertions in the transcript are ignored.
+A Proof ($P_f$) is the set of machine-checkable evidence attached to a governed task:
+$$P_f = \langle I, R_n, \{\operatorname{Pass}(v_j)\}, E \rangle$$
+where $E$ contains relevant proof events, workunit results, validation output, and provenance references. In Decapod, validation and proof gates can block promotion or completion paths when required evidence is absent. A proof record establishes what the configured gates observed; it does not establish semantic correctness beyond those gates, and this paper makes no claim that the current implementation signs a universal certificate.

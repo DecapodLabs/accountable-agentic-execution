@@ -7,10 +7,10 @@ This paper formalized four primitives for accountable agentic execution:
 \begin{itemize}
     \item \textbf{Intent}: Durable task objectives and constraints.
     \item \textbf{Custody}: Bounded execution sandboxes and permission limits.
-    \item \textbf{Trajectory}: Immutable, kernel-logged audit trails.
-    \item \textbf{Proof}: Machine-checkable, cryptographically anchored evidence of completion.
+    \item \textbf{Trajectory}: Event-backed governance records rendered for reconstruction and review.
+    \item \textbf{Proof}: Machine-checkable validation, proof-run, workunit, and provenance evidence.
 \end{itemize}
 
-We presented Decapod, a local-first governance kernel, as a reference implementation of this framework. The proposed evaluation is designed to test whether custody limits and validation gates reduce false completion claims, prevent concurrent edit conflicts, improve state recoverability after process interruptions, and reduce developer auditing effort.
+We presented Decapod, a daemonless, local-first governance kernel, as a reference implementation of this framework. The implementation mapping and evaluation protocol are grounded in the current codebase, while quantitative results remain future work: the checked-in numerical fixtures are synthetic and are not evidence of treatment effects. The protocol is designed to test whether task ownership, isolated workspaces, validation, and proof gates reduce invalid completion claims, improve recovery, and reduce audit effort, subject to the stated limitations.
 
-Future work includes scaling these primitives to multi-repository orchestration, developing hardware-level isolation layers for agent runtime processes, and exploring methods for programmatically validating complex, soft software requirements. Ultimately, we argue that the future of agentic software engineering lies not in more complex prompting, but in building robust, accountable control planes for machine work.
+Future work includes executing and independently auditing the benchmark, scaling these primitives to multi-repository orchestration, developing stronger isolation layers for agent runtime processes, and exploring methods for validating complex, soft software requirements. Decapod demonstrates one repo-native design, not a complete security boundary or a universal solution.

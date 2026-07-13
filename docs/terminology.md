@@ -10,7 +10,7 @@ This document defines the key concepts and terms used in our paper and evaluatio
 The execution of software-engineering tasks by autonomous agents in a manner that is auditable, bounded, recoverable, and verifiable. It shifts the operational model of agents from unsupervised text generation to bounded systems processes whose actions are tracked and whose outputs are checked against formal assertions.
 
 ### Intent
-The durable, human-declared objective and set of constraints driving an agentic task. Unlike transient model prompts, *intent* is represented as a structured manifest (e.g., JSON/YAML) that remains persistent across model calls, surviving context window overflows, api timeouts, or agent restarts. It specifies what must be achieved and what validation criteria must pass.
+The durable, human-declared objective, constraints, open questions, stop conditions, and proof expectations driving an agentic task. In Decapod these concerns are represented across governed plans, todo records, project specs, and proof configuration rather than one universal manifest. They persist beyond a single model context and can be re-resolved after interruption.
 
 ### Custody
 The scoped ownership and authority context assigned to an agent for a specific task. Custody defines the boundaries of the agent's environment, specifying:
@@ -18,18 +18,13 @@ The scoped ownership and authority context assigned to an agent for a specific t
 * The permitted git branches.
 * The files it is allowed to read or write.
 * The tools (compilers, test runners, network APIs) and credentials it is authorized to access.
-Custody ensures that an agent cannot access unauthorized data or corrupt concurrent tasks running in adjacent workspaces.
+Custody reduces cross-task corruption by assigning ownership and keeping repository mutations in the governed workspace. It is not, by itself, a complete operating-system sandbox or credential-isolation guarantee.
 
 ### Trajectory
-The immutable, ordered ledger of all events occurring during an agent's execution. A trajectory records:
-* Every user interaction and task checkpoint.
-* Every tool call (command run, API requested) along with exact inputs and outputs.
-* Every file modification (patch/diff).
-* Every validation check result.
-The trajectory is captured by the governance kernel, not self-reported by the agent, ensuring its reliability as an audit trail.
+An event-backed record of governance activity during an agent task. In Decapod, todo, broker, proof, and related event journals can be rendered as a flight-recorder timeline or transcript. The record is useful for reconstruction and review, but this paper does not claim that it captures every model token, shell byte, file diff, or tamper-proof execution event.
 
 ### Proof
-Reviewable, machine-checkable evidence demonstrating that the repository state satisfies the declared *intent*. A proof typically consists of successful test suite logs, lint reports, static analysis results, and compiler outputs, cryptographically bound to a snapshot of the workspace (commit hash or tree hash). It represents a concrete justification of completion, rather than a conversational claim.
+Reviewable, machine-checkable evidence about the configured validation and proof gates for a declared *intent*. A proof can include test logs, compiler outputs, proof events, workunit results, validation reports, and provenance references. It is evidence for a completion decision, not a guarantee of semantic correctness; this paper does not claim that Decapod currently signs one universal certificate.
 
 ---
 
@@ -39,13 +34,13 @@ Reviewable, machine-checkable evidence demonstrating that the repository state s
 The execution of programmatic tests, compilers, linter checks, and security scanners within the custody context to evaluate whether the agent's changes satisfy the rules of the project. Validation acts as a filter that must be passed before a completion claim is accepted.
 
 ### Governance Kernel
-A local-first, repo-native control plane that intercepts agent execution to enforce custody, manage intent manifests, record trajectories, run validations, and compile proofs. The kernel does not generate code; it governs the processes that do.
+A daemonless, local-first, repo-native control plane that agents invoke to resolve context, manage intent and task ownership, establish workspaces, run validations, record governance events, and gate promotion. The kernel does not generate code and does not necessarily intercept every action of an external agent runtime.
 
 ### Transcript-Only Workflow
 The standard industry practice where the only record of an agent's work is the text chat transcript containing the prompt, the model's chat responses, and the final git diff. This workflow lacks explicit custody, structured intent manifests, immutable tool logs, and independent proof generation.
 
 ### Proof-Backed Completion
-A state transition protocol where an agent's task is only marked as "complete" (and eligible for merging) once the governance kernel generates a valid *proof* artifact showing all validation gates have passed. Verbal assertions of completion by the agent are ignored.
+A state transition in which task completion or promotion is permitted only after the configured validation, proof, workunit, and workspace gates are satisfied. Verbal assertions alone are insufficient; the exact gates and evidence are part of the project configuration.
 
 ### Local-First Governance
 A design philosophy for agent control planes where all configuration, workspaces, trajectories, validations, and proofs are stored directly within the target repository filesystem and executed locally. This avoids dependency on third-party cloud orchestration APIs and allows standard developers to audit and replay agent runs using local tools.

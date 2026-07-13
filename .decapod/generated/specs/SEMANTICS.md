@@ -83,3 +83,11 @@ The most appropriate seam for introducing trajectories is at the intersection of
    - Reuse the spec manifest system for trajectory specs.
    - Utilize the workspace subsystem for trajectory-scoped isolation (optional).
    - Depend on the constitution for trajectory-related directives (e.g., methodology/trajectory_lifecycle).
+
+<!-- decapod:codebase-attestation:start -->
+## Codebase Attestation
+
+- Repository signal fingerprint: `53be9199c74d2c1427823f442fa5c76f69c89beff08de2ad958378d7c87ce895`
+- Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files)
+- Refreshed from the current codebase by `decapod specs.refresh`
+<!-- decapod:codebase-attestation:end -->

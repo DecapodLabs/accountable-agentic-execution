@@ -98,3 +98,11 @@ flowchart LR
 - [ ] Integration tests cover key user flows.
 - [ ] Failure-path tests cover retries/timeouts.
 - [ ] Docs/diagram/changelog updates included.
+
+<!-- decapod:codebase-attestation:start -->
+## Codebase Attestation
+
+- Repository signal fingerprint: `53be9199c74d2c1427823f442fa5c76f69c89beff08de2ad958378d7c87ce895`
+- Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files)
+- Refreshed from the current codebase by `decapod specs.refresh`
+<!-- decapod:codebase-attestation:end -->

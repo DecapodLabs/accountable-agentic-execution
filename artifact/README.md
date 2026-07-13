@@ -1,6 +1,6 @@
 # Reproducible Research Artifact
 
-This directory contains the code, data, and scripts required to reproduce the experiments presented in the paper *"Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering"*.
+This directory contains the code, data, and scripts for the planned evaluation in *"Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering"*. The checked-in run records and summaries are synthetic harness fixtures, not executions by an LLM or human reviewers.
 
 ---
 
@@ -10,12 +10,12 @@ A key contribution of this paper is the **reproducible artifact**. Rather than s
 
 To achieve this, the artifact strictly adheres to the following principles:
 
-1. **Completeness of Run Data**: Every single agent execution recorded in our experiments preserves the complete execution state:
+1. **Completeness of Run Data**: Every generated fixture preserves the schema needed for the planned experiment:
    * **Initial State**: The base repository and exact commit hash before the run.
    * **Prompt**: The exact natural language instruction given to the agent.
-   * **Trajectory**: The complete sequence of tool calls, inputs, outputs, and intermediate file diffs.
-   * **Validation Logs**: The stdout/stderr of all validation commands.
-   * **Proof Artifact**: The generated evidence manifest detailing successful runs.
+   * **Trajectory**: A placeholder outcome record; real tool trajectories are not present in these fixtures.
+   * **Validation Logs**: Synthetic outcome fields; real validation logs must be collected during the benchmark.
+   * **Proof Artifact**: A planned evidence field, not a claim that a proof certificate was generated.
 2. **Separation of Raw Data from Analyzed Results**:
    * Raw run logs (`.jsonl` files) can be quite large and are not committed directly to the git history. They should be stored locally (or downloaded using download scripts) to keep the repository lightweight.
    * Statistical summaries, parsed CSVs, and visualization scripts are checked into git under `artifact/results/`.
