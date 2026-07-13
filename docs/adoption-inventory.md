@@ -15,7 +15,7 @@ The author reports running `decapod init` once when establishing each repository
 - [`alexhraber/agentic-sdlc-intake-attack`](https://github.com/alexhraber/agentic-sdlc-intake-attack) — public
 - [`alexhraber/go-scaling`](https://github.com/alexhraber/go-scaling) — public
 - [`alexhraber/nixos`](https://github.com/alexhraber/nixos) — public
-- `alexhraber/cycle` — private
+- [`alexhraber/cycle`](https://github.com/alexhraber/cycle) — private
 
 ## `worldofgeese` — three repositories
 
@@ -26,7 +26,7 @@ The author reports running `decapod init` once when establishing each repository
 ## `DecapodLabs` — four repositories
 
 - [`DecapodLabs/decapod`](https://github.com/DecapodLabs/decapod) — public
-- `DecapodLabs/gensor` — private
+- [`DecapodLabs/gensor`](https://github.com/DecapodLabs/gensor) — private
 - [`DecapodLabs/accountable-agentic-execution`](https://github.com/DecapodLabs/accountable-agentic-execution) — public
 - [`DecapodLabs/pincher`](https://github.com/DecapodLabs/pincher) — public
 

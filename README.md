@@ -45,9 +45,9 @@ Public adoption is ecological context, not performance evidence. A July 13, 2026
 
 The same snapshot verified Decapod configuration markers in **13 repositories across three owner namespaces**—11 public and two private:
 
-- `alexhraber`: [`pi-cluster`](https://github.com/alexhraber/pi-cluster), [`builddeck`](https://github.com/alexhraber/builddeck), [`agentic-sdlc-intake-attack`](https://github.com/alexhraber/agentic-sdlc-intake-attack), [`go-scaling`](https://github.com/alexhraber/go-scaling), [`nixos`](https://github.com/alexhraber/nixos), and private `cycle`.
+- `alexhraber`: [`pi-cluster`](https://github.com/alexhraber/pi-cluster), [`builddeck`](https://github.com/alexhraber/builddeck), [`agentic-sdlc-intake-attack`](https://github.com/alexhraber/agentic-sdlc-intake-attack), [`go-scaling`](https://github.com/alexhraber/go-scaling), [`nixos`](https://github.com/alexhraber/nixos), and private [`cycle`](https://github.com/alexhraber/cycle).
 - `worldofgeese`: [`den`](https://github.com/worldofgeese/den), [`tarot-api`](https://github.com/worldofgeese/tarot-api), and [`mythras-chargen`](https://github.com/worldofgeese/mythras-chargen).
-- `DecapodLabs`: [`decapod`](https://github.com/DecapodLabs/decapod), private `gensor`, [`accountable-agentic-execution`](https://github.com/DecapodLabs/accountable-agentic-execution), and [`pincher`](https://github.com/DecapodLabs/pincher).
+- `DecapodLabs`: [`decapod`](https://github.com/DecapodLabs/decapod), private [`gensor`](https://github.com/DecapodLabs/gensor), [`accountable-agentic-execution`](https://github.com/DecapodLabs/accountable-agentic-execution), and [`pincher`](https://github.com/DecapodLabs/pincher).
 
 This is a maintainer-correlated deployment footprint, not 13 independent adopters or evidence that the governance mechanisms improve outcomes. See the [repository-use inventory and verification boundary](docs/adoption-inventory.md).
 
