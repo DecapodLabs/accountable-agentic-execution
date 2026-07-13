@@ -39,8 +39,8 @@ jobs:
         run: |
           mkdir -p _site
           cp pages/index.html _site/index.html
-          cp paper/main.pdf _site/main.pdf
-          echo "Successfully structured _site/ containing index.html and main.pdf"
+          cp paper/Accountable_Agentic_Execution.pdf _site/Accountable_Agentic_Execution.pdf
+          echo "Successfully structured _site/ containing index.html and Accountable_Agentic_Execution.pdf"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

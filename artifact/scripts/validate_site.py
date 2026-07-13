@@ -42,8 +42,8 @@ def main() -> None:
                 raise SystemExit(f"missing local anchor: {href}")
             continue
         target = (page.parent / href).resolve()
-        if href == "./main.pdf":
-            target = root / "paper" / "main.pdf"
+        if href == "./Accountable_Agentic_Execution.pdf":
+            target = root / "paper" / "Accountable_Agentic_Execution.pdf"
         if not target.exists():
             raise SystemExit(f"missing local page link target: {href}")
     print(f"validated site HTML with {len(parser.ids)} ids and {len(parser.hrefs)} links")
