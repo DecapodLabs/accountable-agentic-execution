@@ -28,6 +28,11 @@ Issue trackers and workflow engines preserve task and execution state independen
 
 The closest conventional controls for the fleet studies are therefore not ungoverned shared directories. They are issue/task descriptions, structured handoff documents, separate worktrees, git history, CI, and provenance tooling. The experiments compare Decapod against these credible combinations.
 
+\subsection{Agent and Protocol Interoperability}
+MCP specifies a host--client--server architecture, JSON-RPC data layer, capability negotiation, tools/resources/prompts, and standard local or HTTP transports~\cite{mcp2025architecture}. A2A specifies discovery and task/artifact exchange between independent, opaque agent systems~\cite{a2a2026spec}. They address adjacent interoperability layers: MCP connects an agent host to callable context/tools, while A2A connects collaborating agents. HTTP and IP demonstrate the broader value of narrow interfaces that permit intermediaries, layered transports, and independent implementations~\cite{rfc9110http,rfc791ip}.
+
+Decapod does not currently implement these protocols. Its present interface is a local CLI and Decapod-specific structured process RPC. The proposed contribution is a candidate governance profile over constitutional authority, task custody, trajectory, proof, and publication, with MCP and A2A adapters rather than a competing all-purpose agent protocol. The claim must remain conditional until an independent implementation, conformance suite, identity model, and actual harness integrations exist.
+
 \subsection{Distributed Systems and Ledger Audits}
 The framing of agentic coding as a distributed systems execution problem is inspired by classic distributed consensus and audit architectures. Lamport's happenings-before relation~\cite{lamport1978time} laid the groundwork for ordering events across independent computing nodes. MapReduce~\cite{dean2004mapreduce} and distributed databases demonstrated how to partition state and manage concurrency across large scale clusters.
 

@@ -13,7 +13,7 @@ entrypoints = [
 
 [repo]
 product_name = "accountable-agentic-execution"
-product_summary = "> **Research paper and reproducible evaluation artifact investigating one-shot intent alignment and fleet coherence across heterogeneous software-engineering agents governed by Intent, Custody, Trajectory, and Proof.**"
+product_summary = "> **Research paper and reproducible evaluation artifact investigating one-shot intent alignment, similar-but-distinct concurrent fleet work, and a portable agent-governance interoperability profile grounded in embedded constitutional authority, Intent, Custody, Trajectory, and Proof.**"
 architecture_direction = "webapp"
 done_criteria = "Decapod validate passes, required tests pass, and promotion-relevant artifacts are present."
 primary_languages = ["Other"]

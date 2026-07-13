@@ -29,9 +29,25 @@ This artifact is designed to evaluate these primitives using **Decapod**, a daem
 
 The expanded research program also tests **fleet coherence**: whether independently launched agents can use durable project authority, task ownership, selected trajectory, and shared proof to hand work across sessions/workbenches and execute concurrently with less reconstruction, duplication, and integration waste. Fleet coherence is an emergent property of the four primitives, not a fifth primitive or a claim of global consensus. The human speaks naturally to the available agent; the agent handles Decapod's stable governance protocol.
 
+The central fleet-coherence question is: **Can multiple independently launched agents concurrently solve similar but distinct problems in the same codebase while preserving shared authority, distinct task custody, isolated mutation, dependency awareness, and integrated proof?** Worktrees alone answer only the direct-mutation part of that question; the prospective fleet study also measures duplicate inference, semantic overlap, dependency violations, merge and integration repair, and proof after combination.
+
+Decapod is offered as a candidate **agent-governance interoperability profile**: a standard agent-callable component that coding-agent harnesses could pre-bundle or discover. The goal is a narrow machine contract for authority, task custody, selected trajectory, and proof so users and agents can move fluidly among Claude, Codex, Antigravity, Grok, and other conforming harnesses without making one vendor conversation the project's durable state. This is a standards direction inspired by MCP and A2A and by the layered, independently implementable interfaces of HTTP and IP—not a claim that Decapod is already an adopted standard, native MCP/A2A implementation, HTTP service, or vendor-bundled component. The current implementation is a daemonless local CLI plus a Decapod-specific structured process RPC. See the [interoperability profile and implementation roadmap](docs/agent-governance-interoperability.md).
+
+The constitution is the authority root for that contract. Decapod currently embeds a structured baseline constitution in the binary and supports a binding project-local override; task-scoped context resolution selects provenance-bearing projections before inference. An organization-level overlay is planned but not implemented at the inspected revision. This design is the author's response to repository-instruction poisoning: authority, scope, selection, and proof expectations should be explicit rather than treating any large instruction file as automatically trustworthy. The author reports reaching this approach through an independent internal evaluation several months before the February 2026 ETH Zurich preprint; public git history currently establishes constitution/override work around the preprint's publication, so the earlier chronology remains labeled author testimony rather than a priority claim.
+
 The implementation mapping is pinned to Decapod [`e7df80d`](https://github.com/DecapodLabs/decapod/commit/e7df80d8234a80c490f6fe2119a6cff32135a386) (`v0.66.1`). It verifies real task claims, trust-gated handoff, workspaces, context capsules, repository memory, governance events, proofs, and publication gates. It also records narrower boundaries: shared ownership exists, handoff does not transfer hidden conversation state, worktrees do not guarantee clean integration, and the public cloud backend is unavailable.
 
 Study A is the primary walk-away CN-versus-DN comparison. Prospective Studies B–D cover handoff continuity, concurrent fleets, and tool switching. Study E is a separately labeled longitudinal case study: at the inspected commit, a checked-in git-derived snapshot records 2,127 commits and 326 tags between February and July 2026, but those facts do not establish a causal effect or low review burden. No controlled fleet results exist. The project does not claim complete OS-level sandboxing, credential isolation, universal action interception, conflict-free merging, or signed completion certificates.
+
+Public adoption is ecological context, not performance evidence. A July 13, 2026 API snapshot reported 222 GitHub stars, 21 forks, and 6,983 crates.io downloads—approximately 7,000 downloads, but not more than 7,000 in that query. These counts do not establish correct use, interoperability, or a treatment effect.
+
+The same snapshot verified Decapod configuration markers in **13 repositories across three owner namespaces**—11 public and two private:
+
+- `alexhraber`: [`pi-cluster`](https://github.com/alexhraber/pi-cluster), [`builddeck`](https://github.com/alexhraber/builddeck), [`agentic-sdlc-intake-attack`](https://github.com/alexhraber/agentic-sdlc-intake-attack), [`go-scaling`](https://github.com/alexhraber/go-scaling), [`nixos`](https://github.com/alexhraber/nixos), and private `cycle`.
+- `worldofgeese`: [`den`](https://github.com/worldofgeese/den), [`tarot-api`](https://github.com/worldofgeese/tarot-api), and [`mythras-chargen`](https://github.com/worldofgeese/mythras-chargen).
+- `DecapodLabs`: [`decapod`](https://github.com/DecapodLabs/decapod), private `gensor`, [`accountable-agentic-execution`](https://github.com/DecapodLabs/accountable-agentic-execution), and [`pincher`](https://github.com/DecapodLabs/pincher).
+
+This is a maintainer-correlated deployment footprint, not 13 independent adopters or evidence that the governance mechanisms improve outcomes. See the [repository-use inventory and verification boundary](docs/adoption-inventory.md).
 
 ---
 
@@ -56,6 +72,8 @@ The workspace is organized to keep paper drafts, empirical records, and system d
 │   ├── research-claim.md  # Main claims and falsifiable predictions
 │   ├── experiment-plan.md # Metric definitions and experimental layout
 │   ├── fleet-coherence-protocol.md # Prospective handoff/concurrency/tool-switch studies
+│   ├── agent-governance-interoperability.md # Candidate thin-waist profile and implementation roadmap
+│   ├── adoption-inventory.md # Verified repository markers and ecological-evidence boundary
 │   ├── implementation-claim-matrix.md # Decapod code/test support and boundaries
 │   └── terminology.md     # Project taxonomy and definitions
 └── pages/                 # Web landing page and metrics dashboard

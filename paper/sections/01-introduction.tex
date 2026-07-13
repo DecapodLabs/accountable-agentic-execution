@@ -17,12 +17,14 @@ When viewed through a systems-oriented lens, agentic software engineering shares
 
 To address these challenges, this paper formalizes four core primitives for accountable execution:
 \begin{enumerate}
-    \item \textbf{Intent}: Durable task objectives, constraints, open questions, and proof expectations represented outside the model's transient context.
+    \item \textbf{Intent}: The human or team's desired outcome, motivation, constraints, priorities, unresolved questions, and completion standard; governed artifacts are durable projections rather than the source of authority.
     \item \textbf{Custody}: Exclusive task ownership and isolated git-worktree or container boundaries within which the agent operates.
     \item \textbf{Trajectory}: Event-backed records of task, broker, proof, and governance activity that can be rendered as a flight-recorder timeline.
     \item \textbf{Proof}: Programmatically checkable validation, proof-run, workunit, and provenance evidence; cryptographic signing is a future extension, not an implemented claim here.
 \end{enumerate}
 
 We present \textbf{Decapod}, a daemonless, local-first governance kernel, as a reference implementation of this model. The primary experiment remains one-shot walk-away delegation: whether, under the same complex natural request, pre-inference resolution of authoritative context lets an unchanged model converge toward the intended outcome with fewer failed cycles and less human intervention. We also develop a second systems thesis: Intent, Custody, Trajectory, and Proof may produce \emph{fleet coherence}, allowing independently launched agent processes to share durable project authority, transfer work, avoid duplicated cognition, and publish against common evidence without sharing one conversation or long-running orchestrator. Agents and conversations are ephemeral execution processes; the governed repository is the durable coordination subject.
+
+The central fleet question is whether multiple agents can concurrently solve similar but distinct problems in one codebase while preserving common authority, distinct task custody, isolated mutation, dependency awareness, and integrated proof. The human-interface goal is complementary: a person speaks naturally to the available agent, while the agent invokes a stable governance contract. We offer that contract as a candidate agent-governance interoperability profile that coding-agent harnesses could pre-bundle or discover. The current system is not an adopted standard or a native MCP, A2A, or HTTP implementation; these protocols provide concrete comparison points for a future thin waist across Claude, Codex, Antigravity, Grok, and other conforming workbenches.
 
 The implementation mapping is pinned to Decapod \texttt{e7df80d} (\texttt{v0.66.1}). Prospective Studies B--D test handoff, concurrent work, and tool switching; Study E is a non-causal longitudinal case study. The contribution remains pre-results: mechanisms, boundaries, schemas, and falsifiable protocols rather than measured treatment effects.

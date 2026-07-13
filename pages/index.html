@@ -6,10 +6,10 @@
     <meta name="description" content="Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering. Technical report and reproducible artifact.">
     <title>Intent, Custody, Trajectory, and Proof — Accountable Agentic Execution</title>
     
-    <!-- Google Fonts: Lora for Serif titles, Inter for high-readability sans-serif text -->
+    <!-- Material typography with a terminal-oriented monospace accent. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -415,6 +415,220 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Compact Material terminal theme. The original selectors above remain
+           as structural defaults; this layer defines the public presentation. */
+        :root {
+            color-scheme: dark;
+            --bg-color: #090d12;
+            --text-color: #e4ebf2;
+            --text-muted: #91a1b2;
+            --border-color: #263340;
+            --accent-color: #64d8cb;
+            --card-bg: #111820;
+            --status-bg: #241d0d;
+            --status-border: #5e4b1b;
+            --status-text: #f2c75c;
+            --success: #69d7a6;
+            --danger: #ff8a80;
+            --surface: #111820;
+            --surface-high: #17212b;
+            --surface-low: #0d131a;
+            --border-strong: #3b4b5a;
+            --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+            --sans: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --elevation-1: 0 1px 2px rgba(0, 0, 0, 0.38), 0 2px 6px rgba(0, 0, 0, 0.2);
+            --elevation-2: 0 4px 12px rgba(0, 0, 0, 0.28), 0 8px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        body {
+            font-family: var(--sans);
+            background:
+                linear-gradient(rgba(100, 216, 203, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(100, 216, 203, 0.018) 1px, transparent 1px),
+                var(--bg-color);
+            background-size: 28px 28px;
+            line-height: 1.55;
+            overflow-x: hidden;
+        }
+
+        a { color: var(--accent-color); text-underline-offset: 3px; }
+        code { font-family: var(--mono); color: #80cbc4; font-size: 0.9em; }
+        :focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
+
+        .status-banner {
+            text-align: left;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            padding: 8px max(20px, calc((100vw - 1120px) / 2));
+        }
+
+        .status-banner strong {
+            font-size: 0.66rem;
+            letter-spacing: 0.08em;
+            background: rgba(242, 199, 92, 0.1);
+            border: 1px solid rgba(242, 199, 92, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-right: 8px;
+        }
+
+        header {
+            max-width: 1120px;
+            margin: 28px auto 0;
+            padding: 0;
+            text-align: left;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--elevation-2);
+            overflow: hidden;
+        }
+
+        .terminal-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 34px;
+            padding: 7px 14px;
+            color: var(--text-muted);
+            background: var(--surface-low);
+            border-bottom: 1px solid var(--border-color);
+            font-family: var(--mono);
+            font-size: 0.68rem;
+        }
+
+        .terminal-dots { display: inline-flex; gap: 5px; }
+        .terminal-dots i { width: 7px; height: 7px; border-radius: 50%; background: #ff6e6e; }
+        .terminal-dots i:nth-child(2) { background: #f2c75c; }
+        .terminal-dots i:nth-child(3) { background: #69d7a6; }
+        .terminal-path { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .terminal-state { margin-left: auto; color: var(--status-text); letter-spacing: 0.08em; }
+        .hero-content { padding: 36px 42px 34px; }
+
+        .category-tag {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--accent-color);
+            letter-spacing: 0.12em;
+            margin-bottom: 12px;
+        }
+
+        .category-tag::before { content: '$ '; color: var(--success); }
+
+        h1 {
+            max-width: 930px;
+            font-family: var(--mono);
+            font-size: clamp(1.65rem, 3vw, 2.45rem);
+            font-weight: 600;
+            line-height: 1.22;
+            color: var(--text-color);
+            margin-bottom: 18px;
+            letter-spacing: -0.035em;
+            overflow-wrap: anywhere;
+        }
+
+        .author-block { display: flex; align-items: baseline; gap: 10px; margin-bottom: 24px; }
+        .author { font-family: var(--mono); font-size: 0.82rem; font-weight: 500; }
+        .affiliation { font-family: var(--mono); font-size: 0.7rem; font-style: normal; }
+        .cta-container { justify-content: flex-start; gap: 10px; }
+
+        .btn {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            padding: 9px 14px;
+            border-radius: 4px;
+            transition: background-color 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+        }
+
+        .btn-primary { color: #07110f; }
+        .btn-primary:hover { background-color: #80cbc4; border-color: #80cbc4; transform: translateY(-1px); }
+        .btn-secondary { background: transparent; border-color: var(--border-strong); }
+        .btn-secondary:hover { background: var(--surface-high); border-color: var(--accent-color); transform: translateY(-1px); }
+        .divider { display: none; }
+
+        main { max-width: 1120px; padding: 36px 0 72px; }
+        section { margin-bottom: 34px; }
+
+        .section-title {
+            font-family: var(--mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title::before { content: '>_ '; color: var(--accent-color); }
+
+        .abstract-card {
+            background: var(--surface);
+            border-radius: 6px;
+            padding: 24px;
+            box-shadow: var(--elevation-1);
+        }
+
+        .abstract-text { font-size: 0.92rem; color: #cbd5df; text-align: left; line-height: 1.58; }
+
+        .flow-container {
+            margin: 22px 0 0;
+            padding: 12px;
+            gap: 6px;
+            background: var(--surface-low);
+            border-radius: 4px;
+        }
+
+        .flow-node { background: var(--surface-high); border-radius: 4px; padding: 9px 7px; box-shadow: none; }
+        .flow-node-title { font-family: var(--mono); font-size: 0.74rem; color: var(--text-color); }
+        .flow-node-desc { font-family: var(--mono); font-size: 0.62rem; }
+        .flow-arrow { font-family: var(--mono); font-size: 1rem; color: var(--accent-color); }
+        .primitives-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+
+        .primitive-card {
+            background: var(--surface);
+            border-radius: 5px;
+            padding: 16px;
+            box-shadow: var(--elevation-1);
+        }
+
+        .primitive-card:hover { border-color: var(--accent-color); box-shadow: var(--elevation-2); }
+        .primitive-icon { font-family: var(--mono); font-size: 0.66rem; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em; }
+        .primitive-name { font-family: var(--mono); font-size: 0.84rem; color: var(--text-color); margin-bottom: 6px; }
+        .primitive-desc { font-size: 0.8rem; }
+
+        .metrics-tabs { gap: 6px; margin-bottom: 8px; overflow-x: auto; }
+        .tab-btn { flex: 0 0 auto; background: var(--surface-low); border-color: var(--border-color); font-family: var(--mono); font-size: 0.65rem; padding: 8px 11px; border-radius: 4px; }
+        .tab-btn.active, .tab-btn:hover { background: var(--surface-high); }
+
+        .table-container { background: var(--surface); border-radius: 5px; padding: 12px; box-shadow: var(--elevation-1); }
+        th { font-family: var(--mono); font-size: 0.66rem; border-bottom-width: 1px; padding: 9px 10px; }
+        td { padding: 10px; font-size: 0.78rem; color: #cbd5df; }
+        tr:last-child td { border-bottom-width: 1px; }
+        tr:hover td { background: var(--surface-high); }
+        .metric-highlight { font-family: var(--mono); font-size: 0.7rem; }
+        .table-note { margin-top: 10px; font-family: var(--mono); font-size: 0.64rem; text-align: left; }
+
+        footer { padding: 24px max(20px, calc((100vw - 1120px) / 2)); text-align: left; font-family: var(--mono); font-size: 0.66rem; background: var(--surface-low); }
+
+        @media (max-width: 1168px) {
+            header { margin-inline: 24px; }
+            main { padding-inline: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            header { margin: 12px 12px 0; }
+            .hero-content { padding: 24px 20px; }
+            main { padding: 24px 12px 54px; }
+            .abstract-card { padding: 18px; }
+            .flow-container { gap: 8px; padding: 10px; }
+            .flow-node { width: 100%; }
+            td, th { padding: 8px; font-size: 0.7rem; }
+            .terminal-state { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -425,17 +639,24 @@
     </div>
 
     <header>
-        <span class="category-tag">Decapod Labs Technical Report</span>
-        <h1 id="main-title">Intent, Custody, Trajectory, and Proof:<br>Toward Accountable Execution in Agentic Software Engineering</h1>
-        
-        <div class="author-block">
-            <div class="author" id="author-name">Alex H. Raber</div>
-            <div class="affiliation" id="author-affiliation">Decapod Labs</div>
+        <div class="terminal-bar">
+            <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="terminal-path">research@decapod:~/accountable-agentic-execution</span>
+            <span class="terminal-state">PRE-RESULTS</span>
         </div>
-        
-        <div class="cta-container">
-            <a href="./main.pdf" class="btn btn-primary" id="btn-download" download>Download Paper PDF</a>
-            <a href="https://github.com/DecapodLabs/accountable-agentic-execution" class="btn btn-secondary" id="btn-github">View Repository</a>
+        <div class="hero-content">
+            <span class="category-tag">Decapod Labs Technical Report</span>
+            <h1 id="main-title">Intent, Custody, Trajectory, and Proof:<br>Toward Accountable Execution in Agentic Software Engineering</h1>
+
+            <div class="author-block">
+                <div class="author" id="author-name">Alex H. Raber</div>
+                <div class="affiliation" id="author-affiliation">Decapod Labs</div>
+            </div>
+
+            <div class="cta-container">
+                <a href="./main.pdf" class="btn btn-primary" id="btn-download" download>Download Paper PDF</a>
+                <a href="https://github.com/DecapodLabs/accountable-agentic-execution" class="btn btn-secondary" id="btn-github">View Repository</a>
+            </div>
         </div>
     </header>
 
@@ -456,7 +677,7 @@
                 </p>
                 <br>
                 <p class="abstract-text">
-                    The expanded program defines <strong>fleet coherence</strong>: independently launched agents use the same durable project authority, task custody, selected trajectory, and proof boundary across sessions, handoffs, and concurrent work. Agents and conversations are ephemeral execution processes; the governed repository is the durable coordination subject. This is not a fifth primitive, global consensus, lossless conversation transfer, or a conflict-free merge guarantee. The human speaks naturally to the available agent; the agent handles the stable governance protocol. No controlled result is reported here.
+                    The expanded program defines <strong>fleet coherence</strong>: independently launched agents use the same durable project authority, task custody, selected trajectory, and proof boundary across sessions, handoffs, and concurrent work. Agents and conversations are ephemeral execution processes; the governed repository is the durable coordination subject. This is not a fifth primitive, global consensus, lossless conversation transfer, or a conflict-free merge guarantee. The human speaks naturally to the available agent; the agent handles the stable governance protocol. Decapod is offered as a candidate standard agent-callable component that coding-agent harnesses could pre-bundle or discover, not as an already adopted standard or shipped vendor integration. No controlled result is reported here.
                 </p>
 
                 <!-- Flow Visualizer -->
@@ -521,12 +742,34 @@
             <div class="abstract-card">
                 <p class="abstract-text"><strong>Implementation basis:</strong> Decapod <a href="https://github.com/DecapodLabs/decapod/commit/e7df80d8234a80c490f6fe2119a6cff32135a386">e7df80d</a> (<code>v0.66.1</code>). The audit verifies atomic exclusive claims, trust-gated shared ownership and handoff, task workspaces, deterministic context bundles, local project memory, selected governance events, proof/workunit state, and publication gates. Handoff does not transfer hidden chat state; worktrees do not prove integration; the public cloud backend is unavailable.</p>
                 <br>
+                <p class="abstract-text"><strong>Central fleet question:</strong> Can multiple independently launched agents concurrently solve similar but distinct problems in the same codebase while preserving shared authority, distinct task custody, isolated mutation, dependency awareness, and integrated proof? Similar work is not necessarily duplicate work, and separate worktrees do not resolve semantic overlap or prove the combined result.</p>
+                <br>
                 <div class="primitives-grid">
                     <div class="primitive-card"><div class="primitive-icon">Study A</div><h3 class="primitive-name">Walk-away alignment</h3><p class="primitive-desc">Primary CN versus DN comparison under the identical complex natural prompt.</p></div>
                     <div class="primitive-card"><div class="primitive-icon">Study B</div><h3 class="primitive-name">Handoff continuity</h3><p class="primitive-desc">Structured conventional handoff versus governed ownership/context/trajectory/proof transfer.</p></div>
                     <div class="primitive-card"><div class="primitive-icon">Study C–D</div><h3 class="primitive-name">Concurrency and tool switching</h3><p class="primitive-desc">Duplicate work, direct collisions, deferred integration failure, and reorientation across workbenches.</p></div>
                     <div class="primitive-card"><div class="primitive-icon">Study E</div><h3 class="primitive-name">Observational dogfooding</h3><p class="primitive-desc">At the inspected commit: 2,127 git commits and 326 tags from February–July 2026. Activity evidence only; no causal or review-burden claim.</p></div>
                 </div>
+            </div>
+        </section>
+
+        <section id="sec-interoperability">
+            <h2 class="section-title">A Portable Governance Contract for Agent Harnesses</h2>
+            <div class="abstract-card">
+                <p class="abstract-text"><strong>Target interaction:</strong> the human speaks naturally to whichever agent is available; the agent invokes the governance protocol. Decapod is offered as a candidate <strong>agent-governance interoperability profile</strong> so Claude, Codex, Antigravity, Grok, and other conforming coding-agent harnesses could pre-bundle or discover the same authority, custody, trajectory, and proof component. The aim is fluid movement across harnesses without making one vendor conversation the durable project state.</p>
+                <br>
+                <p class="abstract-text"><strong>Current boundary:</strong> the inspected implementation provides a daemonless local CLI and a Decapod-specific structured request/response document over process standard input/output. It is not currently a native MCP server, A2A endpoint, HTTP governance service, adopted Internet standard, or confirmed vendor bundle. MCP and A2A are candidate adapters; HTTP and IP are limited design analogies for a narrow, layered interface, not claims of equivalent maturity or adoption. See the <a href="https://github.com/DecapodLabs/accountable-agentic-execution/blob/main/docs/agent-governance-interoperability.md">profile and implementation roadmap</a>.</p>
+                <br>
+                <div class="primitives-grid">
+                    <div class="primitive-card"><div class="primitive-icon">Authority</div><h3 class="primitive-name">Baked-in Constitution</h3><p class="primitive-desc">A structured baseline constitution is embedded in the binary. A binding project override is implemented; an organization-level policy overlay is prospective.</p></div>
+                    <div class="primitive-card"><div class="primitive-icon">Projection</div><h3 class="primitive-name">Scoped Before Inference</h3><p class="primitive-desc">Task context is selected with source provenance and must be audited for relevance, contradiction, and harm. More context is not presumed better.</p></div>
+                    <div class="primitive-card"><div class="primitive-icon">Adapters</div><h3 class="primitive-name">MCP · A2A · HTTP</h3><p class="primitive-desc">Prospective adapters should preserve one versioned governance profile, conformance tests, identity boundaries, and fail-closed behavior.</p></div>
+                    <div class="primitive-card"><div class="primitive-icon">Adoption</div><h3 class="primitive-name">Public Interest, Not Efficacy</h3><p class="primitive-desc">July 13 snapshot: 222 GitHub stars, 21 forks, and 6,983 crates.io downloads—approximately 7,000. These are distribution counts, not research results.</p></div>
+                </div>
+                <br>
+                <p class="abstract-text"><strong>Repository-use inventory:</strong> an authenticated marker audit verified Decapod configuration in 13 repositories across three owner namespaces—11 public and two private. <code>alexhraber</code>: <a href="https://github.com/alexhraber/pi-cluster">pi-cluster</a>, <a href="https://github.com/alexhraber/builddeck">builddeck</a>, <a href="https://github.com/alexhraber/agentic-sdlc-intake-attack">agentic-sdlc-intake-attack</a>, <a href="https://github.com/alexhraber/go-scaling">go-scaling</a>, <a href="https://github.com/alexhraber/nixos">nixos</a>, and private <code>cycle</code>. <code>worldofgeese</code>: <a href="https://github.com/worldofgeese/den">den</a>, <a href="https://github.com/worldofgeese/tarot-api">tarot-api</a>, and <a href="https://github.com/worldofgeese/mythras-chargen">mythras-chargen</a>. <code>DecapodLabs</code>: <a href="https://github.com/DecapodLabs/decapod">decapod</a>, private <code>gensor</code>, <a href="https://github.com/DecapodLabs/accountable-agentic-execution">accountable-agentic-execution</a>, and <a href="https://github.com/DecapodLabs/pincher">pincher</a>. This is a maintainer-correlated deployment footprint, not 13 independent adopters or outcome evidence.</p>
+                <br>
+                <p class="abstract-text"><strong>Context-poisoning chronology:</strong> the author reports deriving the constitutional approach through an independent internal evaluation several months before the February 2026 ETH Zurich preprint. Public git history currently establishes constitution and override work around the preprint’s posting, so the earlier chronology is labeled author testimony rather than a priority or efficacy claim.</p>
             </div>
         </section>
 
@@ -602,7 +845,7 @@
 
         const fleetData = `
             <tr><td>Handoff reorientation and duplicated exploration</td><td colspan="2">Prospective Study B — no runs</td></tr>
-            <tr><td>Duplicate starts, direct collisions, and integration repair</td><td colspan="2">Prospective Study C — no runs</td></tr>
+            <tr><td>Similar-but-distinct work, duplicate starts, false serialization, and integration repair</td><td colspan="2">Prospective Study C — no runs</td></tr>
             <tr><td>Tool-switch continuity without transcript replay</td><td colspan="2">Prospective Study D — no runs</td></tr>
             <tr><td>Longitudinal repository activity</td><td colspan="2">Observational only; excluded from controlled estimates</td></tr>
 `;
