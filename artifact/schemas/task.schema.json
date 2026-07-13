@@ -39,6 +39,20 @@
         "nodes": {"type": "array"},
         "edges": {"type": "array"},
         "overlap_classes": {"type": "array", "items": {"type": "string"}},
+        "pairwise_relationships": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["task_a", "task_b", "relationship", "expected_overlap_surfaces", "rationale"],
+            "properties": {
+              "task_a": {"type": "string"},
+              "task_b": {"type": "string"},
+              "relationship": {"enum": ["duplicate", "independent", "dependent", "similar_but_distinct"]},
+              "expected_overlap_surfaces": {"type": "array", "items": {"type": "string"}},
+              "rationale": {"type": "string", "minLength": 1}
+            }
+          }
+        },
         "integration_validation": {"type": "array", "items": {"type": "string"}}
       }
     },

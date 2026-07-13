@@ -58,16 +58,22 @@ The first confirmatory level should hold the underlying model fixed where techni
 
 ## Study C — Concurrent heterogeneous fleet
 
+Study C asks the central fleet question:
+
+> Can multiple independently launched agents concurrently solve similar but distinct problems in the same codebase while preserving shared authority, distinct task custody, isolated mutation, dependency awareness, and integrated proof?
+
 ### Unit and baseline
 
-The unit is a frozen task graph containing independent, dependent, and partially overlapping tasks assigned to at least two clean agent processes. Both conditions use separate branches or worktrees.
+The unit is a frozen task graph containing independent, dependent, and similar-but-distinct tasks assigned to at least two clean agent processes. Similar-but-distinct tasks share architecture, modules, files, tests, standards, or integration boundaries without representing the same desired outcome. Both conditions use separate branches or worktrees.
 
 - **Conventional:** ordinary issue/task descriptions, git branches/worktrees, and the same public repository guidance, without shared Decapod claims, context capsules, governance trajectory, or publish state.
 - **Decapod:** the same tasks plus implemented Decapod claims, labels/categories, dependencies, task-scoped workspaces, selected context, events, proof, and publication gates.
 
 ### Measures
 
-Measure duplicate starts, claim conflicts, redundant discovery, overlapping file mutation, direct workspace collisions, dependency-order violations, later textual merge conflicts, semantic integration failures, abandoned work, repair commits/time, duplicated model calls/tokens, wall-clock completion, integrated hidden-rubric correctness, proof completeness, and publication success. Report task-local proof separately from post-integration proof.
+Before execution, an independent task audit labels pairwise relationships as duplicate, independent, dependent, or similar-but-distinct and records the expected overlap surface. During execution, record whether Decapod or the baseline identified that relationship and whether it serialized, coordinated, or allowed concurrent work.
+
+Measure duplicate starts, false serialization, missed semantic overlap, claim conflicts, redundant discovery, overlapping file mutation, direct workspace collisions, dependency-order violations, later textual merge conflicts, semantic integration failures, abandoned work, repair commits/time, duplicated model calls/tokens, wall-clock completion, integrated hidden-rubric correctness, proof completeness, and publication success. Report task-local proof separately from post-integration proof. A mechanism that prevents collisions only by serializing all similar work does not support the concurrency thesis.
 
 ## Study D — Tool-switch continuity
 

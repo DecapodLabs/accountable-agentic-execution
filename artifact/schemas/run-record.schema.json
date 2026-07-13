@@ -45,9 +45,26 @@
         "duplicate_commands": {"type": ["integer", "null"], "minimum": 0},
         "duplicate_implementation_attempts": {"type": ["integer", "null"], "minimum": 0},
         "workspace_identities": {"type": "array", "items": {"type": "string"}},
+        "pairwise_relationships_observed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["task_a", "task_b", "frozen_relationship", "relationship_detected", "coordination_action"],
+            "properties": {
+              "task_a": {"type": "string"},
+              "task_b": {"type": "string"},
+              "frozen_relationship": {"enum": ["duplicate", "independent", "dependent", "similar_but_distinct"]},
+              "relationship_detected": {"type": "boolean"},
+              "coordination_action": {"enum": ["allowed_concurrent", "serialized", "dependency_ordered", "deduplicated", "none"]}
+            }
+          }
+        },
+        "false_serializations": {"type": ["integer", "null"], "minimum": 0},
+        "missed_semantic_overlaps": {"type": ["integer", "null"], "minimum": 0},
         "claim_conflicts": {"type": ["integer", "null"], "minimum": 0},
         "merge_conflicts": {"type": ["integer", "null"], "minimum": 0},
         "semantic_integration_failures": {"type": ["integer", "null"], "minimum": 0},
+        "post_integration_proof_passed": {"type": ["boolean", "null"]},
         "publication_gate_passed": {"type": ["boolean", "null"]},
         "human_briefing": {"type": ["string", "null"]}
       },

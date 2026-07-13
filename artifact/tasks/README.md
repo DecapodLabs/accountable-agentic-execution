@@ -14,7 +14,7 @@ Each task is defined in a structured subdirectory containing:
   * `context_available`: The project authority and repository context visible to each substrate; treatment context must be provenance-linked and the hidden rubric excluded.
   * `complexity_profile`: Required interacting reasoning and empirical-eligibility status.
   * `study_eligibility`: Studies for which the package has frozen checkpoints, task graphs, and evaluators.
-  * `handoff_checkpoint` / `task_graph`: Study B/D transfer rules or Study C dependency/integration contract when applicable.
+  * `handoff_checkpoint` / `task_graph`: Study B/D transfer rules or Study C dependency, pairwise task-relationship, semantic-overlap, and integration contract when applicable.
   * `validation_commands`: Shell commands that must succeed for the task to be considered complete (e.g., `pytest tests/test_parser.py`).
 * `gold/`: The reference solution diff, used only for human auditing comparisons and checking correctness.
   * `eval_suite/`: An independent evaluator withheld from the agent workspace during execution.
@@ -34,4 +34,4 @@ tasks/
 └── README.md (this file)
 ```
 
-The current example is a deterministic schema/harness fixture and is not empirical-eligible. Future Study B packages require a frozen observable checkpoint and conventional/Decapod payload definitions. Study C packages require a task graph, overlap classes, and post-integration validation. Study D additionally freezes workbench pairs. Hidden evaluators and rubrics remain unavailable to executing agents.
+The current example is a deterministic schema/harness fixture and is not empirical-eligible. Future Study B packages require a frozen observable checkpoint and conventional/Decapod payload definitions. Study C packages require a task graph, an independent pairwise classification of duplicate, independent, dependent, and similar-but-distinct work, expected overlap surfaces, and post-integration validation. Study D additionally freezes workbench pairs. Hidden evaluators and rubrics remain unavailable to executing agents.

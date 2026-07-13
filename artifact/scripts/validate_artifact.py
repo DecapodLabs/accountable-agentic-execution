@@ -21,6 +21,13 @@ def validate_tasks(root: Path) -> int:
         require(record, ["schema_version", "task_id", "canonical_intent", "motivation", "constraints", "priorities", "open_questions", "stop_conditions", "acceptance_rubric", "prompt_variants", "clarification_oracle", "starting_repository", "context_available", "complexity_profile", "interruption_concurrency", "exclusion_rules", "evaluation"], str(path))
         if set(record["prompt_variants"]) != {"natural_delegation", "procedural"}:
             raise SystemExit(f"{path}: prompt variants must be natural_delegation and procedural")
+        if "concurrent_fleet" in record.get("study_eligibility", []):
+            task_graph = record.get("task_graph")
+            if not isinstance(task_graph, dict):
+                raise SystemExit(f"{path}: concurrent-fleet package has no task graph")
+            require(task_graph, ["nodes", "edges", "pairwise_relationships", "integration_validation"], f"{path}: task_graph")
+            if not task_graph["pairwise_relationships"]:
+                raise SystemExit(f"{path}: concurrent-fleet package has no frozen pairwise task audit")
         count += 1
     return count
 
@@ -43,6 +50,12 @@ def validate_runs(root: Path) -> tuple[int, set[str]]:
                 raise SystemExit(f"{path}: pilot/empirical records must be controlled evidence")
             if record["study_id"] in {"handoff_continuity", "concurrent_fleet", "tool_switch_continuity"} and "coordination" not in record:
                 raise SystemExit(f"{path}: fleet study record has no coordination evidence")
+            if record["study_id"] == "concurrent_fleet":
+                require(
+                    record["coordination"],
+                    ["pairwise_relationships_observed", "false_serializations", "missed_semantic_overlaps", "post_integration_proof_passed"],
+                    f"{path}: coordination",
+                )
             if record["walk_away"].get("coaching_allowed") is not False or record["execution"].get("evaluator_blind") is not True:
                 raise SystemExit(f"{path}: real run is not walk-away or evaluator-blind")
             if not record["provenance"].get("protocol_tag"):

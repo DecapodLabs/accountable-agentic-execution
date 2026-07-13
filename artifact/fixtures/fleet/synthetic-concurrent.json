@@ -10,7 +10,30 @@
   "prompt": {"text": "SYNTHETIC SCHEMA FIXTURE", "characters": 24, "approx_tokens": 6, "procedural_steps": 0, "named_paths": 0, "named_commands": 0, "named_tests": 0, "implementation_prescriptions": 0},
   "provenance": {"protocol_id": "synthetic-fleet-schema", "task_commit": "synthetic-fixture-no-repository", "model": {"identifier": "none"}, "runtime": {}, "timestamps": {}, "environment": {}, "configuration": {}},
   "context_alignment": {},
-  "coordination": {"handoff_payload_refs": [], "workspace_identities": ["synthetic-worktree-a", "synthetic-worktree-b"], "duplicate_file_reads": 0, "duplicate_searches": 0, "duplicate_commands": 0, "duplicate_implementation_attempts": 0, "claim_conflicts": 0, "merge_conflicts": 0, "semantic_integration_failures": 0, "publication_gate_passed": null},
+  "coordination": {
+    "handoff_payload_refs": [],
+    "workspace_identities": ["synthetic-worktree-a", "synthetic-worktree-b"],
+    "pairwise_relationships_observed": [
+      {
+        "task_a": "synthetic-a",
+        "task_b": "synthetic-b",
+        "frozen_relationship": "similar_but_distinct",
+        "relationship_detected": true,
+        "coordination_action": "allowed_concurrent"
+      }
+    ],
+    "duplicate_file_reads": 0,
+    "duplicate_searches": 0,
+    "duplicate_commands": 0,
+    "duplicate_implementation_attempts": 0,
+    "false_serializations": 0,
+    "missed_semantic_overlaps": 0,
+    "claim_conflicts": 0,
+    "merge_conflicts": 0,
+    "semantic_integration_failures": 0,
+    "post_integration_proof_passed": null,
+    "publication_gate_passed": null
+  },
   "convergence": {},
   "execution": {"synthetic": true},
   "outcome": {"task_success": false, "intent_fidelity": null, "invalid_completion_claim": null, "proof_completeness": null}

@@ -54,13 +54,13 @@ Study A remains the primary CN-versus-DN walk-away comparison above. The followi
 | Study | Question | Credible control | Decapod treatment |
 | --- | --- | --- | --- |
 | B — handoff continuity | Can a clean receiving session continue with less reconstruction? | repository, branch, git history, task description, frozen structured handoff | same artifacts plus approved task handoff, durable task/context/trajectory/proof references |
-| C — concurrent fleet | Can agents coordinate a task graph with less duplication and repair? | separate branches/worktrees and normal issue descriptions | same task graph plus claims, labels/categories, dependencies, context, events, proof/publication paths |
+| C — concurrent fleet | Can agents solve similar yet distinct concurrent problems with less duplication and integration repair? | separate branches/worktrees and normal issue descriptions | same task graph plus claims, semantic-overlap records, labels/categories, dependencies, context, events, proof/publication paths |
 | D — tool switching | Does project state survive a workbench change without transcript replay? | Study B control across a frozen workbench pair | Study B treatment across the same pair |
 | E — longitudinal case study | How extensively has Decapod been exercised in its own repository? | not a treatment comparison | repository-derived facts and separately labeled author testimony |
 
 Studies B–D hold the model fixed before adding heterogeneous models as an external-validity extension. They capture source/destination session, workbench, and model; ownership transfer; handoff payload; context manifests; preserved/lost questions, dependencies, and proof state; duplicate reads/searches/commands/attempts; claim and workspace conflicts; integration and publication outcomes; human briefing; cost; and deviations.
 
-Study C distinguishes direct mutation collisions from textual merge conflicts, semantic integration failures, and missing post-integration proof. Study E is `observational` and can never be aggregated with controlled pilot or empirical records. See `docs/fleet-coherence-protocol.md`.
+Study C is the central fleet-coherence test. Its task graph deliberately includes independent, dependent, and similar-but-distinct work that shares architecture, modules, tests, or publication boundaries without being duplicate tasks. It distinguishes duplicate task identity from semantic overlap, and direct mutation collisions from textual merge conflicts, semantic integration failures, and missing post-integration proof. Study E is `observational` and can never be aggregated with controlled pilot or empirical records. See `docs/fleet-coherence-protocol.md`.
 
 ## 9. Fleet research questions
 
