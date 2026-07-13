@@ -7,7 +7,7 @@
 ---
 
 [![LaTeX Compilation](https://github.com/DecapodLabs/accountable-agentic-execution/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/DecapodLabs/accountable-agentic-execution/actions/workflows/deploy-pages.yml)
-[![Decapod](https://img.shields.io/badge/Decapod-v0.66.3-4A90D9?logo=gear&logoColor=white)](https://github.com/stacklok/decapod)
+[![Decapod](https://img.shields.io/badge/Decapod-v0.66.3-4A90D9?logo=gear&logoColor=white)](https://github.com/DecapodLabs/decapod)
 [![Artifact Project Page](https://img.shields.io/badge/Project-Dashboard-blueviolet)](https://decapodlabs.github.io/accountable-agentic-execution/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
