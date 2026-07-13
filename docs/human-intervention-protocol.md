@@ -16,3 +16,5 @@ Every intervention record must include:
 Clarification responses come from the task's prewritten oracle. The operator must not improvise materially different help across cells. The intervention log records `coaching_allowed=false`, oracle usage, human presence after start, and every response source.
 
 Human review is a secondary study requiring a separate reviewer protocol, blinded assignment where possible, correctness checks, consent/ethics review, and a frozen analysis plan.
+
+For Studies B and D, the receiving agent gets only the frozen conventional or Decapod handoff payload. An ad hoc human explanation is prohibited and recorded as a failed human-absence outcome or protocol deviation. For Study C, humans may perform only predeclared integration/publish actions; manual task reassignment, conflict resolution, or dependency advice is an intervention. The protocol records exact briefing content, duration, and whether it exposed information unavailable to the comparison condition.

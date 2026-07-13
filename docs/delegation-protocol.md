@@ -62,3 +62,5 @@ Tasks must require interacting reasoning: architecture discovery, multi-layer ch
 5. Independent audit/reproduction checks the provenance chain and selected outcomes.
 
 No synthetic, pilot, or unmeasured value may be presented as confirmatory evidence.
+
+This remains Study A and the paper's primary controlled experiment. Cross-workbench handoff, concurrent fleets, tool switching, and longitudinal dogfooding are separately bounded in `docs/fleet-coherence-protocol.md`; their records and outcomes cannot silently enter this study's estimates.

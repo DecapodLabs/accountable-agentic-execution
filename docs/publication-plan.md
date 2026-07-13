@@ -9,10 +9,10 @@ This document outlines the roadmap for publishing this research and distributing
 We adopt a phased approach to distributing our findings, ensuring that early reviews refine our empirical work before final submission to peer-reviewed venues.
 
 ### Phase 1: Technical Report and Public Artifact Release
-* **Goal**: Publish the initial complete draft of the paper as a formal Technical Report alongside the open-source release of the evaluation artifact.
+* **Goal**: Maintain the pre-results Technical Report and open-source harness, then publish a completed empirical revision only after the frozen Study A cohort is executed and audited.
 * **Channels**: Decapod Labs documentation/website, GitHub Pages, or a similar public repository.
 * **Target Date**: Q3 2026.
-* **Prerequisites**: Completion of the frozen primary walk-away cohort (350 runs if 35 tasks and 5 repetitions are retained; the secondary 2x2 would add 700 runs), not simulator output; independent verification of raw data and analysis; a reproducible artifact run; and validation of all proof files.
+* **Prerequisites for a results paper**: Completion of the frozen primary walk-away cohort (350 runs if 35 tasks and 5 repetitions are retained; activating the complete secondary 2x2 means 700 total factorial runs, not 700 additional runs), not simulator output; independent verification of raw data and analysis; a reproducible artifact run; and validation of all proof files. Prospective fleet Studies B–D require separate authorization and need not be misrepresented as completed to publish Study A. Study E remains observational.
 
 ### Phase 2: arXiv Submission
 * **Policy Check**: We adhere strictly to arXiv's policies for the CS category, which subject survey and position papers to prior-review requirements. Because this paper presents an empirical systems artifact and quantitative evaluation (not just a position or survey), it qualifies for standard arXiv distribution.
@@ -29,7 +29,7 @@ We will target major software engineering or systems research venues. The choice
   * *Focus*: Emphasize the software engineering metrics: reduced false completion claims, lower developer audit time, and improved concurrent correctness.
 * **Target Option B: Symposium on Operating Systems Principles (SOSP) / Operating Systems Design and Implementation (OSDI)**
   * *Rationale*: If our systems implementation of custody limits and concurrency isolation (the Decapod kernel itself) represents a significant distributed systems advancement.
-  * *Focus*: Emphasize kernel primitives, performance overhead, security bounds of workspace isolation, and state consensus.
+  * *Focus*: Emphasize kernel primitives, performance overhead, security bounds of workspace isolation, and repository-native coordination. The current implementation does not establish distributed consensus.
 * **Target Option C: ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (FSE)**
   * *Rationale*: Similar to ICSE, focusing on the foundations of how agentic workflows are governed and validated.
 

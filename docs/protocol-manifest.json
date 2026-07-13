@@ -5,6 +5,12 @@
   "protocol_frozen": false,
   "confirmatory_execution_authorized": false,
   "canonical_intent": "Test whether governed execution lets humans delegate desired software outcomes with less procedural micromanagement and ongoing intervention while preserving outcome quality, intent fidelity, recoverability, and reviewability.",
+  "implementation_basis": {
+    "repository": "https://github.com/DecapodLabs/decapod",
+    "commit": "e7df80d8234a80c490f6fe2119a6cff32135a386",
+    "tag": "v0.66.1",
+    "audit": "docs/implementation-claim-matrix.md"
+  },
   "design": {
     "primary_type": "paired_two_cell_walk_away",
     "secondary_type": "2x2_factorial",
@@ -16,8 +22,16 @@
     "secondary_cells": ["CN", "CP", "DN", "DP"],
     "secondary_ablation": "checklist_only"
   },
-  "questions": ["RQ1", "RQ2", "RQ3", "RQ4", "RQ5", "RQ6"],
+  "questions": ["RQ1", "RQ2", "RQ3", "RQ4", "RQ5", "RQ6", "RQ7", "RQ8", "RQ9", "RQ10", "RQ11", "RQ12"],
+  "studies": {
+    "walk_away_alignment": {"label": "Study A", "role": "primary_controlled", "status": "harness_validation"},
+    "handoff_continuity": {"label": "Study B", "role": "prospective_controlled", "status": "schema_only"},
+    "concurrent_fleet": {"label": "Study C", "role": "prospective_controlled", "status": "schema_only"},
+    "tool_switch_continuity": {"label": "Study D", "role": "prospective_controlled", "status": "schema_only"},
+    "longitudinal_case_study": {"label": "Study E", "role": "observational", "status": "repository_fact_extractor_only"}
+  },
   "data_kinds": ["synthetic_fixture", "pilot", "empirical"],
+  "evidence_classes": ["controlled", "observational"],
   "stages": ["harness_validation", "pilot", "protocol_freeze", "confirmatory_execution", "independent_audit"],
   "sample_plan": {
     "task_count_target": 35,
@@ -30,5 +44,8 @@
   "walk_away_rule": "Start one complex natural delegation prompt, then provide no corrective coaching; clarification uses only a frozen oracle.",
   "context_alignment_audit": ["authority_source", "selection_rationale", "content_hash", "selected_or_excluded", "relevance_label", "resolution_latency"],
   "freeze_requirements": ["canonical task packages", "paired prompts", "hidden evaluators", "oracle tables", "context manifests", "exclusion rules", "statistical analysis plan", "model/runtime", "protocol tag"],
-  "synthetic_fixture_boundary": "Legacy three-condition files and aggregates remain synthetic_fixture and cannot be aggregated with pilot or empirical records."
+  "synthetic_fixture_boundary": "Legacy three-condition files and aggregates remain synthetic_fixture and cannot be aggregated with pilot or empirical records.",
+  "study_boundary": "Aggregation must select exactly one study_id; longitudinal observational records cannot enter controlled summaries and one study's metrics cannot enter another study's headline result.",
+  "fleet_execution_authorized": false,
+  "cloud_boundary": "The inspected public Decapod crate is local-first; cloud backend execution is unavailable and remote federation is future work."
 }
