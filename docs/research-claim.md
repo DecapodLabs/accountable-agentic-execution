@@ -45,7 +45,7 @@ Our evaluation is designed around the following concrete, falsifiable prediction
 1. **Prediction 1 (Completion Claims)**: In the planned benchmark of 35 multi-step coding tasks, the Treatment group (Decapod-governed) will exhibit fewer invalid completion claims than Baseline A (prompt-only) and Baseline B (checklist-only), with the effect size estimated from completed runs rather than assumed in advance.
 2. **Prediction 2 (Interruption Recovery)**: When an agent's execution is abruptly killed mid-task and resumed, the Treatment group (using durable intent and governance records) will successfully complete more tasks than Baseline A, subject to an explicitly recorded interruption and recovery protocol.
 3. **Prediction 3 (Concurrent Safety)**: Under a test of two agents making edits to overlapping sections of a repository, Treatment group runs will have fewer uncoordinated shared-workspace write failures. Isolated workspaces do not imply zero later merge conflicts, so those outcomes must be measured separately.
-4. **Prediction 4 (Audit Speed)**: An independent human reviewer will correctly accept or reject a task modification faster when presented with Decapod governance and proof artifacts than when reviewing a raw chat transcript, if the preregistered reviewer study supports that result.
+4. **Prediction 4 (Audit Speed)**: An independent human reviewer will correctly accept or reject a task modification faster when presented with Decapod governance and proof artifacts than when reviewing a raw chat transcript, if the prospective reviewer protocol supports that result.
 
 ---
 

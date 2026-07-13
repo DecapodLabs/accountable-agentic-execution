@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "template_version": "scaffold-v3",
+  "generated_at": "1783917050Z",
+  "repo_signal_fingerprint": "53ee4f79a9457106adc51189a96ade6031af070ddb3b137d1b2bbb0fa8a78093",
+  "declared_capabilities": [],
+  "capability_definition_version": "1.0.0",
+  "config_input_hash": "",
+  "spec_input_hash": "",
+  "files": [
+    {
+      "path": ".decapod/generated/specs/README.md",
+      "template_hash": "7a85d851e4e267dd9eec6ae0dee0417fd6ff3dbca435bc92c6e9aa7c26487813",
+      "content_hash": "7a85d851e4e267dd9eec6ae0dee0417fd6ff3dbca435bc92c6e9aa7c26487813"
+    },
+    {
+      "path": ".decapod/generated/specs/INTENT.md",
+      "template_hash": "e6c06430e23ca87ae33169a6b1f9c70a3fd283655f5b5b29755fb83181f989e9",
+      "content_hash": "e17732aa6749c66d87300f1044d43f17bd52ba9c3c06f102e6573a9366e250f9"
+    },
+    {
+      "path": ".decapod/generated/specs/ARCHITECTURE.md",
+      "template_hash": "58f2abf6f6e0c3da62bc0850e71e12abd76c5064c793701c7b9330036713b163",
+      "content_hash": "00ddc493ddb86aedf9b3797e19878ef66b114327357845ac0f5211d165d29784"
+    },
+    {
+      "path": ".decapod/generated/specs/INTERFACES.md",
+      "template_hash": "15cc8c3bbfe951da695384106eb78a44c7af28ddc002bcc83c8a7770229fe999",
+      "content_hash": "7d8a3872ebb1cdd3b12186ec6ae2bba0930da12f64c762f9f2e30fd3ca938ab8"
+    },
+    {
+      "path": ".decapod/generated/specs/VALIDATION.md",
+      "template_hash": "9829f6c335abb79627f67e6d5ffe5bf5c2e10355d19a65bfd61da8cf05421b0f",
+      "content_hash": "64e60220e48ba3e8480cf0a79e2a9cea7673c1f556b35d014a7707370103525e"
+    },
+    {
+      "path": ".decapod/generated/specs/SEMANTICS.md",
+      "template_hash": "3a79850c94b81e29c6462a7ea70d45198252e3eeba2132c6e9206f7b4e4a5829",
+      "content_hash": "dafae9d05f446acb0aca65756911d850742d5d3949edb07faf384a3f496ca48b"
+    },
+    {
+      "path": ".decapod/generated/specs/OPERATIONS.md",
+      "template_hash": "54ab819ae22bea9f786793a37196749cbacd72c60f58108898e9db044c534acf",
+      "content_hash": "1c6e2a2585e800487d904f8b18bbed1fd606fd050981cd703e847431f49bdab7"
+    },
+    {
+      "path": ".decapod/generated/specs/SECURITY.md",
+      "template_hash": "b283bdc62b7c2fce411becf6b31928d1b3502da28be7ad618531e3e1820fc147",
+      "content_hash": "b9d04e9e901988450f24fd9cc14f3ecc866e08f6d47bad1c980d50e1a4377a90"
+    }
+  ]
+}
