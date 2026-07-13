@@ -41,6 +41,14 @@ Study A is the primary walk-away CN-versus-DN comparison. Prospective Studies B�
 
 Public adoption is ecological context, not performance evidence. A July 13, 2026 API snapshot reported 222 GitHub stars, 21 forks, and 6,983 crates.io downloads—approximately 7,000 downloads, but not more than 7,000 in that query. These counts do not establish correct use, interoperability, or a treatment effect.
 
+The same snapshot verified Decapod configuration markers in **13 repositories across three owner namespaces**—11 public and two private:
+
+- `alexhraber`: [`pi-cluster`](https://github.com/alexhraber/pi-cluster), [`builddeck`](https://github.com/alexhraber/builddeck), [`agentic-sdlc-intake-attack`](https://github.com/alexhraber/agentic-sdlc-intake-attack), [`go-scaling`](https://github.com/alexhraber/go-scaling), [`nixos`](https://github.com/alexhraber/nixos), and private `cycle`.
+- `worldofgeese`: [`den`](https://github.com/worldofgeese/den), [`tarot-api`](https://github.com/worldofgeese/tarot-api), and [`mythras-chargen`](https://github.com/worldofgeese/mythras-chargen).
+- `DecapodLabs`: [`decapod`](https://github.com/DecapodLabs/decapod), private `gensor`, [`accountable-agentic-execution`](https://github.com/DecapodLabs/accountable-agentic-execution), and [`pincher`](https://github.com/DecapodLabs/pincher).
+
+This is a maintainer-correlated deployment footprint, not 13 independent adopters or evidence that the governance mechanisms improve outcomes. See the [repository-use inventory and verification boundary](docs/adoption-inventory.md).
+
 ---
 
 ## 2. Directory Layout
@@ -65,6 +73,7 @@ The workspace is organized to keep paper drafts, empirical records, and system d
 │   ├── experiment-plan.md # Metric definitions and experimental layout
 │   ├── fleet-coherence-protocol.md # Prospective handoff/concurrency/tool-switch studies
 │   ├── agent-governance-interoperability.md # Candidate thin-waist profile and implementation roadmap
+│   ├── adoption-inventory.md # Verified repository markers and ecological-evidence boundary
 │   ├── implementation-claim-matrix.md # Decapod code/test support and boundaries
 │   └── terminology.md     # Project taxonomy and definitions
 └── pages/                 # Web landing page and metrics dashboard

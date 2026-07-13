@@ -70,6 +70,8 @@ This is stricter than asking whether worktrees avoid direct file trampling. Simi
 
 As queried on July 13, 2026, the official GitHub API reported 222 stars and 21 forks, while the crates.io API reported 6,983 cumulative downloads for `decapod`—approximately 7,000, but not yet more than 7,000 in that query. These counts show public interest and distribution only. They do not establish correct use, fleet interoperability, research validity, or a treatment effect.
 
+An authenticated marker audit also verified `.decapod/config.toml` in 13 repositories across the `alexhraber`, `worldofgeese`, and `DecapodLabs` namespaces (11 public and two private). The [repository-use inventory](adoption-inventory.md) records the names, visibility, and boundary. Because the repositories are maintainer-correlated, the count is deployment-footprint evidence rather than 13 independent adoptions.
+
 ## Implementation roadmap
 
 - [#869](https://github.com/DecapodLabs/decapod/issues/869): narrow MCP/RPC/handshake documentation to implemented boundaries.
