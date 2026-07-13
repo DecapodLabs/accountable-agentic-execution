@@ -21,8 +21,8 @@ This repository hosts the LaTeX source and reproducible evaluation harness for o
 We formalize four core primitives to achieve accountable agentic execution:
 
 * **Intent**: A durable, structured manifest that defines the task objective and success criteria outside the model's transient context window.
-* **Custody**: The isolated workspace boundaries (branches, file scopes, permitted commands) within which the agent is allowed to execute.
-* **Trajectory**: An append-only, kernel-logged audit ledger of every observation, action, and validation state during the run.
+* **Custody**: Exclusive task ownership and isolated git-worktree or container boundaries within which the agent operates.
+* **Trajectory**: Event-backed records of task, broker, proof, and governance activity that can be rendered as a flight-recorder timeline.
 * **Proof**: Programmatically checkable validation, proof-run, workunit, and provenance evidence for a governed workspace state.
 
 This artifact is designed to evaluate these primitives using **Decapod**, a daemonless, local-first governance kernel that coordinates intent, task custody, validation, proof events, and publication around existing coding agents. It does not claim complete OS-level sandboxing, universal action interception, or signed completion certificates.

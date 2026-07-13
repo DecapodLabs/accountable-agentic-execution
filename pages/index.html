@@ -452,7 +452,7 @@
                 </p>
                 <br>
                 <p class="abstract-text">
-                    This paper frames agentic software engineering as a distributed execution problem. We introduce a framework built around four primitives to achieve accountable execution: <strong>Intent</strong> (durable target objectives), <strong>Custody</strong> (isolated environment bounds and tool permissions), <strong>Trajectory</strong> (immutable, kernel-logged audit trails), and <strong>Proof</strong> (cryptographically anchored, machine-checkable evidence of completion). We present Decapod, a local-first governance kernel, as a reference implementation of this model. We propose an empirical evaluation protocol to measure governed execution across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. We discuss how explicit custody and verification gates are projected to reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
+                    This paper frames agentic software engineering as a distributed execution problem. We introduce a framework built around four primitives to achieve accountable execution: <strong>Intent</strong> (durable target objectives), <strong>Custody</strong> (isolated environment bounds and tool permissions), <strong>Trajectory</strong> (event-backed records of governance activity), and <strong>Proof</strong> (machine-checkable validation and provenance evidence). We present Decapod, a local-first governance kernel, as a reference implementation of this model. We propose an empirical evaluation protocol to measure governed execution across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. We discuss how explicit custody and verification gates are projected to reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
                 </p>
 
                 <!-- Flow Visualizer -->
@@ -469,12 +469,12 @@
                     <div class="flow-arrow">&rarr;</div>
                     <div class="flow-node">
                         <div class="flow-node-title">3. Trajectory</div>
-                        <div class="flow-node-desc">Kernel Audit Ledger</div>
+                        <div class="flow-node-desc">Governance Record</div>
                     </div>
                     <div class="flow-arrow">&rarr;</div>
                     <div class="flow-node">
                         <div class="flow-node-title">4. Proof</div>
-                        <div class="flow-node-desc">Cryptographic Success</div>
+                        <div class="flow-node-desc">Validation Evidence</div>
                     </div>
                 </div>
             </div>
@@ -500,13 +500,13 @@
                 <div class="primitive-card" id="card-trajectory">
                     <div class="primitive-icon">Trajectory</div>
                     <h3 class="primitive-name">Auditable Trajectory</h3>
-                    <p class="primitive-desc">An append-only, kernel-logged audit trail of all commands, file diffs, and validation outputs. Designed to anchor history integrity and support recoverability.</p>
+                    <p class="primitive-desc">Event-backed governance records for task, broker, proof, and validation activity. Designed to anchor execution history and support recoverability.</p>
                 </div>
                 
                 <div class="primitive-card" id="card-proof">
                     <div class="primitive-icon">Proof</div>
                     <h3 class="primitive-name">Verifiable Proof</h3>
-                    <p class="primitive-desc">Cryptographically anchored compiler, lint, and test suite logs linked to workspace snapshots. Provides programmatically checkable evidence of completion before code is merged.</p>
+                    <p class="primitive-desc">Machine-checkable validation, proof-run, workunit, and provenance evidence linked to governed task state.</p>
                 </div>
                 
             </div>
