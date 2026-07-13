@@ -1,54 +1,48 @@
 # Empirical Evaluation Plan
 
-The repository is in the harness-validation phase of a staged empirical program. No current synthetic value is an observation about an agent.
+This repository is in harness validation. The primary study tests one-shot walk-away delegation, not prompt length alone. Synthetic fixtures are harness artifacts and cannot support treatment claims.
 
-## 1. Primary factorial design
+## 1. Primary study
 
-The experimental unit is one isolated agent run on one task, paired by task across conditions. The primary design is 2×2:
+The experimental unit is an isolated run of one complex task from one clean starting commit and fresh model context. The primary paired comparison is:
 
-| Execution substrate | Instruction style |
-| --- | --- |
-| Conventional agent workflow | Natural delegation prompt |
-| Conventional agent workflow | Procedural/micromanaged prompt |
-| Decapod-governed workflow | Natural delegation prompt |
-| Decapod-governed workflow | Procedural/micromanaged prompt |
+| Cell | Substrate | Prompt |
+| --- | --- | --- |
+| CN | Conventional agent workflow | Natural delegation |
+| DN | Decapod-governed workflow | Identical natural delegation |
 
-The substrate, model, decoding settings, starting commit, task package, and hidden evaluator are held constant within a task block. Natural and procedural prompts are semantically matched projections of one canonical intent. Checklist-only remains an optional secondary ablation and is never substituted for the primary factorial comparison.
+The same model/version, decoding, runtime, repository, tools, timeout, hidden rubric, evaluator, and reset procedure are used in both cells. CN receives ordinary repository/tool access without Decapod-mediated context resolution, orientation, task claim, capsule, custody, or proof corridor. DN receives the configured Decapod context and execution corridor. No post-start coaching is allowed.
 
-Natural delegation states the desired outcome, why it matters, meaningful constraints and priorities, and the standard of completion. It does not prescribe implementation details unless those details are themselves part of intent. The procedural variant adds anticipated steps, likely paths, commands, tests, sequencing, and defensive instructions.
+The natural prompt states outcome, motivation, meaningful constraints/priorities, and completion standard. It does not prescribe a solution. A frozen clarification oracle is used only when necessary. The optional secondary ablation crosses both substrates with natural and semantically matched procedural prompts.
 
-## 2. Research questions and outcomes
+## 2. Task requirements
 
-RQ1 asks whether Decapod reduces initial procedural instruction at equivalent outcome quality. RQ2 asks whether it reduces follow-ups, corrective interventions, supervision time, unnecessary decisions, and recovery work. RQ3 asks whether it improves success, intent fidelity, relevant context discovery, and proof completeness under natural delegation. RQ4 tests the substrate × instruction-style interaction. RQ5 tests invalid completion claims, interruption recovery, and uncoordinated workspace failures. RQ6 reports governance cost.
+Tasks must require several interacting forms of reasoning: architecture discovery, multi-file or multi-layer changes, compatibility, project conventions, an applicable security/persistence/API/concurrency/operational standard, validation, and scope discipline. Each package contains canonical intent, motivation, constraints, open questions, escalation policy, hidden rubric, independent evaluator, paired prompts, oracle, starting commit, available context, interruption/concurrency configuration, and exclusions. The hidden rubric is unavailable to the agent.
 
-Record, at minimum:
+## 3. Outcomes
 
-* prompt characters/tokens, explicit steps, named paths, commands, tests, and implementation prescriptions;
-* follow-up turns, intervention count and duration, supervision time, clarification requests, and oracle classification of each clarification;
-* hidden-evaluator success, intent fidelity, regressions, unintended scope expansion, discovered repository guidance, validation/proof completeness, and invalid completion claims;
-* interruption recovery, reviewer accuracy/time when a separately approved reviewer protocol exists;
-* model tokens, tool calls, elapsed time, workspace/proof/validation cost, and protocol deviations.
+The primary outcome is independent final-state fidelity to the complete intent: functional correctness, explicit requirements, implicit invariants, architecture/conventions, applicable standards, regression avoidance, scope discipline, validation/evidence completeness, and acceptance readiness.
 
-Report these dimensions directly as a delegation frontier rather than combining them into an unexplained score.
+Convergence outcomes are model requests, input/output tokens, tool calls, repository searches, files opened before first edit, time to first relevant action, failed attempts, redundant calls, compiler/test/lint/validation failure cycles, reversals or substantial rewrites, clarification requests, unresolved questions, time to acceptable completion, premature claims, and cost. Human absence outcomes are clarification, corrective intervention, and completion without coaching. Report validation, provenance, and governance overhead separately.
 
-## 3. Reproducible task packages
+## 4. Mechanism instrumentation
 
-Each task package contains canonical intent, motivation, priorities, constraints, open questions, escalation policy, hidden acceptance rubric, independent evaluator, matched prompts, a prewritten clarification oracle, starting repository commit, available project context, interruption/concurrency configuration, and exclusion criteria. Rubrics and evaluators are not exposed to the agent. Every run starts from a clean repository and isolated model context; all interventions and oracle responses are logged.
+For each supplied context item, record authority source, authority type, selection rationale, content hash, size, selected/excluded status, and provenance. Record selected constitutional nodes, project specifications, capability overlays, constraints/negative requirements, standards, prior decisions, excluded context, total context size, and resolution latency. An independent context-relevance audit labels every item necessary, useful, irrelevant, redundant, contradictory, or harmful. More context is not presumed better.
 
-## 4. Staged execution
+## 5. Stages and provenance
 
-1. **Harness validation:** deterministic schema, evaluator, aggregation, and synthetic-fixture tests only.
-2. **Pilot:** a small authorized set of real runs used to test difficulty, instrumentation, interventions, and evaluator correctness. Pilot records are excluded from confirmatory estimates.
-3. **Protocol freeze:** tag a commit containing tasks, prompts, hypotheses, metrics, exclusions, evaluator logic, and statistical analysis plan.
-4. **Confirmatory execution:** run the frozen protocol and deposit immutable raw evidence.
-5. **Independent audit/reproduction:** a second reviewer checks provenance, analysis, and selected outcomes.
+1. Harness validation: deterministic tests and synthetic fixtures.
+2. Pilot: a small labeled set across CN and DN, optionally including the secondary cells, to test capture, blindness, oracle behavior, resets, evaluator correctness, and provenance. Pilot is excluded from confirmatory analysis.
+3. Protocol freeze: tag exact tasks, prompts, hidden rubrics/evaluators, context manifests, outcomes, exclusions, randomization, analysis, and model/runtime.
+4. Confirmatory execution: run the frozen cohort without ad hoc retries or assistance.
+5. Independent audit/reproduction: validate the chain from protocol tag through task, prompt, execution, repository state, evaluator, aggregate, and paper artifact.
 
-The current repository implements the task/run contracts, synthetic fixture path, fail-closed aggregation, independent task evaluator, and an explicitly authorized real-run capture wrapper. It does not fabricate pilot or empirical records and does not initiate paid model execution.
+Every record identifies `synthetic_fixture`, `pilot`, or `empirical`; exact prompt/runtime/model metadata; repository and Decapod commits; environment and permissions; events, interventions, oracle responses; context manifest; evaluator result; exclusions/deviations; and immutable hashes. Synthetic and pilot records fail closed in confirmatory aggregation.
 
-## 5. Statistical and protocol controls
+## 6. Analysis
 
-Before collection, freeze the task-level experimental unit, task-block pairing, randomization and run ordering, model/context reset, repeated-run treatment, task clustering, primary/secondary outcomes, confidence intervals, effect sizes, multiplicity treatment, sensitivity analyses, governance-overhead reporting, and handling of failed, missing, timed-out, or excluded runs. A non-inferiority claim requires a justified margin and power analysis; otherwise report exploratory estimates. Human review is secondary until reviewer consent, blinding where possible, correctness checks, and ethics documentation exist.
+Report paired task-level contrasts, cell distributions, uncertainty intervals, effect sizes, substrate effect, and the substrate × prompt-style interaction for the secondary design. Cluster repeated runs by task and state denominators for failures, timeouts, and exclusions. Do not treat “inference hits” as a metric; use the defined request, token, tool-loop, retry, and failure-cycle measures. Do not claim non-inferiority until a margin and power analysis are frozen.
 
-## 6. Provenance boundary
+## 7. Falsification
 
-Every real record identifies data kind (`pilot` or `empirical`), task and prompt variant, exact prompt, model/provider/version/settings, seed or request ID, agent/runtime and Decapod versions, target commit, environment, permissions, timestamps, usage, interventions, workspace/proof/validation configuration, raw outcome, independent evaluation, exclusions, crashes, deviations, and links to generated tables and figures. `synthetic_fixture` records cannot be aggregated into pilot or empirical results.
+The thesis is weakened if DN does not improve independent fidelity, does not reduce failed/redundant cycles, adds cost without better results, supplies irrelevant or harmful context, still needs regular correction, is matched by CN at equal or lower effort, benefits from hidden rubric leakage, improves proof without task quality, or relocates supervision into configuration.

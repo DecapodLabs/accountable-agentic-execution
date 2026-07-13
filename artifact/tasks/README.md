@@ -8,9 +8,11 @@ Each task is defined in a structured subdirectory containing:
 * `task.json`: A manifest detailing:
   * `id`: Unique identifier (e.g., `task-01-code-mod`).
   * `category`: One of the 7 task categories.
-  * `canonical_intent`: The outcome, motivation, constraints, priorities, unknowns, and completion standard shared by both cells.
+  * `canonical_intent`: The human/team desired outcome, motivation, constraints, priorities, unresolved questions, stop conditions, and completion standard shared by both cells.
   * `prompt_variants`: Semantically matched `natural_delegation` and `procedural` prompts.
   * `base_commit`: The commit hash of the target repository state.
+  * `context_available`: The project authority and repository context visible to each substrate; treatment context must be provenance-linked and the hidden rubric excluded.
+  * `complexity_profile`: Required interacting reasoning and empirical-eligibility status.
   * `validation_commands`: Shell commands that must succeed for the task to be considered complete (e.g., `pytest tests/test_parser.py`).
 * `gold/`: The reference solution diff, used only for human auditing comparisons and checking correctness.
   * `eval_suite/`: An independent evaluator withheld from the agent workspace during execution.

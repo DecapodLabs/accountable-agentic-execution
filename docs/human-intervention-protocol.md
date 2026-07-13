@@ -2,6 +2,8 @@
 
 Human assistance is an outcome of the experiment, not an unlogged repair mechanism.
 
+The primary run models “type the outcome and walk away.” Corrective coaching and follow-up instructions are prohibited after the agent starts in both CN and DN. Clarification is permitted only through the task's frozen oracle; if the oracle cannot resolve the question, record the run as clarification-blocked or a protocol deviation rather than improvising help.
+
 Every intervention record must include:
 
 - run identifier and timestamp;
@@ -11,6 +13,6 @@ Every intervention record must include:
 - duration and whether the intervention changed task scope;
 - adjudication: necessary, avoidable, correctly escalated, or protocol deviation.
 
-Clarification responses come from the task's prewritten oracle. The operator must not improvise materially different help across cells. Unresolved questions that the oracle cannot answer are recorded as exclusions or protocol deviations rather than silently resolved.
+Clarification responses come from the task's prewritten oracle. The operator must not improvise materially different help across cells. The intervention log records `coaching_allowed=false`, oracle usage, human presence after start, and every response source.
 
 Human review is a secondary study requiring a separate reviewer protocol, blinded assignment where possible, correctness checks, consent/ethics review, and a frozen analysis plan.

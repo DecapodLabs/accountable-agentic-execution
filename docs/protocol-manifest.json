@@ -1,17 +1,19 @@
 {
-  "protocol_id": "delegation-factorial-v1-draft",
+  "protocol_id": "walk-away-alignment-v1-draft",
   "status": "prospective_draft",
   "phase": "harness_validation",
   "protocol_frozen": false,
   "confirmatory_execution_authorized": false,
   "canonical_intent": "Test whether governed execution lets humans delegate desired software outcomes with less procedural micromanagement and ongoing intervention while preserving outcome quality, intent fidelity, recoverability, and reviewability.",
   "design": {
-    "type": "2x2_factorial",
+    "primary_type": "paired_two_cell_walk_away",
+    "secondary_type": "2x2_factorial",
     "factors": {
       "execution_substrate": ["conventional", "decapod_governed"],
       "instruction_style": ["natural_delegation", "procedural"]
     },
-    "cells": ["CN", "CP", "DN", "DP"],
+    "primary_cells": ["CN", "DN"],
+    "secondary_cells": ["CN", "CP", "DN", "DP"],
     "secondary_ablation": "checklist_only"
   },
   "questions": ["RQ1", "RQ2", "RQ3", "RQ4", "RQ5", "RQ6"],
@@ -19,10 +21,14 @@
   "stages": ["harness_validation", "pilot", "protocol_freeze", "confirmatory_execution", "independent_audit"],
   "sample_plan": {
     "task_count_target": 35,
-    "repetitions_per_cell": null,
+    "repetitions_per_task_target": 5,
+    "primary_runs_target": 350,
+    "secondary_runs_if_activated": 700,
     "power_analysis": "pending",
     "non_inferiority_margin": null
   },
-  "freeze_requirements": ["canonical task packages", "paired prompts", "hidden evaluators", "oracle tables", "exclusion rules", "statistical analysis plan", "protocol tag"],
+  "walk_away_rule": "Start one complex natural delegation prompt, then provide no corrective coaching; clarification uses only a frozen oracle.",
+  "context_alignment_audit": ["authority_source", "selection_rationale", "content_hash", "selected_or_excluded", "relevance_label", "resolution_latency"],
+  "freeze_requirements": ["canonical task packages", "paired prompts", "hidden evaluators", "oracle tables", "context manifests", "exclusion rules", "statistical analysis plan", "model/runtime", "protocol tag"],
   "synthetic_fixture_boundary": "Legacy three-condition files and aggregates remain synthetic_fixture and cannot be aggregated with pilot or empirical records."
 }

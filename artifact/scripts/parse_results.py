@@ -41,7 +41,7 @@ def validate_kind(records: list[dict[str, object]], requested_kind: str) -> None
     if kinds != {requested_kind}:
         raise SystemExit(f"fail-closed: requested kind={requested_kind}, found kinds={sorted(kinds)}")
     for record in records:
-        if record.get("schema_version") != "run-record.v2":
+        if record.get("schema_version") not in {"run-record.v2", "run-record.v3"}:
             raise SystemExit(f"Unsupported schema in {record['_path']}")
         if requested_kind in {"pilot", "empirical"}:
             provenance = record.get("provenance", {})

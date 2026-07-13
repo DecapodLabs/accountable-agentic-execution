@@ -1,32 +1,34 @@
 \section{Evaluation Protocol}
 \label{sec:evaluation}
 
-The artifact is in harness validation, not empirical data collection. Checked-in records are explicitly \texttt{synthetic\_fixture} data and cannot support a treatment-effect claim. The real-run wrapper requires explicit authorization and records provenance; no paid benchmark is initiated by this repository.
+The artifact is in harness validation, not empirical data collection. Checked-in records are explicitly \texttt{synthetic\_fixture} data and cannot support a treatment-effect claim. The study's primary test is one-shot walk-away delegation: whether one sufficiently complex natural outcome-oriented request can produce an independently acceptable result without ongoing human coaching because Decapod resolves authoritative project context before implementation inference.
 
-\subsection{Research Questions and Factorial Design}
-The primary study asks: (RQ1) whether Decapod reduces initial procedural instruction at equivalent outcome quality; (RQ2) whether it reduces corrective follow-ups, unnecessary decisions, supervision time, and hands-on recovery; (RQ3) whether it improves success, intent fidelity, relevant context discovery, and proof completeness under natural delegation; (RQ4) whether it reduces the performance penalty of less procedural prompting; (RQ5) whether it reduces invalid completion claims, improves interruption recovery, and reduces uncoordinated workspace failures; and (RQ6) what latency, token, tool-call, workspace, validation, proof, and reviewer overhead it introduces.
+\subsection{Primary Comparison and Mechanism}
 
-The primary design is a 2$\times$2 factorial experiment:
-\begin{center}
-\begin{tabular}{lll}
-\toprule
-Execution substrate & Natural delegation & Procedural prompt \\
-\midrule
-Conventional workflow & primary cell & primary cell \\
-Decapod-governed workflow & primary cell & primary cell \\
-\bottomrule
-\end{tabular}
-\end{center}
-Natural prompts state the desired outcome, motivation, meaningful constraints and priorities, and completion standard. They do not enumerate implementation steps unless those details are part of intent. Procedural prompts are semantically matched and add anticipated steps, likely paths, commands, tests, sequencing, and defensive instructions. The earlier checklist-only condition is retained only as a secondary ablation.
+The primary comparison uses the same natural delegation prompt, base model and version, decoding and runtime configuration, repository and starting commit, tools, timeout, hidden acceptance rubric, evaluator, and clean-context reset. The conventional cell (CN) receives ordinary repository and tool access without Decapod-mediated constitution resolution, governed orientation, task claim, context capsule, workspace custody, or proof corridor. The Decapod cell (DN) receives the applicable constitution, architecture and specification nodes, capabilities and constraints, standards, prior decisions, task ownership, custody, validation and proof expectations, and escalation rules through the configured corridor. No corrective human coaching is allowed after either run starts; genuine clarification follows only a frozen oracle.
 
-The principal hypothesis is that a Decapod-governed agent receiving natural delegation will be non-inferior in outcome quality to a conventional agent receiving a procedural prompt while requiring materially less human instruction and intervention. A non-inferiority margin and power analysis must be frozen before confirmatory execution; until then this remains an exploratory/pilot hypothesis.
+The underlying model is unchanged. Decapod is hypothesized to make the agent system operationally more knowledgeable and contextually aligned by resolving relevant, authoritative project context before implementation inference. The primary interaction is therefore ``type the outcome, start the agent, and walk away,'' not a comparison of prompt length alone.
 
-\subsection{Tasks, Measures, and Pairing}
-Each task package contains canonical human/team intent, motivation, constraints, open questions, escalation policy, hidden acceptance rubric, independent evaluator, matched prompts, a prewritten clarification oracle, starting commit, available context, interruption/concurrency configuration, and exclusion criteria. Each run begins from a clean repository and isolated model context; rubrics are hidden from the agent and every intervention is logged.
+\subsection{Primary Outcome and Convergence Measures}
 
-Measures include initial prompt characters/tokens, explicit steps, named paths, commands, tests, and implementation prescriptions; follow-up turns, intervention count and duration, supervision time, clarification requests and oracle classifications; hidden-evaluator success, intent fidelity, regressions, scope expansion, relevant context discovered, validation/proof completeness, invalid completion claims, interruption recovery, reviewer accuracy/time when separately approved; and model tokens, tool calls, elapsed time, workspace/proof/validation overhead, failures, and protocol deviations. The delegation frontier is reported using these underlying dimensions rather than an opaque composite.
+The primary outcome is independent fidelity of the final repository state to the human or team's complete intent under zero or tightly bounded post-prompt intervention. A hidden evaluator scores functional correctness, explicit requirements, implicit project invariants, architectural alignment, project conventions, applicable industry standards, regression avoidance, scope discipline, validation completeness, evidence completeness, and readiness for human acceptance.
 
-\subsection{Staged Protocol and Analysis Controls}
-The program proceeds through deterministic harness validation, a labeled pilot, a tagged protocol freeze, confirmatory execution, and independent audit/reproduction. Before collection, the protocol must freeze the experimental unit, task pairing, randomization and run order, context reset, repeated-run treatment, task-level clustering, primary and secondary outcomes, missing/timeout/exclusion rules, confidence intervals, effect sizes, multiplicity, sensitivity analyses, and governance-overhead reporting. Human audit-time research remains secondary until consent, blinding where possible, correctness checks, and ethics documentation exist.
+Convergence efficiency is measured using defined quantities: model inference requests; input and output tokens; tool calls; repository searches; files opened before the first implementation edit; time to the first relevant implementation action; failed implementation attempts; repeated or redundant calls; compiler, test, lint, and validation failure cycles; reversals or substantial rewrites; clarification requests; unresolved questions; elapsed time to acceptable completion; premature completion claims; and cost where available. The paper does not use ``inference hits'' as a measured quantity.
 
-The study must be able to show null or harmful results. The delegation thesis is weakened if natural delegation with Decapod does not improve over natural delegation without it, procedural prompts remain necessary, governance merely relocates human effort into setup, clarification burden rises, context resolution adds cost without improving fidelity, a checklist is equivalent, or overhead outweighs autonomy and reliability gains.
+\subsection{Pre-Inference Context Alignment}
+
+For each DN run, the capture path records selected constitutional nodes, project specifications, capability overlays, constraints and negative requirements, standards, prior decisions, unresolved questions, excluded context, total context size, context-resolution latency, and item-level provenance. Each item has an authority source, selection rationale, content hash, size, and selected/excluded status. An independent audit classifies each supplied item as necessary, useful, irrelevant, redundant, contradictory, or harmful. More context is not presumed to be better. CN receives an explicit empty Decapod-context manifest and does not receive the treatment capsule or hidden rubric.
+
+\subsection{Hypotheses and Secondary Ablation}
+
+H1 predicts higher independent intent fidelity for DN than CN. H2 predicts fewer model requests, failed cycles, redundant operations, and substantial rewrites. H3 predicts more application of relevant architecture, conventions, and standards without prompt enumeration. H4 predicts more completion without clarification or corrective intervention. H5 predicts more complete validation, provenance, and review evidence. H6 requires all gains to be evaluated against context-resolution, workspace, validation, token, latency, and operational overhead.
+
+Natural-versus-procedural prompting remains a secondary 2$\times$2 ablation crossing conventional and Decapod-governed substrates with natural and semantically matched procedural prompts. The procedural variant additionally specifies anticipated files, steps, commands, tests, sequencing, and defensive instructions without changing the canonical intent or hidden rubric. A checklist-only condition is secondary only.
+
+\subsection{Tasks, Stages, and Falsification}
+
+Tasks require interacting reasoning: architecture discovery, multi-file or multi-layer changes, compatibility, project conventions, an applicable security, persistence, API, concurrency, or operational standard, validation, and scope discipline. Each package contains canonical intent, motivation, constraints, open questions, escalation policy, a hidden rubric, independent evaluator, paired prompts, clarification oracle, starting commit, available context, interruption/concurrency configuration, and exclusion rules. Runs start from clean repository state and isolated model context.
+
+The program proceeds through harness validation, a labeled pilot, a tagged protocol freeze, confirmatory execution, and independent audit. Pilot records are excluded from confirmatory estimates. Every run identifies its data kind and records model/runtime, repository and Decapod commits, environment, permissions, prompts, events, interventions, oracle responses, context manifest, evaluator result, exclusions, and deviations. Synthetic and pilot records fail closed in confirmatory aggregation.
+
+The delegation thesis is weakened if DN does not improve fidelity, does not reduce failed or redundant cycles, increases cost without improving results, supplies irrelevant or harmful context, still requires regular human correction, is matched by CN at equal or lower effort, benefits from hidden rubric leakage, improves proof while task quality does not improve, or merely relocates supervision into setup. The analysis reports paired task-level contrasts, uncertainty, effect sizes, and task-clustered results; non-inferiority is prohibited until a margin and power analysis are frozen.

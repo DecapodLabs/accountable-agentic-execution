@@ -452,7 +452,7 @@
                 </p>
                 <br>
                 <p class="abstract-text">
-                    This paper frames agentic software engineering as a distributed execution problem and asks whether governed systems can support natural outcome-oriented delegation with less human micromanagement. <strong>Intent</strong> is the human or team’s desired outcome, motivation, constraints, priorities, unresolved questions, and completion standard, progressively represented through governed artifacts. <strong>Custody</strong> bounds task ownership and workspace authority; <strong>Trajectory</strong> records selected governance activity; and <strong>Proof</strong> provides machine-checkable validation and provenance evidence. We present Decapod as a local-first reference implementation and propose a 2×2 study crossing conventional versus Decapod-governed execution with natural versus procedural prompts. No empirical result is reported here.
+                    This paper frames agentic software engineering as a distributed execution problem and asks whether a human can type one complex outcome, start the agent, and walk away. <strong>Intent</strong> is the human or team’s desired outcome, motivation, constraints, priorities, unresolved questions, and completion standard, progressively represented through governed artifacts. <strong>Custody</strong> bounds task ownership and workspace authority; <strong>Trajectory</strong> records selected governance activity; and <strong>Proof</strong> provides machine-checkable validation and provenance evidence. We present Decapod as a local-first reference implementation and make the primary comparison conventional versus Decapod-governed execution under the identical natural delegation prompt. Natural-versus-procedural prompting is secondary. No empirical result is reported here.
                 </p>
 
                 <!-- Flow Visualizer -->
@@ -517,7 +517,7 @@
             <h2 class="section-title">Evaluation Plan</h2>
             
             <div class="metrics-tabs">
-                <button class="tab-btn active" id="tab-primary">Primary 2×2 Protocol — TBD</button>
+                <button class="tab-btn active" id="tab-primary">Primary Walk-Away Protocol — TBD</button>
                 <button class="tab-btn" id="tab-systems">Cost &amp; Governance Metrics — TBD</button>
             </div>
 
@@ -525,11 +525,9 @@
                 <table id="metrics-table">
                     <thead>
                         <tr id="table-headers">
-                            <th>Primary 2×2 Protocol — TBD</th>
+                            <th>Primary Walk-Away Protocol — TBD</th>
                             <th>Conventional · Natural</th>
-                            <th>Conventional · Procedural</th>
                             <th class="treatment-col">Decapod · Natural</th>
-                            <th class="treatment-col">Decapod · Procedural</th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
@@ -537,22 +535,16 @@
                         <tr>
                             <td>Task Completion Rate (%)</td>
                             <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight treatment-col">[TBD]</td>
                             <td class="metric-highlight treatment-col">[TBD]</td>
                         </tr>
                         <tr>
                             <td>Invalid Success Claims (%)</td>
                             <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight treatment-col">[TBD]</td>
                             <td class="metric-highlight treatment-col">[TBD]</td>
                         </tr>
                         <tr>
                             <td>Interruption Recovery Rate (%)</td>
                             <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight">[TBD]</td>
-                            <td class="metric-highlight treatment-col">[TBD]</td>
                             <td class="metric-highlight treatment-col">[TBD]</td>
                         </tr>
                     </tbody>
@@ -576,21 +568,22 @@
         const tableBody = document.getElementById('table-body');
 
         const primaryData = `
-            <tr><td>Task outcome quality</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
-            <tr><td>Human instruction and intervention burden</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
-            <tr><td>Intent fidelity and proof completeness</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Independent intent fidelity</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Acceptable completion without coaching</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Model requests, failed cycles, and rewrites</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Context relevance and evidence completeness</td><td>[TBD]</td><td>[TBD]</td></tr>
 `;
 
         const systemsData = `
-            <tr><td>Elapsed time, tokens, and tool calls</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
-            <tr><td>Validation, proof, and workspace overhead</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
-            <tr><td>Invalid claims, recovery, and collisions</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Elapsed time, tokens, and tool calls</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Validation, proof, and workspace overhead</td><td>[TBD]</td><td>[TBD]</td></tr>
+            <tr><td>Invalid claims, recovery, and collisions</td><td>[TBD]</td><td>[TBD]</td></tr>
 `;
 
         tabPrimary.addEventListener('click', () => {
             tabPrimary.classList.add('active');
             tabSystems.classList.remove('active');
-            tableHeaders.cells[0].innerText = "Primary 2×2 Protocol — TBD";
+            tableHeaders.cells[0].innerText = "Primary Walk-Away Protocol — TBD";
             tableBody.innerHTML = primaryData;
         });
 

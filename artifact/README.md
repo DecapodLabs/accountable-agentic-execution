@@ -13,7 +13,9 @@ To achieve this, the artifact strictly adheres to the following principles:
 1. **Completeness of Run Data**: Every run record must identify its data kind and preserve the schema needed for the planned experiment:
    * **Kind**: `synthetic_fixture`, `pilot`, or `empirical`; aggregation fails closed when kinds are mixed.
    * **Initial State**: The base repository and exact commit hash before the run.
-   * **Prompt**: The exact natural language instruction given to the agent.
+   * **Prompt**: The exact natural language instruction given to the agent, paired to one canonical intent.
+   * **Pre-inference context**: The selected authority sources, rationale, hashes, exclusions, relevance audit, and resolution latency for governed runs.
+   * **Convergence**: Model requests, tokens, tool calls, searches, pre-edit reads, failure cycles, rewrites, and time to acceptable completion.
    * **Trajectory**: Governance and intervention records; real tool trajectories are not present in synthetic fixtures.
    * **Validation Logs**: Synthetic outcome fields in fixtures; real validation logs must be collected and provenance-linked for pilot or empirical runs.
    * **Proof Artifact**: A planned evidence field, not a claim that a proof certificate was generated.
@@ -28,8 +30,8 @@ To achieve this, the artifact strictly adheres to the following principles:
 
 * **`tasks/`**: Canonical paired task packages. The current draft contains one example package; 34 additional packages must be authored before protocol freeze.
 * **`schemas/`**: Versioned task, run-record, and protocol data contracts.
-* **`baselines/`**: Executions under Condition A (prompt-only) and Condition B (checklist-only).
-* **`decapod-runs/`**: Executions under Condition C (Decapod-governed).
+* **`baselines/`**: Legacy synthetic fixtures only; real CN records use the versioned run contract.
+* **`decapod-runs/`**: Legacy synthetic fixtures only; real DN records use the versioned run contract.
 * **`scripts/`**: Automation scripts to run evaluations, collect metrics, and generate tables/figures.
 * **`results/`**: Parsed statistical results, generated tables, and plotting files.
 
