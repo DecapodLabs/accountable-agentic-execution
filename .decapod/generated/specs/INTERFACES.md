@@ -77,7 +77,7 @@ export enum ApiErrorCode {
 <!-- decapod:codebase-attestation:start -->
 ## Codebase Attestation
 
-- Repository signal fingerprint: `a6aaa08f24033349cc0e53c353c7f25f76be1f2a3e7e7bc78c7f19307d68490b`
+- Repository signal fingerprint: `805f7edea198e6572aaea32de08b8f24d4a74b0c48bd92d2c7ec67145d1d1407`
 - Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
 - Refreshed from the current codebase by `decapod specs.refresh`
 <!-- decapod:codebase-attestation:end -->

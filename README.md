@@ -20,7 +20,7 @@ This repository hosts the LaTeX source and reproducible evaluation harness for o
 
 We formalize four core primitives to achieve accountable agentic execution:
 
-* **Intent**: A durable, structured manifest that defines the task objective and success criteria outside the model's transient context window.
+* **Intent**: A durable task contract represented across plans, todos, specs, unknowns, stop conditions, and proof expectations.
 * **Custody**: Exclusive task ownership and isolated git-worktree or container boundaries within which the agent operates.
 * **Trajectory**: Event-backed records of task, broker, proof, and governance activity that can be rendered as a flight-recorder timeline.
 * **Proof**: Programmatically checkable validation, proof-run, workunit, and provenance evidence for a governed workspace state.
