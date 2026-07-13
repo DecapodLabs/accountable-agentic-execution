@@ -22,10 +22,10 @@ The evaluation uses a single underlying LLM (e.g., GPT-4o, Gemini 1.5 Pro, or Cl
 
 ### Condition C: Treatment (Decapod-Governed)
 * **Description**: The agent is executed within the Decapod governance kernel.
-* **Custody**: Work is isolated in a dedicated ephemeral workspace (e.g., `git worktree`) bound to a task-specific branch. Files and tool permissions are scoped to the task.
-* **Intent**: A machine-read intent manifest is created in the repository root (`.decapod/intent.json`) containing a formal todo list, constraints, and validation commands.
-* **Trajectory**: The kernel intercepts and records all tool inputs, outputs, file diffs, and environment validations into an append-only JSONL ledger (`.decapod/trajectory.jsonl`).
-* **Validation & Proof**: The agent must run validation commands specified in the intent manifest. Upon successful pass, the kernel freezes the workspace state, generates a signed proof file containing the successful test outputs and workspace cryptographic state, and locks the branch for review.
+* **Custody**: Work is isolated in a dedicated workspace (e.g., `git worktree`) bound to a task-scoped branch. Repository and runtime policy boundaries are applied where configured; this is not a claim of arbitrary command or credential filtering.
+* **Intent**: Durable task intent is represented through Decapod plans, todo records, project specs, and proof hooks rather than a universal `.decapod/intent.json` file.
+* **Trajectory**: Decapod records governance events across todo, broker, proof, and related journals; the flight recorder renders these records, but the current kernel is not claimed to capture every tool input, output, or file diff.
+* **Validation & Proof**: The agent must run the configured validation and proof hooks. Successful results are recorded in proof events and can be required by workunit and publication gates; the current kernel is not claimed to freeze every workspace byte or generate one universal signed certificate.
 
 ---
 
@@ -69,5 +69,5 @@ To gather data, we will run the following automated pipeline:
 3. **Execute Runs**:
    - Run each task 5 times per condition (totaling 35 tasks * 3 conditions * 5 runs = 525 executions) to account for LLM non-determinism.
    - For interruption tasks, send `SIGINT` to the running process at a random step between step 3 and 10.
-4. **Extract Metrics**: Run verification scripts (`artifact/scripts/evaluate.py`) to measure completion rates, invalid claims, and validation results.
+4. **Extract Metrics**: Run the available parsing and aggregation scripts under `artifact/scripts/` to measure completion rates, invalid claims, and validation results; add and test any missing evaluator before claiming reproducibility.
 5. **Synthesize Results**: Generate comparative tables and export data to `artifact/results/` for plotting.

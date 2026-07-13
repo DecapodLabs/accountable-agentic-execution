@@ -12,7 +12,7 @@ We adopt a phased approach to distributing our findings, ensuring that early rev
 * **Goal**: Publish the initial complete draft of the paper as a formal Technical Report alongside the open-source release of the evaluation artifact.
 * **Channels**: Decapod Labs documentation/website, GitHub Pages, or a similar public repository.
 * **Target Date**: Q3 2026.
-* **Prerequisites**: Completion of the 525 execution runs, verification of data, and validation of all proof files.
+* **Prerequisites**: Completion of the 525 planned execution runs (not simulator output), independent verification of raw data and analysis, a reproducible artifact run, and validation of all proof files.
 
 ### Phase 2: arXiv Submission
 * **Policy Check**: We adhere strictly to arXiv's policies for the CS category, which subject survey and position papers to prior-review requirements. Because this paper presents an empirical systems artifact and quantitative evaluation (not just a position or survey), it qualifies for standard arXiv distribution.

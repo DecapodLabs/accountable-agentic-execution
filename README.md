@@ -2,7 +2,7 @@
 
 > **Research paper and reproducible evaluation artifact investigating LLM-based software engineering agents as distributed execution processes governed by Intent, Custody, Trajectory, and Proof.**
 >
-> **Status**: Pre-results technical report. The model, terminology, paper scaffold, and reproducibility harness are public. The empirical benchmark has not yet been executed; all metric values remain TBD until artifact runs are completed and reviewed.
+> **Status**: Pre-results technical report. The model, terminology, paper, and reproducibility harness are public. The empirical benchmark has not yet been executed. Checked-in run records and aggregate values are synthetic harness fixtures, not observations; no treatment effect or performance claim should be inferred from them.
 
 ---
 
@@ -23,9 +23,9 @@ We formalize four core primitives to achieve accountable agentic execution:
 * **Intent**: A durable, structured manifest that defines the task objective and success criteria outside the model's transient context window.
 * **Custody**: The isolated workspace boundaries (branches, file scopes, permitted commands) within which the agent is allowed to execute.
 * **Trajectory**: An append-only, kernel-logged audit ledger of every observation, action, and validation state during the run.
-* **Proof**: Programmatically checkable, cryptographically signed evidence that the workspace state has passed all validation criteria.
+* **Proof**: Programmatically checkable validation, proof-run, workunit, and provenance evidence for a governed workspace state.
 
-This artifact is designed to evaluate these primitives using **Decapod**, a local-first governance kernel that enforces custody limits and compiles proof files around existing coding agents.
+This artifact is designed to evaluate these primitives using **Decapod**, a daemonless, local-first governance kernel that coordinates intent, task custody, validation, proof events, and publication around existing coding agents. It does not claim complete OS-level sandboxing, universal action interception, or signed completion certificates.
 
 ---
 

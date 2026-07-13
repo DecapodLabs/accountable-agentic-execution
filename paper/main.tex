@@ -37,7 +37,7 @@
 \sffamily Decapod Labs\\[0.2em]
 \texttt{alex@decapodlabs.com}
 }
-\date{\sffamily Technical Report --- June 2026}
+\date{\sffamily Technical Report --- July 2026}
 
 \begin{document}
 
@@ -47,7 +47,7 @@
 \noindent Large language model (LLM) agents are transitioning from conversational programming assistants to autonomous executors capable of editing codebases, running build tools, executing tests, and managing multi-file software deployments. Despite this shift, current agent workflows still rely on standard prompt transcripts and code diffs as the primary logs of execution. As agent runs become concurrent, long-running, and tool-intensive, this transcript-only paradigm exposes repositories to significant failure modes: lost intent, authority leakage, concurrent state corruption, and unverifiable completion claims.
 
 \medskip
-\noindent This paper frames agentic software engineering as a distributed execution problem. We introduce a framework built around four primitives to achieve accountable execution: \emph{Intent} (durable target objectives), \emph{Custody} (isolated environment bounds and tool permissions), \emph{Trajectory} (immutable, kernel-logged audit trails), and \emph{Proof} (cryptographically anchored, machine-checkable evidence of completion). We present Decapod, a local-first governance kernel, as a reference implementation of this model. We propose an empirical evaluation protocol to measure governed execution across 35 multi-step software engineering tasks against prompt-only and checklist-disciplined baselines. We outline how explicit custody and verification gates are hypothesized to reduce false completion claims, prevent concurrent edit conflicts, and decrease the human developer effort required to audit and merge autonomous code contributions.
+\noindent This paper frames agentic software engineering as a distributed execution problem. We introduce a framework built around four primitives to achieve accountable execution: \emph{Intent} (durable task objectives and constraints), \emph{Custody} (task ownership and isolated workspace boundaries), \emph{Trajectory} (event-backed records of governance activity), and \emph{Proof} (machine-checkable validation and provenance evidence). We present Decapod, a daemonless, local-first governance kernel, as a reference implementation of this model. The accompanying artifact defines an empirical evaluation protocol over 35 multi-step software-engineering tasks, but the quantitative results in this report are not yet empirical: checked-in summaries are explicitly synthetic and must not be interpreted as measurements. We state the resulting hypotheses and the controls needed to test them without claiming that governance improves model capability or guarantees security.
 \end{abstract}
 
 \vspace{1.5em}
