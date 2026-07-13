@@ -8,6 +8,8 @@ Historically, the primary method for improving coding agent performance has been
 
 Enforcing explicit custody and proof shifts the focus from inputs (prompts) to execution boundaries and evidence. Decapod can require a claimed task to enter an isolated workspace and can block promotion paths when validation or proof requirements are missing. This is narrower than complete sandboxing: the current kernel does not guarantee that every incorrect change is detected, that every credential is inaccessible, or that every agent action is intercepted. The evaluation must therefore measure both safety benefits and governance overhead.
 
+The findings of Gloaguen et al.~\cite{gloaguen2026agentsmd} sharpen this argument. Their results show that repository context can be respected while still failing to improve task success and increasing inference cost. Instruction following is not equivalent to good governance: an agent may faithfully follow a poisoned, redundant, or over-broad context file. Decapod's constitution and context-capsule structure is motivated by this distinction. It aims to make authority, scope, and proof-relevant context explicit and queryable before inference, while preserving minimality as a design constraint. This is a testable architectural hypothesis, not a result established by the present pre-results artifact.
+
 \subsection{The Control Plane for Machine Work}
 In traditional software engineering, human developers follow processes: they checkout branches, write tests, request pull request reviews, and run CI/CD pipelines. However, these processes were designed for human timelines. An autonomous agent can run dozens of commands per minute, coordinate across multiple repositories, and execute complex workflows concurrently.
 

@@ -24,6 +24,7 @@ Implementing explicit, repo-native mechanisms for **Intent**, **Custody**, **Tra
 * **Auditability**: Governance and proof records generated under custody constraints may require less human review effort to verify than raw LLM execution transcripts.
 * **Deterministic Verification**: Configured validation and promotion gates allow completion evidence to be checked programmatically before code is proposed for merge; they do not prove all semantic requirements.
 * **Intent Drift Mitigation**: A durable intent statement (e.g., a formal checklist or spec tracked outside the context window) reduces the likelihood of an agent drifting off-task during long-running tool loops.
+* **Context Quality and Poisoning**: Repository context is an active intervention: even when agents follow it, unnecessary or conflicting requirements can redirect exploration and increase inference cost. Structured, scoped context should be evaluated for whether it reduces harmful drift without reproducing that overhead.
 
 ---
 
