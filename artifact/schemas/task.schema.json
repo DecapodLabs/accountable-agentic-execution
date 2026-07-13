@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://decapodlabs.github.io/accountable-agentic-execution/schemas/task.schema.json",
   "type": "object",
-  "required": ["schema_version", "task_id", "canonical_intent", "motivation", "constraints", "priorities", "open_questions", "stop_conditions", "acceptance_rubric", "prompt_variants", "clarification_oracle", "starting_repository", "evaluation"],
+  "required": ["schema_version", "task_id", "canonical_intent", "motivation", "constraints", "priorities", "open_questions", "stop_conditions", "acceptance_rubric", "prompt_variants", "clarification_oracle", "starting_repository", "context_available", "complexity_profile", "interruption_concurrency", "exclusion_rules", "evaluation"],
   "properties": {
     "schema_version": {"const": "task-package.v1"},
     "task_id": {"type": "string", "pattern": "^task-[0-9]{2}-"},
@@ -16,6 +16,10 @@
     "prompt_variants": {"type": "object", "required": ["natural_delegation", "procedural"]},
     "clarification_oracle": {"type": "string", "minLength": 1},
     "starting_repository": {"type": "object", "required": ["source", "commit"]},
+    "context_available": {"type": "object", "required": ["conventional", "decapod_governed"]},
+    "complexity_profile": {"type": "object", "required": ["empirical_eligible", "required_reasoning"]},
+    "interruption_concurrency": {"type": "object"},
+    "exclusion_rules": {"type": "array", "items": {"type": "string"}},
     "evaluation": {"type": "object", "required": ["hidden_evaluator", "validation_commands"]}
   },
   "additionalProperties": true

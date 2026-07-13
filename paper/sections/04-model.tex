@@ -10,6 +10,8 @@ Intent ($I$) is the human or team's desired outcome, why it matters, the constra
 $$I = \langle O, M, C, Q, S, A \rangle$$
 where $O$ is the desired outcome, $M$ its motivation, $C$ constraints and priorities, $Q$ unresolved questions, $S$ stop conditions, and $A$ acceptable completion. A prompt is an initial and often incomplete expression of $I$. Plans, todos, specifications, context capsules, proof hooks, and rubrics are governed projections or resolutions of intent, not its source of authority. Decapod distributes these representations across repository artifacts so intent can be re-resolved against repository state and human escalation points without requiring the initial prompt to contain a complete procedural specification.
 
+Before implementation inference, the governed system resolves a context set $X = \langle U, A_e, E, D, Q_e, V \rangle$, where $U$ contains selected authority and constitution nodes, $A_e$ contains architecture and project specifications, $E$ contains capabilities and constraints, $D$ contains prior decisions and applicable standards, $Q_e$ contains unresolved questions and escalation rules, and $V$ contains validation and proof expectations. Each supplied item has an authority source, selection rationale, content hash, and relevance record. The primary experiment tests this context-alignment mechanism against a conventional run receiving the identical natural prompt, not a different model.
+
 \subsection{Custody: Environment Bounding}
 Custody ($K$) defines the execution and security sandbox for the agent. Formally, it is a tuple:
 $$K = \langle W, B, A, P \rangle$$

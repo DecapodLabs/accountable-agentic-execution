@@ -36,6 +36,9 @@ The execution of programmatic tests, compilers, linter checks, and security scan
 ### Governance Kernel
 A daemonless, local-first, repo-native control plane that agents invoke to resolve context, manage intent and task ownership, establish workspaces, run validations, record governance events, and gate promotion. The kernel does not generate code and does not necessarily intercept every action of an external agent runtime.
 
+### Operationally More Knowledgeable
+A system-level property under test: the unchanged underlying model has more relevant, correctly scoped, and authoritative project information available when it decides what to do. This does not mean Decapod trains the model, changes its parameters, or increases intrinsic model intelligence.
+
 ### Transcript-Only Workflow
 The standard industry practice where the only record of an agent's work is the text chat transcript containing the prompt, the model's chat responses, and the final git diff. This workflow lacks explicit custody, structured intent manifests, immutable tool logs, and independent proof generation.
 

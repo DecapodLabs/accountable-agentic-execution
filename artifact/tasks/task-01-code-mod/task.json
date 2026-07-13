@@ -14,5 +14,9 @@
   },
   "clarification_oracle": "oracle.json",
   "starting_repository": {"source": "contained fixture derived from lab-example", "commit": "recorded at run time; freeze required before empirical execution"},
+  "context_available": {"conventional": "ordinary repository files and public validation contract", "decapod_governed": "ordinary repository files plus selected constitution/specification/capability context; hidden rubric excluded"},
+  "complexity_profile": {"empirical_eligible": false, "required_reasoning": ["backwards compatibility", "focused validation"], "ineligibility_reason": "Small schema fixture; retained for harness validation only."},
+  "interruption_concurrency": {"interruption_injected": false, "overlap_or_merge_risk": false},
+  "exclusion_rules": ["Exclude from pilot and confirmatory cohorts until replaced by a complex task package."],
   "evaluation": {"hidden_evaluator": "eval_suite/evaluate.py", "validation_commands": ["python3 -c 'from app import farewell, greeting; assert greeting(\"researcher\") == \"Hello, researcher!\"; assert farewell(\"researcher\") == \"Goodbye, researcher!\"'"]}
 }

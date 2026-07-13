@@ -5,7 +5,7 @@ This directory contains the automation scripts to execute the benchmarks, perfor
 ## Script Descriptions
 
 * `run_benchmark.py`: Reproducible `synthetic_fixture` generator for the legacy three-condition schema. It never emits pilot or empirical records.
-* `run_agent.py`: Explicitly authorized pilot/empirical capture wrapper for a supplied agent command and independent evaluator command. It requires a task package, model metadata, and an explicit real-run confirmation.
+* `run_agent.py`: Explicitly authorized walk-away pilot/empirical capture wrapper for a supplied agent command and independent blind evaluator. It requires a task package, model metadata, immutable protocol tag, event log, frozen-oracle intervention log, pre-inference context manifest, evaluator result, and explicit real-run confirmation.
 * `parse_results.py`: Fail-closed parser/aggregator. It refuses mixed data kinds and refuses to treat synthetic fixtures as pilot or empirical evidence.
 * `validate_artifact.py`: Standard-library validation for task packages, run records, provenance, and data-kind separation.
 

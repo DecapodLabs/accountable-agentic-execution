@@ -1,31 +1,21 @@
 # Statistical Analysis Plan
 
-This is a prospective analysis plan for the delegation study. It is not frozen until the repository records a protocol tag/commit and the final task cohort, evaluator logic, exclusions, and margins are fixed.
+This prospective plan is not frozen until a protocol tag records the final task cohort, prompts, evaluators, exclusions, model/runtime, and analysis rules.
 
-## Experimental unit and pairing
+## Estimand and primary comparison
 
-The experimental unit is one task-by-cell run from a clean starting commit and isolated model context. Runs are paired or blocked by task; repeated runs are clustered by task and model/configuration. Run ordering is randomized within task and execution capacity.
+The primary estimand is the paired within-task difference in independently scored intent fidelity between Decapod-governed natural delegation (DN) and conventional natural delegation (CN), under identical prompt and execution inputs except for the Decapod context/corridor. The primary outcome is final-state fidelity, not prompt length. The key human-absence outcome is acceptable completion without clarification or corrective coaching.
 
-## Primary outcomes
+## Mechanism and secondary outcomes
 
-1. Hidden-evaluator outcome quality and intent fidelity.
-2. Human procedural instruction burden.
-3. Ongoing human intervention burden.
+Convergence outcomes are model requests, tokens, tool calls, repository searches, pre-edit files opened, time to first relevant action, failed attempts, redundant operations, validation failure cycles, reversals/re-writes, clarification requests, unresolved questions, time to acceptable completion, premature completion claims, and cost. Context alignment outcomes include item-level relevance labels and context size/latency. Secondary outcomes include proof/validation completeness, invalid completion claims, recovery, regressions, scope expansion, and governance overhead. Human effort is reported as dimensions and a delegation-frontier plot, not an unexplained composite.
 
-Secondary outcomes include invalid completion claims, recovery, proof completeness, context discovery, regressions, scope expansion, review accuracy/time, and governance overhead.
+## Design and estimation
 
-## Estimation
+Runs are paired or blocked by task and repeated runs are clustered by task. Report cell distributions, paired differences, effect sizes, and confidence intervals. For the secondary 2x2, estimate substrate, prompt-style, and interaction effects with task-level clustering. Randomize run order within task blocks and reset repository/model context between runs.
 
-Report cell-level distributions, paired differences, effect sizes, and confidence intervals. Model the substrate, instruction style, and their interaction with task-level clustering. Do not treat repeated runs as independent observations without accounting for task clustering.
+Failed, timed-out, crashed, clarification-blocked, and incomplete runs remain in operational-reliability denominators. Exclusions require reason, timestamp, protocol tag, and reviewer; never silently convert missing outcomes to success or drop them. Sensitivity analyses cover exclusions, task difficulty, alternate fidelity scoring, and runtime nondeterminism.
 
-## Missingness and exclusions
+## Non-inferiority and multiplicity
 
-Failed, timed-out, crashed, and incomplete runs remain in the denominator for operational reliability outcomes. Exclusions require a recorded reason, timestamp, protocol version, and reviewer. Missing outcome data are not converted to success or silently dropped.
-
-## Non-inferiority
-
-The non-inferiority margin is not yet set. Confirmatory non-inferiority claims are prohibited until the margin is justified from domain requirements, pilot variance, and a power analysis. Until then, label the study exploratory/pilot and report uncertainty without a non-inferiority conclusion.
-
-## Multiplicity and sensitivity
-
-Declare one primary outcome family before execution, state multiplicity treatment for secondary outcomes, and run sensitivity analyses for exclusions, task difficulty, model configuration, and alternative intent-fidelity scoring.
+No non-inferiority claim is permitted until a domain-justified margin and power analysis are frozen before confirmatory execution. Otherwise describe the study as exploratory/pilot and report estimates with uncertainty. Declare the primary outcome family before collection and state multiplicity treatment for secondary outcomes.

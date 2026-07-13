@@ -4,14 +4,20 @@
   "type": "object",
   "required": ["schema_version", "kind", "run_id", "task_id", "substrate", "instruction_style", "prompt", "provenance", "outcome"],
   "properties": {
-    "schema_version": {"const": "run-record.v2"},
+    "schema_version": {"enum": ["run-record.v2", "run-record.v3"]},
     "kind": {"enum": ["synthetic_fixture", "pilot", "empirical"]},
     "run_id": {"type": "string", "minLength": 1},
     "task_id": {"type": "string", "minLength": 1},
     "substrate": {"enum": ["conventional", "decapod_governed", "legacy_fixture"]},
     "instruction_style": {"enum": ["natural_delegation", "procedural", "checklist_only", "legacy_fixture"]},
+    "repetition_index": {"type": "integer", "minimum": 0},
+    "canonical_intent_id": {"type": "string"},
+    "walk_away": {"type": "object", "required": ["coaching_allowed", "oracle_allowed", "human_present_after_start"]},
     "prompt": {"type": "object", "required": ["text", "characters", "approx_tokens", "procedural_steps", "named_paths", "named_commands", "named_tests", "implementation_prescriptions"]},
     "provenance": {"type": "object", "required": ["protocol_id", "task_commit", "model", "runtime", "timestamps", "environment", "configuration"]},
+    "context_alignment": {"type": "object"},
+    "convergence": {"type": "object"},
+    "execution": {"type": "object"},
     "outcome": {"type": "object", "required": ["task_success", "intent_fidelity", "invalid_completion_claim", "proof_completeness"]}
   },
   "additionalProperties": true

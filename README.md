@@ -25,7 +25,7 @@ We formalize four core primitives to achieve accountable agentic execution:
 * **Trajectory**: Event-backed records of task, broker, proof, and governance activity that can be rendered as a flight-recorder timeline.
 * **Proof**: Programmatically checkable validation, proof-run, workunit, and provenance evidence for a governed workspace state.
 
-This artifact is designed to evaluate these primitives using **Decapod**, a daemonless, local-first governance kernel that coordinates intent, task custody, validation, proof events, and publication around existing coding agents. The live research program is preparing and conducting an empirical study of whether governed agents can accept natural outcome-oriented delegation with less human micromanagement. It does not claim complete OS-level sandboxing, universal action interception, or signed completion certificates.
+This artifact is designed to evaluate these primitives using **Decapod**, a daemonless, local-first governance kernel that coordinates intent, task custody, validation, proof events, and publication around existing coding agents. The primary empirical question is whether one complex natural outcome-oriented request can support “type the outcome and walk away”: Decapod resolves authoritative project context before implementation inference, while the underlying model remains unchanged. A secondary ablation tests natural versus procedural prompting. The project does not claim complete OS-level sandboxing, universal action interception, or signed completion certificates.
 
 ---
 
