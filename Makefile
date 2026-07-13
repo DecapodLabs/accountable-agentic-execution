@@ -1,4 +1,4 @@
-.PHONY: all paper clean check tree
+.PHONY: all paper clean check artifact-check site-check tree
 
 all: check paper
 
@@ -37,6 +37,18 @@ check:
 			echo "[WARN] $$cmd is missing"; \
 		fi \
 	done
+	@$(MAKE) artifact-check
+	@$(MAKE) site-check
+
+artifact-check:
+	@echo "\n=== Validating Research Artifact ==="
+	@python3 -B artifact/scripts/validate_artifact.py
+	@python3 -B -m unittest discover -s artifact/tests -p 'test_*.py'
+	@python3 -c 'import json, pathlib; [json.loads(p.read_text()) for p in pathlib.Path("artifact").rglob("*.json")]; json.loads(pathlib.Path("docs/protocol-manifest.json").read_text()); print("validated JSON syntax")'
+
+site-check:
+	@echo "\n=== Validating Static Site ==="
+	@python3 -B artifact/scripts/validate_site.py
 
 tree:
 	@echo "=== Directory Layout ==="

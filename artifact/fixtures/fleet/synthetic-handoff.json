@@ -1,0 +1,17 @@
+{
+  "schema_version": "run-record.v4",
+  "kind": "synthetic_fixture",
+  "study_id": "handoff_continuity",
+  "evidence_class": "controlled",
+  "run_id": "synthetic-handoff-schema-only",
+  "task_id": "task-00-synthetic-not-empirical",
+  "substrate": "decapod_governed",
+  "instruction_style": "natural_delegation",
+  "prompt": {"text": "SYNTHETIC SCHEMA FIXTURE", "characters": 24, "approx_tokens": 6, "procedural_steps": 0, "named_paths": 0, "named_commands": 0, "named_tests": 0, "implementation_prescriptions": 0},
+  "provenance": {"protocol_id": "synthetic-fleet-schema", "task_commit": "synthetic-fixture-no-repository", "model": {"identifier": "none"}, "runtime": {}, "timestamps": {}, "environment": {}, "configuration": {}},
+  "context_alignment": {},
+  "coordination": {"source_workbench": "synthetic-a", "destination_workbench": "synthetic-b", "handoff_payload_refs": [], "workspace_identities": [], "reorientation_model_calls": 0, "duplicate_file_reads": 0, "duplicate_searches": 0, "duplicate_commands": 0, "duplicate_implementation_attempts": 0, "claim_conflicts": 0, "merge_conflicts": 0, "semantic_integration_failures": 0},
+  "convergence": {},
+  "execution": {"synthetic": true},
+  "outcome": {"task_success": false, "intent_fidelity": null, "invalid_completion_claim": null, "proof_completeness": null}
+}

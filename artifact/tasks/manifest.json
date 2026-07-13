@@ -6,8 +6,9 @@
   "task_packages": ["task-01-code-mod"],
   "protocol_id": "walk-away-alignment-v1-draft",
   "primary_design": "paired_conventional_vs_decapod_governed_identical_natural_prompt",
+  "study_ids": ["walk_away_alignment", "handoff_continuity", "concurrent_fleet", "tool_switch_continuity"],
   "primary_runs_target": 350,
   "secondary_runs_if_activated": 700,
-  "freeze_blockers": ["34 complex empirical-eligible task packages remain to be authored", "starting commits must be immutable", "hidden evaluator, context-audit, and oracle review are pending", "power analysis and non-inferiority margin are pending"],
+  "freeze_blockers": ["34 complex empirical-eligible Study A task packages remain to be authored", "Study B handoff checkpoints and conventional payloads are not frozen", "Study C task graphs and integration evaluators are not authored", "Study D workbench pairs and runtime versions are not authorized", "starting commits must be immutable", "hidden evaluator, context-audit, and oracle review are pending", "power analysis and non-inferiority margin are pending"],
   "agent_visibility": "Agents receive only the task intent, selected prompt variant, permitted context, and public validation contract. Hidden evaluator logic remains harness-controlled."
 }

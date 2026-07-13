@@ -1,0 +1,146 @@
+{
+  "author_reported_experience": [],
+  "claim_boundary": "Git-derived ecological-use facts only. Commit, tag, merge, or revert counts do not establish review burden, correctness, agent workbench use, or a causal Decapod effect.",
+  "evidence_class": "observational",
+  "facts": {
+    "authors_by_commit_count": [
+      {
+        "commits": 1705,
+        "identity": "Alex H. Raber <alexhraber@gmail.com>"
+      },
+      {
+        "commits": 300,
+        "identity": "decapod-release-manager[bot] <261518511+decapod-release-manager[bot]@users.noreply.github.com>"
+      },
+      {
+        "commits": 80,
+        "identity": "Decapod Agent <agent@decapod.local>"
+      },
+      {
+        "commits": 37,
+        "identity": "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+      },
+      {
+        "commits": 4,
+        "identity": "Arx <arx@decapolys.com>"
+      },
+      {
+        "commits": 1,
+        "identity": "Alex H. Raber <alex@decapod.ai>"
+      }
+    ],
+    "commit_count": 2127,
+    "explicit_revert_subject_count": 2,
+    "explicit_revert_subjects": [
+      "d7a6d8b08824b7744e6dded8dc5a313834783981|revert(readme): restore pinned readme wording",
+      "29310338353c41d6d41c6049208905134f9069fe|revert(readme): restore README from eaa291ea"
+    ],
+    "first_commit": {
+      "commit": "82a4997c9cb21794e3c8b3952bfe27482f1eaaee",
+      "timestamp": "2026-02-11T03:01:48-08:00"
+    },
+    "last_commit": {
+      "commit": "e7df80d8234a80c490f6fe2119a6cff32135a386",
+      "timestamp": "2026-07-12T21:34:02-07:00"
+    },
+    "merge_commit_count": 612,
+    "tag_count": 326,
+    "top_level_changed_path_occurrences": {
+      "\"tests": 1,
+      ".bazelrc": 1,
+      ".cargo": 4,
+      ".config": 1,
+      ".decapod": 476,
+      ".decapod-archive": 100,
+      ".githooks": 2,
+      ".github": 199,
+      ".gitignore": 37,
+      ".mise.toml": 4,
+      "AGENTS.md": 70,
+      "AGENTS.md.bak": 2,
+      "ARCHITECTURE_MEMO_TASK_ABSTRACTION.md": 3,
+      "BUILD.bazel": 1,
+      "CHANGELOG.md": 318,
+      "CLAUDE.md": 57,
+      "CLAUDE.md.bak": 2,
+      "CODEX.md": 49,
+      "CONTRIBUTING.md": 11,
+      "Cargo.lock": 363,
+      "Cargo.toml": 413,
+      "Dockerfile": 4,
+      "Dockerfile.workspace": 1,
+      "GEMINI.md": 52,
+      "GEMINI.md.bak": 2,
+      "IDENTITY.md": 2,
+      "IMPLEMENTATION_TASK_PLAN.md": 2,
+      "LICENSE": 2,
+      "MAINTAINERS.md": 2,
+      "MIGRATION.md": 2,
+      "MIGRATIONS.md": 2,
+      "MODULE.bazel": 2,
+      "MODULE.bazel.lock": 1,
+      "OBLIGATIONS_ENGINE_PLAN.md": 2,
+      "OBLIGATIONS_ENGINE_SUMMARY.md": 2,
+      "OBLIGATION_TASKS.md": 2,
+      "OPENCODE.md": 2,
+      "OVERRIDE.md": 2,
+      "PLAYBOOK.md": 1,
+      "README.md": 201,
+      "SECURITY.md": 5,
+      "STATE_COMMIT_v1.md": 2,
+      "TOOLS.md": 2,
+      "architecture": 32,
+      "artifacts": 27,
+      "assets": 96,
+      "benches": 8,
+      "build": 9,
+      "build.rs": 8,
+      "clippy.toml": 1,
+      "codex_analysis.md": 2,
+      "constitution": 892,
+      "constitution.domain_brief.linked.json": 2,
+      "constitution.schema.json": 2,
+      "crates": 3,
+      "deny.toml": 1,
+      "dev": 36,
+      "docs": 158,
+      "examples": 13,
+      "flake.lock": 3,
+      "flake.nix": 4,
+      "my_changes.patch": 2,
+      "obligation.rs": 2,
+      "project": 23,
+      "release-plz.toml": 1,
+      "rust-toolchain.toml": 1,
+      "scripts": 9,
+      "sdk": 16,
+      "session": 2,
+      "src": 1661,
+      "tasks": 10,
+      "templates": 188,
+      "test_workspace.txt": 2,
+      "tests": 511
+    }
+  },
+  "kind": "observational",
+  "provenance": {
+    "commands": [
+      "git rev-parse HEAD",
+      "git rev-list --count HEAD",
+      "git log --reverse --format=%aI|%H",
+      "git log -1 --format=%aI|%H",
+      "git tag --list",
+      "git rev-list --count --merges HEAD",
+      "git log --format=%H|%s --regexp-ignore-case --grep=^revert",
+      "git shortlog -sne HEAD",
+      "git log --format= --name-only"
+    ],
+    "generated_at": "2026-07-13T07:11:21.793830+00:00",
+    "generator": "artifact/scripts/collect_dogfooding.py",
+    "git_commit": "e7df80d8234a80c490f6fe2119a6cff32135a386"
+  },
+  "record_id": "decapod-git-e7df80d8234a",
+  "repository": "https://github.com/DecapodLabs/decapod",
+  "schema_version": "observational-record.v1",
+  "study_id": "longitudinal_case_study"
+}

@@ -6,6 +6,11 @@
   "properties": {
     "schema_version": {"const": "task-package.v1"},
     "task_id": {"type": "string", "pattern": "^task-[0-9]{2}-"},
+    "study_eligibility": {
+      "type": "array",
+      "items": {"enum": ["walk_away_alignment", "handoff_continuity", "concurrent_fleet", "tool_switch_continuity"]},
+      "uniqueItems": true
+    },
     "canonical_intent": {"type": "string", "minLength": 1},
     "motivation": {"type": "string", "minLength": 1},
     "constraints": {"type": "array", "items": {"type": "string"}},
@@ -19,6 +24,24 @@
     "context_available": {"type": "object", "required": ["conventional", "decapod_governed"]},
     "complexity_profile": {"type": "object", "required": ["empirical_eligible", "required_reasoning"]},
     "interruption_concurrency": {"type": "object"},
+    "handoff_checkpoint": {
+      "type": "object",
+      "properties": {
+        "trigger": {"type": "string"},
+        "observable_rule": {"type": "string"},
+        "conventional_payload": {"type": "array", "items": {"type": "string"}},
+        "decapod_payload": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "task_graph": {
+      "type": "object",
+      "properties": {
+        "nodes": {"type": "array"},
+        "edges": {"type": "array"},
+        "overlap_classes": {"type": "array", "items": {"type": "string"}},
+        "integration_validation": {"type": "array", "items": {"type": "string"}}
+      }
+    },
     "exclusion_rules": {"type": "array", "items": {"type": "string"}},
     "evaluation": {"type": "object", "required": ["hidden_evaluator", "validation_commands"]}
   },

@@ -1,6 +1,6 @@
 # Reproducible Research Artifact
 
-This directory contains the code, data contracts, scripts, and staged execution harness for the empirical study in *"Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering"*. The checked-in run records and summaries are explicitly `synthetic_fixture` records, not executions by an LLM or human reviewers.
+This directory contains the code, data contracts, scripts, and staged execution harness for the empirical research program in *"Intent, Custody, Trajectory, and Proof: Toward Accountable Execution in Agentic Software Engineering"*. Study A remains the primary one-shot walk-away comparison. Prospective Studies B–D cover handoff, concurrent fleets, and tool switching; Study E is observational dogfooding evidence. Checked-in controlled run records and summaries are explicitly `synthetic_fixture` records, not executions by an LLM or human reviewers.
 
 ---
 
@@ -11,7 +11,7 @@ A key contribution of this paper is the **reproducible artifact**. Rather than s
 To achieve this, the artifact strictly adheres to the following principles:
 
 1. **Completeness of Run Data**: Every run record must identify its data kind and preserve the schema needed for the planned experiment:
-   * **Kind**: `synthetic_fixture`, `pilot`, or `empirical`; aggregation fails closed when kinds are mixed.
+   * **Kind and study**: controlled records declare `synthetic_fixture`, `pilot`, or `empirical` and one study identifier; aggregation fails closed when kinds or studies are mixed.
    * **Initial State**: The base repository and exact commit hash before the run.
    * **Prompt**: The exact natural language instruction given to the agent, paired to one canonical intent.
    * **Pre-inference context**: The selected authority sources, rationale, hashes, exclusions, relevance audit, and resolution latency for governed runs.
@@ -22,6 +22,7 @@ To achieve this, the artifact strictly adheres to the following principles:
 2. **Separation of Raw Data from Analyzed Results**:
    * Raw run logs (`.jsonl` files) can be quite large and are not committed directly to the git history. They should be stored locally (or downloaded using download scripts) to keep the repository lightweight.
    * Statistical summaries, parsed CSVs, and visualization scripts are checked into git under `artifact/results/`.
+   * `observational` Study E records remain outside controlled summaries. Repository-derived facts, author testimony, and causal claims are separate evidence classes.
 3. **Reproducibility Over Novelty**: The goal of this artifact is to enable a reader to run a single script and verify that the results match the tables in the paper, using standard, lightweight Python tools.
 
 ---
@@ -34,5 +35,9 @@ To achieve this, the artifact strictly adheres to the following principles:
 * **`decapod-runs/`**: Legacy synthetic fixtures only; real DN records use the versioned run contract.
 * **`scripts/`**: Automation scripts to run evaluations, collect metrics, and generate tables/figures.
 * **`results/`**: Parsed statistical results, generated tables, and plotting files.
+* **`fixtures/fleet/`**: Conspicuously synthetic Study B–D schema fixtures.
+* **`observational/`**: Git-derived Study E snapshots with explicit non-causal boundaries.
 
-For the delegation design and staged execution rules, see [docs/delegation-protocol.md](../docs/delegation-protocol.md), [docs/human-intervention-protocol.md](../docs/human-intervention-protocol.md), and [docs/statistical-analysis-plan.md](../docs/statistical-analysis-plan.md). For commands, see [artifact/scripts/README.md](scripts/README.md).
+For the delegation design and staged execution rules, see [docs/delegation-protocol.md](../docs/delegation-protocol.md), [docs/fleet-coherence-protocol.md](../docs/fleet-coherence-protocol.md), [docs/human-intervention-protocol.md](../docs/human-intervention-protocol.md), and [docs/statistical-analysis-plan.md](../docs/statistical-analysis-plan.md). For commands, see [artifact/scripts/README.md](scripts/README.md).
+
+No fleet pilot or empirical run is authorized by these files. `capture_coordination.py` requires explicit real-run confirmation and frozen manifests; it does not launch or authorize a model. The inspected Decapod implementation basis and claim boundaries are recorded in [docs/implementation-claim-matrix.md](../docs/implementation-claim-matrix.md).
