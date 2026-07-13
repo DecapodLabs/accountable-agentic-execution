@@ -31,6 +31,8 @@ Tasks require interacting reasoning: architecture discovery, multi-file or multi
 
 The program proceeds through harness validation, a labeled pilot, a tagged protocol freeze, confirmatory execution, and independent audit. Pilot records are excluded from confirmatory estimates. Every run identifies its data kind and records model/runtime, repository and Decapod commits, environment, permissions, prompts, events, interventions, oracle responses, context manifest, evaluator result, exclusions, and deviations. Synthetic and pilot records fail closed in confirmatory aggregation.
 
+This is a prospective research program against an actively developed system. As Decapod adds or narrows features, the experiments, hypotheses, conditions, instrumentation, and sample plan may change before protocol freeze so that they continue to test the mechanisms actually implemented. Every pre-freeze revision must remain versioned and disclose what changed and why. Once a study protocol is frozen, its confirmatory hypotheses, conditions, outcomes, exclusions, and analysis rules do not change in response to observed data; a material implementation change requires a new protocol version or a declared deviation rather than silently moving the target.
+
 The delegation thesis is weakened if DN does not improve fidelity, does not reduce failed or redundant cycles, increases cost without improving results, supplies irrelevant or harmful context, still requires regular human correction, is matched by CN at equal or lower effort, benefits from hidden rubric leakage, improves proof while task quality does not improve, or merely relocates supervision into setup. The analysis reports paired task-level contrasts, uncertainty, effect sizes, and task-clustered results; non-inferiority is prohibited until a margin and power analysis are frozen.
 
 \subsection{Study B: Cross-Workbench Handoff Continuity}
@@ -51,7 +53,7 @@ Study D applies Study B's checkpoint and measures to frozen workbench pairs. It 
 
 \subsection{Study E: Longitudinal Experience Report}
 
-Study E is observational. A checked-in extractor pinned to Decapod \texttt{e7df80d} derives 2,127 commits, 326 tags, 612 merge commits, two explicit revert-subject commits, the February--July 2026 development interval, authorship counts, and changed top-level path frequencies from git. These facts establish sustained repository activity, not a treatment effect, correctness, low review burden, or proof that named workbenches produced particular commits. Author-reported workbench use must be labeled separately. The experience report motivates controlled studies but cannot enter their estimates.
+Study E is observational. A checked-in historical snapshot pinned to Decapod \texttt{e7df80d} derives 2,127 commits, 326 tags, 612 merge commits, two explicit revert-subject commits, the February--July 2026 development interval, authorship counts, and changed top-level path frequencies from git. It remains an explicitly older observational dataset than the \texttt{207e9a3} implementation audit. These facts establish sustained repository activity, not a treatment effect, correctness, low review burden, or proof that named workbenches produced particular commits. Author-reported workbench use must be labeled separately. The experience report motivates controlled studies but cannot enter their estimates.
 
 \subsection{Study-Specific Provenance and Authorization}
 

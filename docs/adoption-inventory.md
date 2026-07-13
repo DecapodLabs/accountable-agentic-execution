@@ -6,6 +6,8 @@ This inventory records repositories identified by their maintainers as using Dec
 
 The snapshot contains 13 repositories across three owner namespaces: 11 public and 2 private. The private repository names are included at the owner's direction; their contents are not part of this research artifact.
 
+The author reports running `decapod init` once when establishing each repository, before the first agent interaction or other engineering operation. Thereafter the human interacts naturally with agents, and the generated `AGENTS.md` contract requires the agents to continue using Decapod at governance boundaries. Marker presence is consistent with that operating practice but cannot independently establish initialization order, agent compliance, or outcome effects.
+
 ## `alexhraber` — six repositories
 
 - [`alexhraber/pi-cluster`](https://github.com/alexhraber/pi-cluster) — public

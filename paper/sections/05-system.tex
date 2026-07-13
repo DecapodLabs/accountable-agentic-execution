@@ -1,7 +1,7 @@
 \section{Decapod: A Reference Governance Kernel}
 \label{sec:system}
 
-Decapod is a daemonless, local-first governance kernel for AI coding agents. It is invoked by agents at governance boundaries; it does not replace the model's tool loop or alter model weights. The implementation mapping is pinned to commit \texttt{e7df80d} (tag \texttt{v0.66.1}); the companion claim matrix lists command, source, test, status, boundary, and planned measure for each research concept.
+Decapod is a daemonless, local-first governance kernel for AI coding agents. It is invoked by agents at governance boundaries; it does not replace the model's tool loop or alter model weights. The implementation mapping is pinned to commit \texttt{207e9a3} (tag \texttt{v0.66.3}); the companion claim matrix lists command, source, test, status, boundary, and planned measure for each research concept. The changes from the previously inspected \texttt{v0.66.1} revision through this release are release, CI, and research-link documentation changes; the mapped implementation and test paths are unchanged.
 
 \subsection{System Architecture}
 The CLI and Decapod-specific structured process-RPC surfaces route requests into core subsystems that persist state under \texttt{.decapod/}. The principal surfaces relevant to this paper are:
@@ -52,6 +52,10 @@ The same authenticated snapshot verified a Decapod configuration marker in 13 re
 \end{itemize}
 \end{sloppypar}
 Because these repositories are maintainer-correlated, the inventory establishes deployment footprint rather than 13 independent adopters, active protocol compliance, or a treatment effect. The companion inventory records its verification boundary.
+
+The author reports a consistent lifecycle across new projects and engineering efforts: run \texttt{decapod init} once when establishing a repository, before the first agent interaction or other engineering operation. Thereafter the human interfaces naturally with one or more agents, while the generated \texttt{AGENTS.md} contract requires those agents to invoke Decapod throughout governed orientation, task custody, workspace use, validation, proof, and completion. Decapod is therefore a continuing control-plane dependency after one-time initialization, not a command the human repeatedly enters. This contract does not imply interception of every runtime action, and repository markers alone do not prove compliance or outcome improvement.
+
+Decapod has also aided the development of this paper and its executable research artifact since their inception. The repository's governed specifications, tasks, workspaces, validation surfaces, and proof hooks make that use inspectable. This is reflexive dogfooding of the system under study, useful for implementation feedback but not independent validation or a controlled result.
 
 \subsection{Proof and Evidence Boundaries}
 Proof definitions contain commands, arguments, descriptions, and required status. A proof run records exit status, duration, pass/fail state, bounded output, run identifiers, actor, and related requirements in the proof event journal. Workunit and workspace-publish gates can require proof results and validation evidence before promotion.

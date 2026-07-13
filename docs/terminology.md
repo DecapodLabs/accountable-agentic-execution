@@ -72,6 +72,9 @@ The ability to preserve the human's natural delegation interface while agents in
 ### Constitutional Authority Chain
 The provenance and precedence relationship among the constitution embedded in the Decapod binary, binding project overrides, any future organization policy layer, and task-scoped context projections. At the inspected revision, the embedded baseline and project-local override are implemented; organization-level overrides are prospective.
 
+### Intent-Driven Design
+The name coined by the author for Decapod's software-engineering approach: begin with human or team intent, preserve durable authority in a project constitution, and scaffold project artifacts and agent guidance from that authority before implementation. The author described the approach publicly in August 2025 and used constitution-based project scaffolding by September 2025. This historical provenance is distinct from the prospective empirical question of whether the approach improves outcomes.
+
 ### Similar-but-Distinct Concurrent Work
 Tasks that are not duplicates but share architecture, files, tests, dependencies, or integration boundaries. Safe coordination requires more than separate worktrees: task identity, semantic overlap, dependency awareness, custody, integration validation, and publication proof must remain distinguishable.
 

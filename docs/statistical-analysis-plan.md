@@ -2,6 +2,8 @@
 
 This prospective plan is not frozen until a protocol tag records the final task cohort, prompts, evaluators, exclusions, model/runtime, and analysis rules.
 
+Before that freeze, hypotheses, conditions, estimands, instrumentation, and sample-size assumptions may evolve with Decapod's implemented feature set, but every change must be versioned and justified without presenting draft continuity as preregistration. After freeze, changes require a new protocol version or a disclosed deviation and cannot be selected in response to confirmatory outcomes.
+
 ## Estimand and primary comparison
 
 The primary estimand is the paired within-task difference in independently scored intent fidelity between Decapod-governed natural delegation (DN) and conventional natural delegation (CN), under identical prompt and execution inputs except for the Decapod context/corridor. The primary outcome is final-state fidelity, not prompt length. The key human-absence outcome is acceptable completion without clarification or corrective coaching.
