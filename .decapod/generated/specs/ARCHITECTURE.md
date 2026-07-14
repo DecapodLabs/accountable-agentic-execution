@@ -1,5 +1,26 @@
 # Architecture
 
+
+<!-- decapod:capability-overlay:persistent-state:start -->
+
+
+## Persistent State Architecture Overlay
+
+### State Ownership
+- Each entity type MUST have a designated state owner
+- State ownership boundaries MUST be explicitly documented
+- Cross-boundary state access MUST go through defined interfaces
+
+### Transaction Boundaries
+- All multi-entity mutations MUST occur within explicit transactions
+- Transaction boundaries MUST be documented in ARCHITECTURE.md
+- Compensating transactions for distributed operations
+
+### Storage Abstraction
+- Storage ownership, consistency behavior, and access boundaries MUST be explicit
+- Portability or swappable implementations are project decisions, not universal requirements
+- Migration and rollback treatment MUST match the selected storage technology
+<!-- decapod:capability-overlay:persistent-state:end -->
 ## Direction
 webapp
 
@@ -155,7 +176,7 @@ sequenceDiagram
 <!-- decapod:codebase-attestation:start -->
 ## Codebase Attestation
 
-- Repository signal fingerprint: `37c7fd7b8aa4e1aa777af651c9e925851c0d59bb1de91c5f6af338bb87817e30`
+- Repository signal fingerprint: `d85fea05c327157b8eaa834019da77bceb474918bb9adfc1eb0873b51d54d9da`
 - Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
 - Refreshed from the current codebase by `decapod specs.refresh`
 <!-- decapod:codebase-attestation:end -->

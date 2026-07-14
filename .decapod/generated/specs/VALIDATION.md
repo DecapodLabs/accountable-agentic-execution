@@ -1,5 +1,64 @@
 # Validation
 
+
+<!-- decapod:capability-overlay:background-processing:start -->
+
+
+
+<!-- decapod:capability-overlay:persistent-state:start -->
+
+
+
+<!-- decapod:capability-overlay:public-api:start -->
+
+
+## Public API Validation Overlay
+
+### Contract Tests
+- All public endpoints MUST have contract tests
+- Request/response schema validation on every request
+- Compatibility regression tests for each version
+
+### Security Tests
+- Authentication bypass tests
+- Malformed input handling tests
+- Rate limit enforcement tests
+- Token expiry/revocation tests
+<!-- decapod:capability-overlay:public-api:end -->
+## Persistent State Validation Overlay
+
+### Migration Proof Command
+- Configure `repo.migration_validation.command` and its arguments as the executable migration proof; file presence is not proof
+- The configured command MUST define its working directory, timeout, expected exit code, and evidence output
+
+### Migration Tests
+- All migrations MUST have integration tests
+- Rollback procedures MUST be tested
+- Data integrity checks post-migration
+
+### Persistence Integration Tests
+- Repository abstraction tested against real database
+- Transaction boundary tests
+- Concurrency conflict tests
+- Data integrity validation after recovery
+<!-- decapod:capability-overlay:persistent-state:end -->
+## Background Processing Validation Overlay
+
+### Duplicate Delivery Tests
+- Same message delivered multiple times MUST produce same result
+- Idempotency key verification
+- Verify the declared delivery guarantee; do not claim exactly-once behavior without proof
+
+### Retry Tests
+- Configured retry/backoff policy verified
+- Configured retry bound or unbounded policy verified
+- Poison-work handling verified when the project declares it
+
+### Shutdown Tests
+- Graceful drain on signal
+- In-flight job completion or safe requeue
+- No data loss on forced termination
+<!-- decapod:capability-overlay:background-processing:end -->
 ## Validation Philosophy
 > Validation is a release gate, not documentation theater.
 
@@ -102,7 +161,7 @@ flowchart LR
 <!-- decapod:codebase-attestation:start -->
 ## Codebase Attestation
 
-- Repository signal fingerprint: `37c7fd7b8aa4e1aa777af651c9e925851c0d59bb1de91c5f6af338bb87817e30`
+- Repository signal fingerprint: `d85fea05c327157b8eaa834019da77bceb474918bb9adfc1eb0873b51d54d9da`
 - Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
 - Refreshed from the current codebase by `decapod specs.refresh`
 <!-- decapod:codebase-attestation:end -->

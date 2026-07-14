@@ -6,10 +6,10 @@ paper:
 	@echo "Checking for LaTeX compilation tools..."
 	@if command -v latexmk >/dev/null 2>&1; then \
 		echo "Compiling paper using latexmk..."; \
-		cd paper && latexmk -pdf main.tex; \
+		cd paper && latexmk -pdf Accountable_Agentic_Execution.tex; \
 	elif command -v pdflatex >/dev/null 2>&1; then \
 		echo "latexmk not found. Attempting compile using pdflatex and bibtex..."; \
-		cd paper && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex; \
+		cd paper && pdflatex Accountable_Agentic_Execution.tex && bibtex Accountable_Agentic_Execution && pdflatex Accountable_Agentic_Execution.tex && pdflatex Accountable_Agentic_Execution.tex; \
 	else \
 		echo "Error: Neither latexmk nor pdflatex was found in PATH."; \
 		echo "Please install a LaTeX distribution (e.g., TeX Live or MiKTeX)."; \

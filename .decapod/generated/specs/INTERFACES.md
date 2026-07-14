@@ -1,5 +1,27 @@
 # Interfaces
 
+
+<!-- decapod:capability-overlay:public-api:start -->
+
+
+## Public API Capability Overlay
+
+### API Contract Requirements
+- All public endpoints MUST define explicit request/response schemas
+- Versioning strategy MUST be documented (URL path or header-based)
+- All public endpoints MUST implement idempotency for mutating operations
+- Rate limiting and pagination MUST be implemented for list endpoints
+
+### Compatibility Guarantees
+- Backward-compatible changes ONLY within a version
+- Breaking changes require new version (v1, v2, etc.)
+- Deprecation and removal policy MUST be selected for this project and proven against its consumers
+
+### Security Requirements
+- All public endpoints MUST implement authentication
+- Abuse-control enforcement point MUST be a documented project decision
+- Input validation MUST reject malformed requests with typed errors
+<!-- decapod:capability-overlay:public-api:end -->
 ## Contract Principles
 - Prefer explicit schemas over implicit behavior.
 - Every mutating interface defines idempotency semantics.
@@ -77,7 +99,7 @@ export enum ApiErrorCode {
 <!-- decapod:codebase-attestation:start -->
 ## Codebase Attestation
 
-- Repository signal fingerprint: `37c7fd7b8aa4e1aa777af651c9e925851c0d59bb1de91c5f6af338bb87817e30`
+- Repository signal fingerprint: `d85fea05c327157b8eaa834019da77bceb474918bb9adfc1eb0873b51d54d9da`
 - Significant implementation surfaces: `.github/` (2 files), `Makefile/` (1 files), `README.md/` (1 files), `artifact/` (6 files), `lab-example/` (1 files)
 - Refreshed from the current codebase by `decapod specs.refresh`
 <!-- decapod:codebase-attestation:end -->
