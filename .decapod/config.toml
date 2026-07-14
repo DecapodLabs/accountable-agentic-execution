@@ -20,11 +20,13 @@ primary_languages = ["Other"]
 external_tracker = false
 container_workspaces = true
 mode = "local"
-
-[cloud]
-enabled = false
-experimental = true
-provider = "decapod"
-api_url = "https://api.decapodlabs.com"
-project_id = ""
-repo_id = ""
+declared_capabilities = [
+    "authentication",
+    "background-processing",
+    "event-driven",
+    "external-integrations",
+    "infrastructure-management",
+    "persistent-state",
+    "public-api",
+    "secrets-handling",
+]
